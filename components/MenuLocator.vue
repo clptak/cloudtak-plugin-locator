@@ -26,7 +26,7 @@ import type { Component } from 'vue';
 import { TablerPillGroup } from '@tak-ps/vue-tabler';
 import {
     IconDeviceMobile,
-    IconMessage,
+    IconDeviceMobileMessage,
     IconSettings,
 } from '@tabler/icons-vue';
 import MenuTemplate from '@/components/CloudTAK/util/MenuTemplate.vue';
@@ -44,7 +44,7 @@ const tabs = [
 
 const tabIcons: Record<string, Component> = {
     cellphone: IconDeviceMobile,
-    sms: IconMessage,
+    sms: IconDeviceMobileMessage,
     settings: IconSettings,
 };
 </script>
