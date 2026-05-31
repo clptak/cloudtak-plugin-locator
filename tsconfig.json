@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "noEmit": true,
+        "composite": false,
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "target": "ESNext",
+        "lib": ["dom", "esnext"],
+        "jsx": "preserve",
+        "jsxImportSource": "vue",
+        "strict": true,
+        "noImplicitThis": true,
+        "verbatimModuleSyntax": true,
+        "useDefineForClassFields": true,
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "types": ["vue"],
+        "paths": {
+            "@/stores/map.ts": ["./stubs/map-store.ts"],
+            "@/std.ts": ["./stubs/std.ts"],
+            "@/*": ["../../CloudTAK/api/web/src/*"]
+        }
+    },
+    "include": ["env.d.ts", "**/*.ts", "**/*.vue"]
+}
