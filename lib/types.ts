@@ -36,6 +36,7 @@ export type PluginSettings = {
     twilioAuthToken: string;
     twilioFromNumber: string;
     twilioTestToNumber: string;
+    rapidsosApiKey: string;
 };
 
 export type TwilioCredentials = {

@@ -10,6 +10,7 @@ const DEFAULT_SETTINGS: PluginSettings = {
     twilioAuthToken: '',
     twilioFromNumber: '',
     twilioTestToNumber: '',
+    rapidsosApiKey: '',
 };
 
 function readStoredSettings(): PluginSettings {
@@ -23,6 +24,7 @@ function readStoredSettings(): PluginSettings {
             twilioAuthToken: String(parsed.twilioAuthToken || '').trim(),
             twilioFromNumber: String(parsed.twilioFromNumber || '').trim(),
             twilioTestToNumber: String(parsed.twilioTestToNumber || '').trim(),
+            rapidsosApiKey: String(parsed.rapidsosApiKey || '').trim(),
         };
     } catch {
         return { ...DEFAULT_SETTINGS };
@@ -52,6 +54,7 @@ export const useLocatorStore = defineStore('locator-plugin', () => {
             twilioAuthToken: next.twilioAuthToken.trim(),
             twilioFromNumber: next.twilioFromNumber.trim(),
             twilioTestToNumber: next.twilioTestToNumber.trim(),
+            rapidsosApiKey: next.rapidsosApiKey.trim(),
         };
         persistSettings(settings.value);
     }

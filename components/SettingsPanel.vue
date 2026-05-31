@@ -61,6 +61,22 @@
             </div>
         </div>
 
+        <div class='card mt-3'>
+            <div class='card-header'>
+                <div class='card-title'>
+                    RapidSOS
+                </div>
+            </div>
+            <div class='card-body'>
+                <TablerInput
+                    v-model='local.rapidsosApiKey'
+                    label='RapidSOS API Key'
+                    type='password'
+                    placeholder='RapidSOS API key'
+                />
+            </div>
+        </div>
+
         <div class='d-flex flex-wrap gap-2 mt-3'>
             <button
                 type='button'
