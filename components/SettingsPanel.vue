@@ -11,12 +11,52 @@
                     v-model='local.takPortalUrl'
                     label='TAK Portal Base URL'
                     placeholder='https://takportal.example.com'
-                    description='Used for locator API calls. SMS is sent via TAK Portal Server Settings (Twilio/Brevo).'
+                    description='Used for locator create/list/archive API calls and the public share link.'
+                />
+            </div>
+        </div>
+
+        <div class='card mt-3'>
+            <div class='card-header'>
+                <div class='card-title'>
+                    Twilio (per-user SMS)
+                </div>
+            </div>
+            <div class='card-body'>
+                <p class='text-muted small mb-3'>
+                    SMS is sent directly from this plugin using <strong>your</strong> Twilio
+                    credentials, routed through CloudTAK's outbound proxy. Only users who supply
+                    valid credentials can send locator links.
+                </p>
+                <TablerInput
+                    v-model='local.twilioAccountSid'
+                    label='Account SID'
+                    placeholder='ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+                />
+                <TablerInput
+                    v-model='local.twilioAuthToken'
+                    label='Auth Token'
+                    type='password'
+                    class='mt-2'
+                    placeholder='your Twilio auth token'
+                />
+                <TablerInput
+                    v-model='local.twilioFromNumber'
+                    label='From Number'
+                    class='mt-2'
+                    placeholder='+15551234567'
+                />
+                <TablerInput
+                    v-model='local.twilioTestToNumber'
+                    label='Test To Number'
+                    class='mt-2'
+                    placeholder='+15559876543'
+                    description='Used only by "Send Test SMS".'
                 />
                 <p class='text-muted small mt-3 mb-0'>
-                    Configure SMS provider and credentials under
-                    <strong>TAK Portal → Server Settings → SMS</strong>.
-                    Locator link URLs are built by TAK Portal when sending SMS.
+                    Requires the CloudTAK admin to enable the HTTP proxy and whitelist
+                    <code>https://api.twilio.com</code> under
+                    <strong>Admin → Proxy</strong>.
                 </p>
             </div>
         </div>
@@ -40,6 +80,14 @@
             </button>
             <button
                 type='button'
+                class='btn btn-secondary'
+                :disabled='testingSms || !canTestSms'
+                @click='testSms'
+            >
+                Send Test SMS
+            </button>
+            <button
+                type='button'
                 class='btn btn-outline-secondary'
                 :disabled='unchanged'
                 @click='reset'
@@ -49,7 +97,7 @@
         </div>
 
         <TablerLoading
-            v-if='saving || testingPortal'
+            v-if='saving || testingPortal || testingSms'
             class='mt-3'
             :compact='true'
             :desc='loadingDesc'
@@ -76,6 +124,7 @@ import { computed, reactive, ref, watch } from 'vue';
 import { TablerInput, TablerLoading, TablerAlert } from '@tak-ps/vue-tabler';
 import { useLocatorStore } from '../stores/plugin-state.ts';
 import { testTakPortalConnection } from '../api/tak-portal-client.ts';
+import { sendTestSms } from '../api/twilio-client.ts';
 import type { PluginSettings } from '../lib/types.ts';
 
 const store = useLocatorStore();
@@ -87,6 +136,7 @@ function cloneSettings(s: PluginSettings): PluginSettings {
 const local = reactive<PluginSettings>(cloneSettings(store.settings));
 const saving = ref(false);
 const testingPortal = ref(false);
+const testingSms = ref(false);
 const error = ref<Error | undefined>();
 const successMessage = ref('');
 
@@ -102,9 +152,19 @@ const unchanged = computed(() =>
     JSON.stringify(local) === JSON.stringify(store.settings),
 );
 
+const canTestSms = computed(() =>
+    Boolean(
+        local.twilioAccountSid.trim()
+        && local.twilioAuthToken.trim()
+        && local.twilioFromNumber.trim()
+        && local.twilioTestToNumber.trim(),
+    ),
+);
+
 const loadingDesc = computed(() => {
     if (saving.value) return 'Saving…';
     if (testingPortal.value) return 'Contacting TAK Portal…';
+    if (testingSms.value) return 'Sending test SMS…';
     return '';
 });
 
@@ -140,6 +200,23 @@ async function testPortal() {
         error.value = err instanceof Error ? err : new Error(String(err));
     } finally {
         testingPortal.value = false;
+    }
+}
+
+async function testSms() {
+    clearFeedback();
+    store.saveSettings(cloneSettings(local));
+    testingSms.value = true;
+    try {
+        const count = await sendTestSms(
+            store.twilioCredentials(),
+            store.settings.twilioTestToNumber,
+        );
+        successMessage.value = `Test SMS sent to ${count} number(s).`;
+    } catch (err) {
+        error.value = err instanceof Error ? err : new Error(String(err));
+    } finally {
+        testingSms.value = false;
     }
 }
 </script>

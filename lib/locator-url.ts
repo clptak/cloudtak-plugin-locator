@@ -7,6 +7,11 @@ export function publicLocateUrl(takPortalBaseUrl: string, slug: string): string 
     return `${base}/locate/${encodeURIComponent(slug)}`;
 }
 
+export function locateLinkSmsBody(takPortalBaseUrl: string, slug: string): string {
+    const url = publicLocateUrl(takPortalBaseUrl, slug);
+    return `Please open this link on your phone to share your location with responders:\n\n${url}`;
+}
+
 export function clampPingIntervalSeconds(raw: number): number {
     const n = Math.floor(Number(raw));
     if (!Number.isFinite(n)) return 60;

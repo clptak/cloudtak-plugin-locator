@@ -32,4 +32,14 @@ export type HistoryEntry = {
 
 export type PluginSettings = {
     takPortalUrl: string;
+    twilioAccountSid: string;
+    twilioAuthToken: string;
+    twilioFromNumber: string;
+    twilioTestToNumber: string;
+};
+
+export type TwilioCredentials = {
+    accountSid: string;
+    authToken: string;
+    fromNumber: string;
 };

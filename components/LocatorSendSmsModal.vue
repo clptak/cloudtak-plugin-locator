@@ -30,7 +30,7 @@
                         v-model='phones'
                         label='Phone numbers (SMS)'
                         placeholder='+15551234567, 5559876543'
-                        description='Sent via TAK Portal (Server Settings → SMS). Comma- or semicolon-separated.'
+                        description='Sent from your Twilio account (configured in Settings). Comma- or semicolon-separated.'
                     />
                     <div
                         v-if='previewUrl'

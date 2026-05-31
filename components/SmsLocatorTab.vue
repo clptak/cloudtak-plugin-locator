@@ -85,8 +85,9 @@ import {
     listLocators,
     manualPing,
     reactivateLocator,
-    sendLocatorLinkSms,
 } from '../api/tak-portal-client.ts';
+import { sendTwilioSmsToMany } from '../api/twilio-client.ts';
+import { locateLinkSmsBody } from '../lib/locator-url.ts';
 import LocatorCreateCard from './LocatorCreateCard.vue';
 import LocatorTable from './LocatorTable.vue';
 import LocatorSendSmsModal from './LocatorSendSmsModal.vue';
@@ -158,16 +159,20 @@ function openSendSms(loc: Locator) {
 async function onSendSms(phones: string) {
     if (!sendSmsLocator.value) return;
 
+    if (!store.hasTwilioCredentials()) {
+        loadError.value = new Error(
+            'Configure your Twilio Account SID, Auth Token, and From Number in Settings to send SMS.',
+        );
+        return;
+    }
+
     sendingSms.value = true;
     actionMessage.value = '';
     loadError.value = undefined;
     try {
-        const count = await sendLocatorLinkSms(
-            requirePortalUrl(),
-            sendSmsLocator.value.id,
-            phones,
-        );
-        actionMessage.value = `SMS sent to ${count} number(s) via TAK Portal.`;
+        const body = locateLinkSmsBody(requirePortalUrl(), sendSmsLocator.value.slug);
+        const count = await sendTwilioSmsToMany(store.twilioCredentials(), phones, body);
+        actionMessage.value = `SMS sent to ${count} number(s) via your Twilio account.`;
         sendSmsLocator.value = null;
     } catch (err) {
         loadError.value = err instanceof Error ? err : new Error(String(err));

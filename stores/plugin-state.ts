@@ -1,11 +1,15 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import type { PluginSettings } from '../lib/types.ts';
+import type { PluginSettings, TwilioCredentials } from '../lib/types.ts';
 
 const STORAGE_KEY = 'cloudtak-plugin-locator-settings';
 
 const DEFAULT_SETTINGS: PluginSettings = {
     takPortalUrl: '',
+    twilioAccountSid: '',
+    twilioAuthToken: '',
+    twilioFromNumber: '',
+    twilioTestToNumber: '',
 };
 
 function readStoredSettings(): PluginSettings {
@@ -15,6 +19,10 @@ function readStoredSettings(): PluginSettings {
         const parsed = JSON.parse(raw) as Partial<PluginSettings> & Record<string, unknown>;
         return {
             takPortalUrl: String(parsed.takPortalUrl || '').trim(),
+            twilioAccountSid: String(parsed.twilioAccountSid || '').trim(),
+            twilioAuthToken: String(parsed.twilioAuthToken || '').trim(),
+            twilioFromNumber: String(parsed.twilioFromNumber || '').trim(),
+            twilioTestToNumber: String(parsed.twilioTestToNumber || '').trim(),
         };
     } catch {
         return { ...DEFAULT_SETTINGS };
@@ -40,6 +48,10 @@ export const useLocatorStore = defineStore('locator-plugin', () => {
     function saveSettings(next: PluginSettings): void {
         settings.value = {
             takPortalUrl: next.takPortalUrl.trim(),
+            twilioAccountSid: next.twilioAccountSid.trim(),
+            twilioAuthToken: next.twilioAuthToken.trim(),
+            twilioFromNumber: next.twilioFromNumber.trim(),
+            twilioTestToNumber: next.twilioTestToNumber.trim(),
         };
         persistSettings(settings.value);
     }
@@ -52,6 +64,22 @@ export const useLocatorStore = defineStore('locator-plugin', () => {
         return Boolean(settings.value.takPortalUrl.trim());
     }
 
+    function hasTwilioCredentials(): boolean {
+        return Boolean(
+            settings.value.twilioAccountSid.trim()
+            && settings.value.twilioAuthToken.trim()
+            && settings.value.twilioFromNumber.trim(),
+        );
+    }
+
+    function twilioCredentials(): TwilioCredentials {
+        return {
+            accountSid: settings.value.twilioAccountSid.trim(),
+            authToken: settings.value.twilioAuthToken.trim(),
+            fromNumber: settings.value.twilioFromNumber.trim(),
+        };
+    }
+
     return {
         settings,
         enabled,
@@ -59,5 +87,7 @@ export const useLocatorStore = defineStore('locator-plugin', () => {
         saveSettings,
         patchSettings,
         hasTakPortalUrl,
+        hasTwilioCredentials,
+        twilioCredentials,
     };
 });
