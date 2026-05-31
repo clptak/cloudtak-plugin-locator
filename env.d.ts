@@ -1,28 +1,5 @@
 /// <reference types="vue/macros-global" />
 
-declare module 'geojson' {
-    export type FeatureCollection = {
-        type: 'FeatureCollection';
-        features: Feature[];
-    };
-    export type Feature = {
-        type: 'Feature';
-        id?: string;
-        properties?: Record<string, unknown>;
-        geometry?: { type: string; coordinates?: unknown };
-    };
-}
-
-declare module '@capacitor/preferences' {
-    export const Preferences: {
-        get(options: { key: string }): Promise<{ value: string | null }>;
-    };
-}
-
-declare module '@tak-ps/node-cot/normalize_geojson' {
-    export function normalize_geojson(feature: unknown): Promise<unknown>;
-}
-
 declare module '*.vue' {
     import type { DefineComponent } from 'vue';
     const component: DefineComponent<object, object, unknown>;

@@ -188,8 +188,8 @@
 
 <script setup lang='ts'>
 import { ref, reactive, computed } from 'vue';
-import { useMapStore } from '@/stores/map.ts';
-import { std } from '@/std.ts';
+import { useMapStore } from '../../../../src/stores/map.ts';
+import { std } from '../../../../src/std.ts';
 import { normalize_geojson } from '@tak-ps/node-cot/normalize_geojson';
 import { parseCoordinates } from '../../lib/cellphone/coordinates.ts';
 import { prepareCellPing, cellPingFeatures } from '../../lib/cellphone/cell-ping.ts';
