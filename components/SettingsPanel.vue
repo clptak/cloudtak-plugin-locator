@@ -61,6 +61,25 @@
             </div>
         </div>
 
+        <div class='d-flex flex-wrap gap-2 mt-3'>
+            <button
+                type='button'
+                class='btn btn-primary'
+                :disabled='saving'
+                @click='save'
+            >
+                Save
+            </button>
+            <button
+                type='button'
+                class='btn btn-secondary'
+                :disabled='testingPortal || !local.takPortalUrl.trim()'
+                @click='testPortal'
+            >
+                Test TAK Portal Connection
+            </button>
+        </div>
+
         <div class='card mt-3'>
             <div class='card-header'>
                 <div class='card-title'>
@@ -85,14 +104,6 @@
                 @click='save'
             >
                 Save
-            </button>
-            <button
-                type='button'
-                class='btn btn-secondary'
-                :disabled='testingPortal || !local.takPortalUrl.trim()'
-                @click='testPortal'
-            >
-                Test TAK Portal Connection
             </button>
             <button
                 type='button'
