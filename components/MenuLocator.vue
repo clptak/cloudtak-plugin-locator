@@ -1,5 +1,13 @@
 <template>
     <MenuTemplate name='Locator'>
+        <template #title>
+            <IconDeviceMobilePin
+                :size='24'
+                stroke='1'
+                class='flex-shrink-0'
+            />
+            <span class='strong user-select-none'>Locator</span>
+        </template>
         <TablerPillGroup
             v-model='activeTab'
             :options='tabs'
@@ -27,9 +35,10 @@ import { TablerPillGroup } from '@tak-ps/vue-tabler';
 import {
     IconDeviceMobile,
     IconDeviceMobileMessage,
+    IconDeviceMobilePin,
     IconSettings,
 } from '@tabler/icons-vue';
-import MenuTemplate from '@/components/CloudTAK/util/MenuTemplate.vue';
+import MenuTemplate from './MenuTemplate.vue';
 import CellphoneTab from './CellphoneTab.vue';
 import SmsLocatorTab from './SmsLocatorTab.vue';
 import SettingsPanel from './SettingsPanel.vue';
