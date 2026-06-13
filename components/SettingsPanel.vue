@@ -224,15 +224,13 @@ async function testPortal() {
         const locators = await testTakPortalConnection(store.settings.takPortalUrl);
         successMessage.value = `TAK Portal connection OK (${locators.length} locator(s) visible).`;
     } catch (err) {
-        const portalBase = local.takPortalUrl.trim();
         if (err instanceof TypeError && /failed to fetch/i.test(err.message)) {
+            const host = local.takPortalUrl.trim().replace(/^https?:\/\//i, '');
             error.value = new Error(
-                `Unable to reach TAK Portal API from this browser.\n\n` +
-                `This is usually caused by either (a) missing Authentik session cookies for ` +
-                `https://${portalBase.replace(/^https?:\/\//i, '')}/ in this browser, or (b) CORS not ` +
-                `being applied to Authentik/redirect responses for /api/locate/*.\n\n` +
-                `Fix: open https://${portalBase.replace(/^https?:\/\//i, '')}/locate in this browser ` +
-                `and sign in as this account, confirm it works there, then retry "Test TAK Portal Connection".`,
+                `Unable to reach TAK Portal API from CloudTAK (browser blocked the response).\n\n` +
+                `If ${host} works in its own tab but this test fails, Authentik forward_auth is ` +
+                `rejecting cross-origin API calls from CloudTAK — adjust Caddy/Authentik CORS and ` +
+                `session handling for /api/locate/* (see plugin README).`,
             );
         } else {
             error.value = err instanceof Error ? err : new Error(String(err));
