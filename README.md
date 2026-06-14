@@ -48,7 +48,14 @@ Environment variables on **`cloudtak-api`** (e.g. in `tak-stack/.env`):
 |----------|---------|
 | `TAK_PORTAL_INTERNAL_URL` | Internal URL (default `http://tak-portal:3000`) |
 | `TAK_PORTAL_BRIDGE_GLOBAL_GROUP` | Authentik group name injected for CloudTAK **system admins** — should match TAK Portal `PORTAL_AUTH_REQUIRED_GROUP` so they become portal global admins |
-| `TAK_PORTAL_BRIDGE_EXTRA_GROUPS` | Optional `;`-separated groups added for **every** bridged request (e.g. a group that grants `page.locate` to standard users) |
+| `TAK_PORTAL_BRIDGE_EXTRA_GROUPS` | Optional `;`-separated groups added for **every** bridged request — must match TAK Portal `PORTAL_BRIDGE_MEMBER_GROUPS` (see below) |
+
+**TAK Portal** (`~/tak-stack/.env` on the `tak-portal` container):
+
+| Variable | Purpose |
+|----------|---------|
+| `PORTAL_BRIDGE_MEMBER_GROUPS` | Same Authentik group name(s) as `TAK_PORTAL_BRIDGE_EXTRA_GROUPS` (comma-separated). Lets bridged CloudTAK users pass portal auth **without** global admin — grants locate-only access. |
+| `PORTAL_BRIDGE_MEMBER_PERMISSIONS` | Optional; default `page.locate` |
 
 **Permission mapping:** TAK Portal checks `page.locate` from portal roles/overrides. CloudTAK `system_admin` users get global portal admin when `TAK_PORTAL_BRIDGE_GLOBAL_GROUP` matches your portal admin group. Other users need matching groups in `TAK_PORTAL_BRIDGE_EXTRA_GROUPS` or per-user permission overrides in TAK Portal.
 
