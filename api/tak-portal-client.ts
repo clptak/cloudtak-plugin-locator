@@ -1,81 +1,58 @@
 import type { HistoryEntry, Locator } from '../lib/types.ts';
-import { normalizeTakPortalBaseUrl, clampPingIntervalSeconds } from '../lib/locator-url.ts';
+import { clampPingIntervalSeconds } from '../lib/locator-url.ts';
+import { std } from '../../../src/std.ts';
 
 type ApiOk<T> = { ok: true } & T;
 type ApiErr = { ok: false; error?: string; message?: string };
 
-function portalHost(baseUrl: string): string {
-    const root = normalizeTakPortalBaseUrl(baseUrl);
-    return root.replace(/^https?:\/\//i, '');
+function bridgeUrl(portalPath: string): string {
+    const [pathPart, query] = portalPath.split('?');
+    const normalized = pathPart.startsWith('/') ? pathPart : `/${pathPart}`;
+    const suffix = normalized.startsWith('/api/locate')
+        ? normalized.slice('/api/locate'.length)
+        : normalized;
+    const bridged = `/api/takportal/locate${suffix.startsWith('/') ? suffix : `/${suffix}`}`;
+    return query ? `${bridged}?${query}` : bridged;
 }
 
-function authRedirectError(baseUrl: string): Error {
-    const host = portalHost(baseUrl);
-    return new Error(
-        `TAK Portal rejected the API call from CloudTAK (Authentik login redirect).\n\n` +
-        `The locate API works on ${host} itself, but cross-origin calls from ` +
-        `CloudTAK are not passing Authentik forward_auth.\n\n` +
-        `On Caddy, confirm /api/locate/* CORS headers apply to authenticated responses ` +
-        `and that Authentik accepts the takportal session cookie on cross-origin requests ` +
-        `(not only when Referer is ${host}).`,
-    );
-}
-
-function isAuthRedirect(res: Response): boolean {
-    return res.type === 'opaqueredirect'
-        || res.status === 301
-        || res.status === 302
-        || res.status === 303
-        || res.status === 307
-        || res.status === 308;
-}
-
-async function readApiError(res: Response): Promise<string> {
-    const text = await res.text();
-    if (!text) return `HTTP ${res.status} ${res.statusText || ''}`.trim();
-
-    try {
-        const j = JSON.parse(text) as ApiErr;
-        if (j.error) return j.error;
-        if (j.message) return j.message;
-    } catch {
-        // not JSON
+function readBridgeError(err: unknown): Error {
+    if (err instanceof Error && 'body' in err) {
+        const body = (err as Error & { body?: unknown }).body;
+        if (body && typeof body === 'object') {
+            if ('error' in body && body.error) {
+                return new Error(String((body as ApiErr).error));
+            }
+            if ('message' in body && body.message) {
+                return new Error(String((body as { message: string }).message));
+            }
+        }
     }
-
-    return text.length > 500 ? text.slice(0, 500) + '…' : text;
+    return err instanceof Error ? err : new Error(String(err));
 }
 
 async function portalFetch<T>(
-    baseUrl: string,
+    _baseUrl: string,
     path: string,
     init?: RequestInit,
 ): Promise<T> {
-    const root = normalizeTakPortalBaseUrl(baseUrl);
-    if (!root) throw new Error('Configure TAK Portal Base URL in Settings.');
-
-    const url = `${root}${path.startsWith('/') ? path : `/${path}`}`;
-    const res = await fetch(url, {
-        ...init,
-        credentials: 'include',
-        mode: 'cors',
-        // Avoid sending CloudTAK as Referer; some Authentik forward_auth setups reject that.
-        referrerPolicy: 'no-referrer',
-        redirect: 'manual',
-        headers: {
-            Accept: 'application/json',
-            ...(init?.headers || {}),
-        },
-    });
-
-    if (isAuthRedirect(res)) {
-        throw authRedirectError(baseUrl);
+    const method = (init?.method || 'GET').toUpperCase();
+    let body: unknown;
+    if (init?.body !== undefined && init.body !== null) {
+        body = typeof init.body === 'string' ? JSON.parse(init.body) : init.body;
     }
 
-    if (!res.ok) {
-        throw new Error(await readApiError(res));
+    try {
+        return await std(bridgeUrl(path), {
+            method,
+            body,
+            headers: {
+                Accept: 'application/json',
+                ...(init?.headers as Record<string, string> | undefined),
+            },
+        }) as Promise<T>;
+    } catch (err) {
+        throw readBridgeError(err);
     }
-
-    return res.json() as Promise<T>;
 }
 
 export async function testTakPortalConnection(baseUrl: string): Promise<Locator[]> {

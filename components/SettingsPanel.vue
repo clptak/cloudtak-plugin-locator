@@ -11,7 +11,7 @@
                     v-model='local.takPortalUrl'
                     label='TAK Portal Base URL'
                     placeholder='https://takportal.example.com'
-                    description='Used for locator create/list/archive API calls and the public share link.'
+                    description='Public share links use this URL. Locator API calls go through CloudTAK (same-origin bridge).'
                 />
             </div>
         </div>
@@ -224,17 +224,7 @@ async function testPortal() {
         const locators = await testTakPortalConnection(store.settings.takPortalUrl);
         successMessage.value = `TAK Portal connection OK (${locators.length} locator(s) visible).`;
     } catch (err) {
-        if (err instanceof TypeError && /failed to fetch/i.test(err.message)) {
-            const host = local.takPortalUrl.trim().replace(/^https?:\/\//i, '');
-            error.value = new Error(
-                `Unable to reach TAK Portal API from CloudTAK (browser blocked the response).\n\n` +
-                `If ${host} works in its own tab but this test fails, Authentik forward_auth is ` +
-                `rejecting cross-origin API calls from CloudTAK — adjust Caddy/Authentik CORS and ` +
-                `session handling for /api/locate/* (see plugin README).`,
-            );
-        } else {
-            error.value = err instanceof Error ? err : new Error(String(err));
-        }
+        error.value = err instanceof Error ? err : new Error(String(err));
     } finally {
         testingPortal.value = false;
     }
