@@ -1,3 +1,6 @@
 node_modules/
 *.log
 .DS_Store
+
+# Private VPS / ops notes (not for the public repo)
+doc/
