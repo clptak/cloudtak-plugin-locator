@@ -41,14 +41,22 @@ async function portalFetch<T>(
         body = typeof init.body === 'string' ? JSON.parse(init.body) : init.body;
     }
 
+    // Let CloudTAK std() stringify object bodies. If we pass Content-Type here
+    // without a string body, fetch sends "[object Object]" and the API returns 400 HTML.
+    const headers: Record<string, string> = { Accept: 'application/json' };
+    for (const [key, value] of Object.entries(
+        (init?.headers as Record<string, string> | undefined) || {},
+    )) {
+        if (key.toLowerCase() !== 'content-type') {
+            headers[key] = value;
+        }
+    }
+
     try {
         return await std(bridgeUrl(path), {
             method,
             body,
-            headers: {
-                Accept: 'application/json',
-                ...(init?.headers as Record<string, string> | undefined),
-            },
+            headers,
         }) as Promise<T>;
     } catch (err) {
         throw readBridgeError(err);
