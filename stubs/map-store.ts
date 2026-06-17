@@ -7,5 +7,6 @@ export function useMapStore(_pinia?: unknown): {
         };
     };
 } {
+    void _pinia;
     throw new Error('stub');
 }
