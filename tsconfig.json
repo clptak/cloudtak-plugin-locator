@@ -21,6 +21,10 @@
         "paths": {
             "@/stores/map.ts": ["./stubs/map-store.ts"],
             "@/std.ts": ["./stubs/std.ts"],
+            "../../../src/stores/map.ts": ["./stubs/map-store.ts"],
+            "../../../src/std.ts": ["./stubs/std.ts"],
+            "../../../../src/stores/map.ts": ["./stubs/map-store.ts"],
+            "../../../../src/std.ts": ["./stubs/std.ts"],
             "@/*": ["../../CloudTAK/api/web/src/*"]
         }
     },

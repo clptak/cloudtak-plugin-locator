@@ -1,5 +1,5 @@
 /** Typecheck stub; runtime uses CloudTAK @/stores/map.ts */
-export function useMapStore(): {
+export function useMapStore(_pinia?: unknown): {
     mission?: { meta: { guid: string } };
     worker: {
         db: {

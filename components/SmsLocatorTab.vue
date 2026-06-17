@@ -92,6 +92,7 @@ import LocatorCreateCard from './LocatorCreateCard.vue';
 import LocatorTable from './LocatorTable.vue';
 import LocatorSendSmsModal from './LocatorSendSmsModal.vue';
 import LocatorHistoryPanel from './LocatorHistoryPanel.vue';
+import { getLocatorHistoryMapSync } from '../lib/locator-history-map-sync.ts';
 
 const store = useLocatorStore();
 
@@ -185,6 +186,7 @@ async function onManualPing(loc: Locator) {
     actionMessage.value = '';
     try {
         actionMessage.value = await manualPing(requirePortalUrl(), loc.id);
+        void getLocatorHistoryMapSync()?.syncOnce();
     } catch (err) {
         loadError.value = err instanceof Error ? err : new Error(String(err));
     }

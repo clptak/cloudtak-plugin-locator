@@ -2,6 +2,10 @@ import type { App } from 'vue';
 import { defineAsyncComponent, markRaw } from 'vue';
 import { IconDeviceMobilePin } from '@tabler/icons-vue';
 import type { PluginAPI, PluginInstance, PluginStatic } from '@tak-ps/cloudtak';
+import {
+    LocatorHistoryMapSync,
+    setLocatorHistoryMapSync,
+} from './lib/locator-history-map-sync.ts';
 import { useLocatorStore } from './stores/plugin-state.ts';
 
 const MenuLocator = defineAsyncComponent(() => import('./components/MenuLocator.vue'));
@@ -12,6 +16,7 @@ const ROUTE_PATH = 'locator';
 
 export default class LocatorPlugin implements PluginInstance {
     api: PluginAPI;
+    private historyMapSync: LocatorHistoryMapSync | null = null;
 
     constructor(api: PluginAPI) {
         this.api = api;
@@ -31,6 +36,10 @@ export default class LocatorPlugin implements PluginInstance {
         const store = useLocatorStore(this.api.pinia);
         store.setEnabled(true);
 
+        this.historyMapSync = new LocatorHistoryMapSync(this.api.pinia);
+        setLocatorHistoryMapSync(this.historyMapSync);
+        this.historyMapSync.start();
+
         this.api.menu.add({
             key: MENU_KEY,
             label: 'Locator',
@@ -44,6 +53,9 @@ export default class LocatorPlugin implements PluginInstance {
     async disable(): Promise<void> {
         const store = useLocatorStore(this.api.pinia);
         store.setEnabled(false);
+        this.historyMapSync?.stop();
+        this.historyMapSync = null;
+        setLocatorHistoryMapSync(null);
         this.api.menu.remove(MENU_KEY);
     }
 }
