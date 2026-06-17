@@ -2,7 +2,7 @@ import { normalize_geojson } from '@tak-ps/node-cot/normalize_geojson';
 import type { Feature } from 'geojson';
 
 type MapWorkerDb = {
-    add(feature: unknown, opts: { authored?: boolean }): Promise<{ id?: string } | undefined>;
+    add(feature: unknown, opts?: { authored?: boolean }): Promise<unknown>;
 };
 
 /**
