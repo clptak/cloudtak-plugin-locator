@@ -1,28 +1,10 @@
 <template>
     <div class='p-3'>
-        <div class='mb-2 d-flex'>
-            <button
-                class='btn btn-sm'
-                :class='{ "btn-primary": mode === "ping", "btn-outline-secondary": mode !== "ping" }'
-                @click='mode = "ping"'
-            >
-                Cellphone Ping
-            </button>
-            <button
-                class='btn btn-sm ms-2'
-                :class='{ "btn-primary": mode === "rtt", "btn-outline-secondary": mode !== "rtt" }'
-                @click='mode = "rtt"'
-            >
-                RTT Timing Advance
-            </button>
-            <button
-                class='btn btn-sm ms-2'
-                :class='{ "btn-primary": mode === "email", "btn-outline-secondary": mode !== "email" }'
-                @click='mode = "email"'
-            >
-                Email Parse
-            </button>
-        </div>
+        <TablerPillGroup
+            v-model='mode'
+            class='mb-3'
+            :options='modeOptions'
+        />
 
         <template v-if='mode !== "email"'>
             <div class='mb-2'>
@@ -188,8 +170,9 @@
 
 <script setup lang='ts'>
 import { ref, reactive, computed } from 'vue';
-import { useMapStore } from '../../../../src/stores/map.ts';
-import { std } from '../../../../src/std.ts';
+import { TablerPillGroup } from '@tak-ps/vue-tabler';
+import { useMapStore } from '@/stores/map.ts';
+import { std } from '@/std.ts';
 import { normalize_geojson } from '@tak-ps/node-cot/normalize_geojson';
 import { parseCoordinates } from '../../lib/cellphone/coordinates.ts';
 import { prepareCellPing, cellPingFeatures } from '../../lib/cellphone/cell-ping.ts';
@@ -219,6 +202,11 @@ function localDateTimeToUtcISO(local: string): string {
 
 const mapStore = useMapStore();
 const mode = ref<'ping' | 'rtt' | 'email'>('ping');
+const modeOptions = [
+    { value: 'ping', label: 'Cellphone Ping' },
+    { value: 'rtt', label: 'RTT Timing Advance' },
+    { value: 'email', label: 'Email Parse' },
+];
 const error = ref<string>('');
 const success = ref<string>('');
 const submitting = ref<boolean>(false);

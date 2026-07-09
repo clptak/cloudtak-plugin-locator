@@ -2,6 +2,7 @@
     "compilerOptions": {
         "noEmit": true,
         "composite": false,
+        "baseUrl": ".",
         "module": "ESNext",
         "moduleResolution": "bundler",
         "target": "ESNext",
@@ -19,10 +20,11 @@
         "skipLibCheck": true,
         "types": ["vue"],
         "paths": {
+            "@/stores/app.ts": ["./stubs/app-store.ts"],
             "@/stores/map.ts": ["./stubs/map-store.ts"],
             "@/std.ts": ["./stubs/std.ts"],
-            "../../../src/stores/map.ts": ["./stubs/map-store.ts"],
             "../../../src/std.ts": ["./stubs/std.ts"],
+            "../../../src/stores/map.ts": ["./stubs/map-store.ts"],
             "../../../../src/stores/map.ts": ["./stubs/map-store.ts"],
             "../../../../src/std.ts": ["./stubs/std.ts"],
             "@/*": ["../../CloudTAK/api/web/src/*"]

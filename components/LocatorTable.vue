@@ -20,6 +20,49 @@
                     No locators in this list.
                 </div>
                 <div
+                    v-else-if='isMobile'
+                    class='d-flex flex-column gap-0'
+                >
+                    <div
+                        v-for='loc in locators'
+                        :key='loc.id'
+                        class='border-bottom p-3'
+                    >
+                        <div class='d-flex justify-content-between align-items-start gap-2'>
+                            <div class='min-width-0'>
+                                <div class='fw-medium'>
+                                    {{ loc.title }}
+                                </div>
+                                <div class='text-muted small text-break'>
+                                    {{ loc.slug }}
+                                </div>
+                            </div>
+                            <span
+                                class='badge flex-shrink-0'
+                                :class='statusBadgeClass(loc)'
+                            >
+                                {{ statusLabel(loc) }}
+                            </span>
+                        </div>
+                        <div class='text-muted small mt-2'>
+                            Ping: {{ formatInterval(loc.pingIntervalSeconds) }}
+                            · Last: {{ formatLastUpdate(loc) }}
+                        </div>
+                        <LocatorRowActions
+                            class='mt-2'
+                            :locator='loc'
+                            :tak-portal-url='takPortalUrl'
+                            :archived='archived'
+                            @send-sms='emit("send-sms", $event)'
+                            @manual-ping='emit("manual-ping", $event)'
+                            @history='emit("history", $event)'
+                            @archive='emit("archive", $event)'
+                            @reactivate='emit("reactivate", $event)'
+                            @delete='emit("delete", $event)'
+                        />
+                    </div>
+                </div>
+                <div
                     v-else
                     class='table-responsive'
                 >
@@ -61,62 +104,17 @@
                                     {{ formatLastUpdate(loc) }}
                                 </td>
                                 <td>
-                                    <div class='d-flex flex-wrap gap-1'>
-                                        <template v-if='!archived'>
-                                            <button
-                                                type='button'
-                                                class='btn btn-sm btn-primary'
-                                                @click='emit("send-sms", loc)'
-                                            >
-                                                Send SMS
-                                            </button>
-                                            <button
-                                                type='button'
-                                                class='btn btn-sm btn-secondary'
-                                                @click='emit("manual-ping", loc)'
-                                            >
-                                                Manual ping
-                                            </button>
-                                            <button
-                                                type='button'
-                                                class='btn btn-sm btn-secondary'
-                                                @click='emit("history", loc)'
-                                            >
-                                                History
-                                            </button>
-                                            <a
-                                                class='btn btn-sm btn-outline-secondary'
-                                                :href='publicUrl(loc)'
-                                                target='_blank'
-                                                rel='noopener noreferrer'
-                                            >
-                                                Link
-                                            </a>
-                                            <button
-                                                type='button'
-                                                class='btn btn-sm btn-outline-secondary'
-                                                @click='emit("archive", loc)'
-                                            >
-                                                Archive
-                                            </button>
-                                        </template>
-                                        <template v-else>
-                                            <button
-                                                type='button'
-                                                class='btn btn-sm btn-secondary'
-                                                @click='emit("reactivate", loc)'
-                                            >
-                                                Reactivate
-                                            </button>
-                                        </template>
-                                        <button
-                                            type='button'
-                                            class='btn btn-sm btn-outline-danger'
-                                            @click='emit("delete", loc)'
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
+                                    <LocatorRowActions
+                                        :locator='loc'
+                                        :tak-portal-url='takPortalUrl'
+                                        :archived='archived'
+                                        @send-sms='emit("send-sms", $event)'
+                                        @manual-ping='emit("manual-ping", $event)'
+                                        @history='emit("history", $event)'
+                                        @archive='emit("archive", $event)'
+                                        @reactivate='emit("reactivate", $event)'
+                                        @delete='emit("delete", $event)'
+                                    />
                                 </td>
                             </tr>
                         </tbody>
@@ -128,10 +126,12 @@
 </template>
 
 <script setup lang='ts'>
+import { computed } from 'vue';
+import { useAppStore } from '@/stores/app.ts';
 import type { Locator } from '../lib/types.ts';
-import { publicLocateUrl } from '../lib/locator-url.ts';
+import LocatorRowActions from './LocatorRowActions.vue';
 
-const props = defineProps<{
+defineProps<{
     title: string;
     locators: Locator[];
     takPortalUrl: string;
@@ -147,6 +147,9 @@ const emit = defineEmits<{
     reactivate: [locator: Locator];
     delete: [locator: Locator];
 }>();
+
+const appStore = useAppStore();
+const isMobile = computed(() => appStore.isMobileDetected);
 
 function formatInterval(seconds: number): string {
     if (seconds === 0) return 'One-time';
@@ -174,9 +177,5 @@ function formatLastUpdate(loc: Locator): string {
     } catch {
         return at;
     }
-}
-
-function publicUrl(loc: Locator): string {
-    return publicLocateUrl(props.takPortalUrl, loc.slug);
 }
 </script>

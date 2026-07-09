@@ -1,6 +1,6 @@
 import type { HistoryEntry, Locator } from '../lib/types.ts';
 import { clampPingIntervalSeconds } from '../lib/locator-url.ts';
-import { std } from '../../../src/std.ts';
+import { std } from '@/std.ts';
 
 type ApiOk<T> = { ok: true } & T;
 type ApiErr = { ok: false; error?: string; message?: string };

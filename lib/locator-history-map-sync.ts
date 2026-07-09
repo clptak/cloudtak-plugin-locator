@@ -1,5 +1,5 @@
 import type { Pinia } from 'pinia';
-import { useMapStore } from '../../../src/stores/map.ts';
+import { useMapStore } from '@/stores/map.ts';
 import { listHistory, listLocators } from '../api/tak-portal-client.ts';
 import { useLocatorStore } from '../stores/plugin-state.ts';
 import type { HistoryEntry, Locator } from './types.ts';

@@ -24,9 +24,9 @@
                 title='Active Locators'
                 :locators='activeLocators'
                 :tak-portal-url='store.settings.takPortalUrl'
-                @send-sms='openSendSms'
+                @send-sms='emit("send-sms", $event)'
                 @manual-ping='onManualPing'
-                @history='openHistory'
+                @history='emit("history", $event)'
                 @archive='onArchive'
                 @delete='onDelete'
             />
@@ -43,25 +43,6 @@
             />
         </template>
 
-        <LocatorSendSmsModal
-            v-if='sendSmsLocator'
-            :locator='sendSmsLocator'
-            :tak-portal-url='store.settings.takPortalUrl'
-            :default-phones='defaultSendPhones'
-            :sending='sendingSms'
-            @close='sendSmsLocator = null'
-            @send='onSendSms'
-        />
-
-        <LocatorHistoryPanel
-            v-if='historyLocator'
-            :locator='historyLocator'
-            :entries='historyEntries'
-            :loading='historyLoading'
-            :error='historyError'
-            @close='closeHistory'
-        />
-
         <div
             v-if='actionMessage'
             class='alert alert-info mt-3'
@@ -76,22 +57,23 @@
 import { computed, onMounted, ref } from 'vue';
 import { TablerLoading, TablerAlert } from '@tak-ps/vue-tabler';
 import { useLocatorStore } from '../stores/plugin-state.ts';
-import type { HistoryEntry, Locator } from '../lib/types.ts';
+import type { Locator } from '../lib/types.ts';
 import {
     archiveLocator,
     createLocator,
     deleteLocator,
-    listHistory,
     listLocators,
     manualPing,
     reactivateLocator,
-    sendLocatorLinkSms,
 } from '../api/tak-portal-client.ts';
 import LocatorCreateCard from './LocatorCreateCard.vue';
 import LocatorTable from './LocatorTable.vue';
-import LocatorSendSmsModal from './LocatorSendSmsModal.vue';
-import LocatorHistoryPanel from './LocatorHistoryPanel.vue';
 import { getLocatorHistoryMapSync } from '../lib/locator-history-map-sync.ts';
+
+const emit = defineEmits<{
+    history: [locator: Locator];
+    'send-sms': [locator: Locator];
+}>();
 
 const store = useLocatorStore();
 
@@ -99,15 +81,7 @@ const locators = ref<Locator[]>([]);
 const loading = ref(false);
 const loadError = ref<Error | undefined>();
 const creating = ref(false);
-const sendingSms = ref(false);
-const sendSmsLocator = ref<Locator | null>(null);
-const defaultSendPhones = ref('');
 const actionMessage = ref('');
-
-const historyLocator = ref<Locator | null>(null);
-const historyEntries = ref<HistoryEntry[]>([]);
-const historyLoading = ref(false);
-const historyError = ref<Error | undefined>();
 
 const activeLocators = computed(() => locators.value.filter((l) => !l.archived));
 const archivedLocators = computed(() => locators.value.filter((l) => l.archived));
@@ -142,38 +116,11 @@ async function onCreate(payload: { title: string; pingIntervalSeconds: number })
     try {
         const loc = await createLocator(requirePortalUrl(), payload);
         await refresh();
-        sendSmsLocator.value = loc;
-        defaultSendPhones.value = '';
+        emit('send-sms', loc);
     } catch (err) {
         loadError.value = err instanceof Error ? err : new Error(String(err));
     } finally {
         creating.value = false;
-    }
-}
-
-function openSendSms(loc: Locator) {
-    sendSmsLocator.value = loc;
-    defaultSendPhones.value = '';
-}
-
-async function onSendSms(phones: string) {
-    if (!sendSmsLocator.value) return;
-
-    sendingSms.value = true;
-    actionMessage.value = '';
-    loadError.value = undefined;
-    try {
-        const count = await sendLocatorLinkSms(
-            requirePortalUrl(),
-            sendSmsLocator.value.id,
-            phones,
-        );
-        actionMessage.value = `SMS sent to ${count} number(s) via TAK Portal.`;
-        sendSmsLocator.value = null;
-    } catch (err) {
-        loadError.value = err instanceof Error ? err : new Error(String(err));
-    } finally {
-        sendingSms.value = false;
     }
 }
 
@@ -185,26 +132,6 @@ async function onManualPing(loc: Locator) {
     } catch (err) {
         loadError.value = err instanceof Error ? err : new Error(String(err));
     }
-}
-
-async function openHistory(loc: Locator) {
-    historyLocator.value = loc;
-    historyEntries.value = [];
-    historyError.value = undefined;
-    historyLoading.value = true;
-    try {
-        historyEntries.value = await listHistory(requirePortalUrl(), loc.id);
-    } catch (err) {
-        historyError.value = err instanceof Error ? err : new Error(String(err));
-    } finally {
-        historyLoading.value = false;
-    }
-}
-
-function closeHistory() {
-    historyLocator.value = null;
-    historyEntries.value = [];
-    historyError.value = undefined;
 }
 
 async function onArchive(loc: Locator) {
@@ -235,7 +162,6 @@ async function onDelete(loc: Locator) {
     actionMessage.value = '';
     try {
         await deleteLocator(requirePortalUrl(), loc.id);
-        if (historyLocator.value?.id === loc.id) closeHistory();
         await refresh();
         actionMessage.value = `Deleted "${loc.title}".`;
     } catch (err) {
