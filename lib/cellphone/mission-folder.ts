@@ -5,7 +5,8 @@ export type MissionLayerLike = {
     uid: string;
     name?: string;
     type?: string;
-    mission_layers?: MissionLayerLike[];
+    // Host MissionLayer uses unknown[]; keep loose so mapStore.mission assigns.
+    mission_layers?: unknown[];
 };
 
 export type MissionLike = {
@@ -22,7 +23,7 @@ function findUidLayerByName(
 ): MissionLayerLike | undefined {
     for (const layer of layers) {
         if (layer.type === 'UID' && layer.name === name) return layer;
-        const nested = layer.mission_layers;
+        const nested = layer.mission_layers as MissionLayerLike[] | undefined;
         if (nested?.length) {
             const found = findUidLayerByName(nested, name);
             if (found) return found;

@@ -344,7 +344,8 @@ async function submit() {
             } catch (folderErr) {
                 const msg = folderErr instanceof Error ? folderErr.message : String(folderErr);
                 throw new Error(
-                    `Features posted to mission, but filing into "Cellphone Data" failed: ${msg}`
+                    `Features posted to mission, but filing into "Cellphone Data" failed: ${msg}`,
+                    { cause: folderErr },
                 );
             }
         }
