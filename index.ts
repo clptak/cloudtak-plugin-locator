@@ -9,6 +9,7 @@ import {
     cleanupFloatMinimize,
     openDesktopPane,
 } from './lib/floatMinimize.ts';
+import { bindPopout, closePopout } from './lib/popout.ts';
 import {
     LocatorHistoryMapSync,
     setLocatorHistoryMapSync,
@@ -49,6 +50,8 @@ export default class LocatorPlugin implements PluginInstance {
         this.historyMapSync = new LocatorHistoryMapSync(api.pinia);
         setLocatorHistoryMapSync(this.historyMapSync);
         this.historyMapSync.start();
+
+        bindPopout(api);
 
         bindFloatMinimize({
             api,
@@ -98,6 +101,7 @@ export default class LocatorPlugin implements PluginInstance {
         this.historyMapSync = null;
         setLocatorHistoryMapSync(null);
         this.api.menu.remove(MENU_KEY);
+        closePopout();
         cleanupFloatMinimize();
         if (this.api.router.hasRoute(ROUTE_NAME)) {
             this.api.router.removeRoute(ROUTE_NAME);

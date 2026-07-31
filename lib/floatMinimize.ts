@@ -2,6 +2,7 @@ import { markRaw } from 'vue';
 import type { Component } from 'vue';
 import type { PluginAPI } from '@tak-ps/cloudtak';
 import { useFloatStore } from '../../../src/stores/float.ts';
+import { isPopoutOpen, focusPopout } from './popout.ts';
 
 export const PANE_UID = 'locator';
 export const BOTTOM_BAR_KEY = 'locator';
@@ -106,6 +107,10 @@ function clearBottomBarChip(): void {
 export function openDesktopPane(): void {
     const pluginApi = requireApi();
     ensureBottomBarChip();
+    if (isPopoutOpen()) {
+        focusPopout();
+        return;
+    }
     if (minimized) {
         minimized = false;
         if (!pluginApi.float.has(PANE_UID)) {
