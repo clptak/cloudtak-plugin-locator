@@ -185,6 +185,7 @@ import {
     US_TIMEZONES,
     type Carrier,
 } from '../../lib/cellphone/email-parse.ts';
+import { fileFeaturesInCellphoneDataFolder } from '../../lib/cellphone/mission-folder.ts';
 import type { FeatureCollection } from 'geojson';
 
 function nowDateTimeLocal(): string {
@@ -309,6 +310,7 @@ async function submit() {
 
         const primaryCallsign = String(fc.features[0].properties?.callsign ?? form.name);
         let primaryUid = String(fc.features[0].id);
+        const cotUids: string[] = [];
 
         for (let i = 0; i < fc.features.length; i++) {
             const feat = fc.features[i];
@@ -326,12 +328,26 @@ async function submit() {
             }
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const cot = await mapStore.worker.db.add(norm as any, { authored: true });
-            if (i === 0 && cot && typeof (cot as { id?: unknown }).id === 'string') {
-                primaryUid = (cot as { id: string }).id;
-            }
+            const addedId = cot && typeof (cot as { id?: unknown }).id === 'string'
+                ? (cot as { id: string }).id
+                : featUid;
+            if (addedId) cotUids.push(addedId);
+            if (i === 0 && addedId) primaryUid = addedId;
         }
 
+        const mission = mapStore.mission;
         const guid = missionGuid.value;
+
+        if (mission && cotUids.length) {
+            try {
+                await fileFeaturesInCellphoneDataFolder(mission, cotUids);
+            } catch (folderErr) {
+                const msg = folderErr instanceof Error ? folderErr.message : String(folderErr);
+                throw new Error(
+                    `Features posted to mission, but filing into "Cellphone Data" failed: ${msg}`
+                );
+            }
+        }
 
         if (guid && form.addDataSyncLog) {
             await std(`/api/marti/missions/${encodeURIComponent(guid)}/log`, {
@@ -346,7 +362,9 @@ async function submit() {
         }
 
         const suffix = guid
-            ? (form.addDataSyncLog ? ' to mission (with log entry)' : ' to mission')
+            ? (form.addDataSyncLog
+                ? ' to mission "Cellphone Data" (with log entry)'
+                : ' to mission "Cellphone Data"')
             : ' to local map';
         success.value = `Posted ${fc.features.length} feature(s)${suffix}.`;
     } catch (err) {
