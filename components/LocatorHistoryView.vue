@@ -1,5 +1,5 @@
 <template>
-    <div class='py-3'>
+    <div>
         <p class='text-muted small mb-3'>
             {{ locator.title }}
             <span class='ms-1'>({{ locator.slug }})</span>

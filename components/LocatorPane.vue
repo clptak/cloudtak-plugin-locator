@@ -1,32 +1,20 @@
 <template>
-    <MenuTemplate
-        :name='screenTitle'
-        :back='screen === "main"'
-    >
-        <template
-            v-if='screen === "main"'
-            #title
+    <div class='locator-pane p-3'>
+        <div
+            v-if='screen !== "main"'
+            class='d-flex align-items-center gap-2 mb-2 pb-2 border-bottom'
         >
-            <IconDeviceMobilePin
-                :size='24'
-                stroke='1'
-                class='flex-shrink-0'
-            />
-            <span class='strong user-select-none'>Locator</span>
-        </template>
-
-        <template #buttons>
             <TablerIconButton
-                v-if='screen !== "main"'
                 title='Back'
                 @click='popScreen'
             >
                 <IconCircleArrowLeft
-                    :size='32'
+                    :size='28'
                     stroke='1'
                 />
             </TablerIconButton>
-        </template>
+            <span class='fw-semibold text-truncate'>{{ screenTitle }}</span>
+        </div>
 
         <LocatorHistoryView
             v-if='screen === "history" && drillLocator'
@@ -75,7 +63,7 @@
             />
             <SettingsPanel v-else-if='activeTab === "settings"' />
         </template>
-    </MenuTemplate>
+    </div>
 </template>
 
 <script setup lang='ts'>
@@ -86,11 +74,9 @@ import {
     IconCircleArrowLeft,
     IconDeviceMobile,
     IconDeviceMobileMessage,
-    IconDeviceMobilePin,
     IconSettings,
 } from '@tabler/icons-vue';
 import { useAppStore } from '@/stores/app.ts';
-import MenuTemplate from './MenuTemplate.vue';
 import CellphoneTab from './CellphoneTab.vue';
 import SmsLocatorTab from './SmsLocatorTab.vue';
 import SettingsPanel from './SettingsPanel.vue';

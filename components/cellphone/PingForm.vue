@@ -1,5 +1,5 @@
 <template>
-    <div class='p-3'>
+    <div>
         <TablerPillGroup
             v-model='mode'
             class='mb-3'

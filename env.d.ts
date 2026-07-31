@@ -21,6 +21,11 @@ declare module '@tak-ps/cloudtak' {
         icon: Component;
     };
 
+    export type BottomBarItemConfig = {
+        key: string;
+        component: Component;
+    };
+
     export interface PluginAPI {
         menu: {
             add(item: MenuItemConfig): void;
@@ -31,6 +36,25 @@ declare module '@tak-ps/cloudtak' {
                 route: { path: string; name: string; component: unknown },
                 parentName?: string,
             ): void;
+        };
+        float: {
+            add(opts: {
+                uid: string;
+                name?: string;
+                component: Component;
+                actions?: Component;
+                props?: Record<string, unknown>;
+                height?: number;
+                width?: number;
+                x?: number;
+                y?: number;
+            }): unknown;
+            remove(uid: string): void;
+            has(uid: string): boolean;
+        };
+        bottomBar: {
+            add(item: BottomBarItemConfig): void;
+            remove(key: string): void;
         };
         pinia: Pinia;
         router: Router;

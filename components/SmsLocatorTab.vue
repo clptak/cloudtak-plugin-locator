@@ -1,5 +1,5 @@
 <template>
-    <div class='col-12 py-3'>
+    <div class='col-12'>
         <LocatorCreateCard
             :loading='creating'
             @create='onCreate'

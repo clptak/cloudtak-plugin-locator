@@ -32,6 +32,8 @@ cd ~/CloudTAK/api/web && npm run serve
 
 Open CloudTAK, load the map, and select **Locator** in the main menu.
 
+On **desktop**, Locator opens as a free-floating, draggable/resizable pane over the map. Use **Minimize** in the pane header to hide it; a **Locator** chip on the map bottom status bar restores it at the same size and position. On **mobile**, Locator stays a full menu view (`MenuTemplate`).
+
 If you previously installed `plugins/ping` (cloudtak-plugin-cellphone), you can remove that symlink — this plugin replaces it for the Cellphone Data tab.
 
 ## TAK Portal bridge (CloudTAK API)

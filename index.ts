@@ -1,14 +1,29 @@
 import type { App } from 'vue';
-import { defineAsyncComponent, markRaw } from 'vue';
+import { defineAsyncComponent, defineComponent, h, markRaw, onMounted } from 'vue';
 import { IconDeviceMobilePin } from '@tabler/icons-vue';
 import type { PluginAPI, PluginInstance, PluginStatic } from '@tak-ps/cloudtak';
+import { useAppStore } from '@/stores/app.ts';
+import MenuTemplate from './components/MenuTemplate.vue';
+import {
+    bindFloatMinimize,
+    cleanupFloatMinimize,
+    openDesktopPane,
+} from './lib/floatMinimize.ts';
 import {
     LocatorHistoryMapSync,
     setLocatorHistoryMapSync,
 } from './lib/locator-history-map-sync.ts';
 import { useLocatorStore } from './stores/plugin-state.ts';
 
-const MenuLocator = defineAsyncComponent(() => import('./components/MenuLocator.vue'));
+const LocatorFloatShell = defineAsyncComponent(
+    () => import('./components/LocatorFloatShell.vue'),
+);
+const LocatorPane = defineAsyncComponent(
+    () => import('./components/LocatorPane.vue'),
+);
+const LocatorTaskbarChip = defineAsyncComponent(
+    () => import('./components/LocatorTaskbarChip.vue'),
+);
 
 const MENU_KEY = 'locator';
 const ROUTE_NAME = 'home-menu-locator';
@@ -23,24 +38,50 @@ export default class LocatorPlugin implements PluginInstance {
     }
 
     static async install(_app: App, api: PluginAPI): Promise<PluginInstance> {
-        api.routes.add({
-            path: ROUTE_PATH,
-            name: ROUTE_NAME,
-            component: MenuLocator,
-        }, 'home-menu');
-
         return new LocatorPlugin(api);
     }
 
     async enable(): Promise<void> {
-        const store = useLocatorStore(this.api.pinia);
+        const api = this.api;
+        const store = useLocatorStore(api.pinia);
         store.setEnabled(true);
 
-        this.historyMapSync = new LocatorHistoryMapSync(this.api.pinia);
+        this.historyMapSync = new LocatorHistoryMapSync(api.pinia);
         setLocatorHistoryMapSync(this.historyMapSync);
         this.historyMapSync.start();
 
-        this.api.menu.add({
+        bindFloatMinimize({
+            api,
+            shell: LocatorFloatShell as unknown as HostFloatComponent,
+            restoreChip: LocatorTaskbarChip as unknown as HostBottomBarComponent,
+        });
+
+        api.routes.add({
+            path: ROUTE_PATH,
+            name: ROUTE_NAME,
+            component: defineComponent({
+                name: 'LocatorEntry',
+                setup() {
+                    const appStore = useAppStore(api.pinia);
+                    onMounted(() => {
+                        if (!appStore.isMobileDetected) {
+                            openDesktopPane();
+                            void api.router.replace({ name: 'home' });
+                        }
+                    });
+                    return () => {
+                        if (appStore.isMobileDetected) {
+                            return h(MenuTemplate, { name: 'Locator' }, {
+                                default: () => h(LocatorPane),
+                            });
+                        }
+                        return null;
+                    };
+                },
+            }),
+        }, 'home-menu');
+
+        api.menu.add({
             key: MENU_KEY,
             label: 'Locator',
             route: ROUTE_NAME,
@@ -57,10 +98,16 @@ export default class LocatorPlugin implements PluginInstance {
         this.historyMapSync = null;
         setLocatorHistoryMapSync(null);
         this.api.menu.remove(MENU_KEY);
+        cleanupFloatMinimize();
+        if (this.api.router.hasRoute(ROUTE_NAME)) {
+            this.api.router.removeRoute(ROUTE_NAME);
+        }
     }
 }
 
 type MenuItemIconType = NonNullable<Parameters<PluginAPI['menu']['add']>[0]['icon']>;
 type MenuItemConfig = Parameters<PluginAPI['menu']['add']>[0];
+type HostFloatComponent = Parameters<PluginAPI['float']['add']>[0]['component'];
+type HostBottomBarComponent = Parameters<PluginAPI['bottomBar']['add']>[0]['component'];
 
 export const _typecheck: PluginStatic = LocatorPlugin;

@@ -25,6 +25,8 @@
             "@/std.ts": ["./stubs/std.ts"],
             "../../../src/std.ts": ["./stubs/std.ts"],
             "../../../src/stores/map.ts": ["./stubs/map-store.ts"],
+            "../../../src/stores/float.ts": ["./stubs/float-store.ts"],
+            "../../../src/components/CloudTAK/util/FloatingPane.vue": ["./stubs/FloatingPane.vue"],
             "../../../../src/stores/map.ts": ["./stubs/map-store.ts"],
             "../../../../src/std.ts": ["./stubs/std.ts"],
             "@/*": ["../../CloudTAK/api/web/src/*"]
