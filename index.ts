@@ -3,7 +3,7 @@ import { defineAsyncComponent, defineComponent, h, markRaw, onMounted } from 'vu
 import { IconDeviceMobilePin } from '@tabler/icons-vue';
 import type { PluginAPI, PluginInstance, PluginStatic } from '@tak-ps/cloudtak';
 import { useAppStore } from '@/stores/app.ts';
-import MenuTemplate from './components/MenuTemplate.vue';
+import MenuTemplate from './lib/MenuTemplate.vue';
 import {
     bindFloatMinimize,
     cleanupFloatMinimize,
@@ -75,6 +75,10 @@ export default class LocatorPlugin implements PluginInstance {
                     return () => {
                         if (appStore.isMobileDetected) {
                             return h(MenuTemplate, { name: 'Locator' }, {
+                                header: () => [
+                                    h(IconDeviceMobilePin, { size: 22, stroke: '1.5', class: 'flex-shrink-0' }),
+                                    h('span', { class: 'fw-semibold ms-2' }, 'Locator'),
+                                ],
                                 default: () => h(LocatorPane),
                             });
                         }
