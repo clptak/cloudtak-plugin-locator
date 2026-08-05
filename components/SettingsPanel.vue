@@ -1,30 +1,33 @@
 <template>
     <div class='col-12'>
-        <div class='card'>
-            <div class='card-header'>
-                <div class='card-title'>
+        <TablerBorder
+            class='cloudtak-bg text-white'
+            :fill-height='false'
+            gap='sm'
+        >
+            <template #label>
+                <p class='text-uppercase text-white-50 small mb-0'>
                     TAK Portal
-                </div>
-            </div>
-            <div class='card-body'>
-                <TablerInput
-                    v-model='local.takPortalUrl'
-                    label='TAK Portal Base URL'
-                    placeholder='https://takportal.example.com'
-                    description='Public share links use this URL. Locator API calls go through CloudTAK (same-origin bridge).'
-                />
-                <p class='text-muted small mt-3 mb-0'>
-                    Configure SMS provider and credentials under
-                    <strong>TAK Portal → Server Settings → SMS</strong>.
-                    Locator link URLs are built by TAK Portal when sending SMS.
                 </p>
-            </div>
-        </div>
+            </template>
 
-        <div class='d-flex flex-wrap gap-2 mt-3'>
+            <TablerInput
+                v-model='local.takPortalUrl'
+                label='TAK Portal Base URL'
+                placeholder='https://takportal.example.com'
+                description='Public share links use this URL. Locator API calls go through CloudTAK (same-origin bridge).'
+            />
+            <p class='text-muted small mb-0'>
+                Configure SMS provider and credentials under
+                <strong>TAK Portal → Server Settings → SMS</strong>.
+                Locator link URLs are built by TAK Portal when sending SMS.
+            </p>
+        </TablerBorder>
+
+        <div class='d-flex flex-column gap-2 mt-3'>
             <button
                 type='button'
-                class='btn btn-primary'
+                class='btn btn-primary w-100'
                 :disabled='saving'
                 @click='save'
             >
@@ -32,7 +35,7 @@
             </button>
             <button
                 type='button'
-                class='btn btn-secondary'
+                class='btn btn-secondary w-100'
                 :disabled='testingPortal || !local.takPortalUrl.trim()'
                 @click='testPortal'
             >
@@ -40,7 +43,7 @@
             </button>
             <button
                 type='button'
-                class='btn btn-outline-secondary'
+                class='btn btn-outline-secondary w-100'
                 :disabled='unchanged'
                 @click='reset'
             >
@@ -55,13 +58,13 @@
             :desc='loadingDesc'
         />
 
-        <div
+        <TablerInlineAlert
             v-if='successMessage'
-            class='alert alert-success mt-3'
-            role='alert'
-        >
-            {{ successMessage }}
-        </div>
+            class='mt-3'
+            severity='success'
+            title='Settings'
+            :description='successMessage'
+        />
 
         <TablerAlert
             v-if='error'
@@ -73,7 +76,13 @@
 
 <script setup lang='ts'>
 import { computed, reactive, ref, watch } from 'vue';
-import { TablerInput, TablerLoading, TablerAlert } from '@tak-ps/vue-tabler';
+import {
+    TablerInput,
+    TablerLoading,
+    TablerAlert,
+    TablerBorder,
+    TablerInlineAlert,
+} from '@tak-ps/vue-tabler';
 import { useLocatorStore } from '../stores/plugin-state.ts';
 import { testTakPortalConnection } from '../api/tak-portal-client.ts';
 import type { PluginSettings } from '../lib/types.ts';

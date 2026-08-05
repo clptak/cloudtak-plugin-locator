@@ -43,19 +43,19 @@
             />
         </template>
 
-        <div
+        <TablerInlineAlert
             v-if='actionMessage'
-            class='alert alert-info mt-3'
-            role='alert'
-        >
-            {{ actionMessage }}
-        </div>
+            class='mt-3'
+            severity='info'
+            title='Action'
+            :description='actionMessage'
+        />
     </div>
 </template>
 
 <script setup lang='ts'>
 import { computed, onMounted, ref } from 'vue';
-import { TablerLoading, TablerAlert } from '@tak-ps/vue-tabler';
+import { TablerLoading, TablerAlert, TablerInlineAlert } from '@tak-ps/vue-tabler';
 import { useLocatorStore } from '../stores/plugin-state.ts';
 import type { Locator } from '../lib/types.ts';
 import {

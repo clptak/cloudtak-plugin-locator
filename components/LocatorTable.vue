@@ -1,143 +1,152 @@
 <template>
     <div :class='rootClass'>
-        <div class='card'>
-            <div class='card-header d-flex align-items-center'>
-                <div class='card-title mb-0'>
-                    {{ title }}
+        <TablerBorder
+            class='cloudtak-bg text-white'
+            :fill-height='false'
+            gap='sm'
+        >
+            <template #label>
+                <div class='d-flex align-items-center gap-2'>
+                    <p class='text-uppercase text-white-50 small mb-0'>
+                        {{ title }}
+                    </p>
+                    <span
+                        v-if='locators.length'
+                        class='text-white-50 small'
+                    >
+                        ({{ locators.length }})
+                    </span>
                 </div>
+            </template>
+
+            <div
+                v-if='!locators.length'
+                class='text-muted'
+            >
+                No locators in this list.
+            </div>
+            <div
+                v-else-if='isMobile'
+                class='d-flex flex-column gap-0'
+            >
                 <div
-                    v-if='locators.length'
-                    class='text-muted ms-2 small'
+                    v-for='loc in locators'
+                    :key='loc.id'
+                    class='border-bottom border-light py-3'
                 >
-                    ({{ locators.length }})
+                    <div class='d-flex justify-content-between align-items-start gap-2'>
+                        <div class='min-width-0'>
+                            <div class='fw-semibold text-white'>
+                                {{ loc.title }}
+                            </div>
+                            <div class='text-white-50 small text-break'>
+                                {{ loc.slug }}
+                            </div>
+                        </div>
+                        <span
+                            class='badge flex-shrink-0'
+                            :class='statusBadgeClass(loc)'
+                        >
+                            {{ statusLabel(loc) }}
+                        </span>
+                    </div>
+                    <div class='text-white-50 small mt-2'>
+                        Ping: {{ formatInterval(loc.pingIntervalSeconds) }}
+                        · Last: {{ formatLastUpdate(loc) }}
+                    </div>
+                    <LocatorRowActions
+                        class='mt-2'
+                        :locator='loc'
+                        :tak-portal-url='takPortalUrl'
+                        :archived='archived'
+                        @send-sms='emit("send-sms", $event)'
+                        @manual-ping='emit("manual-ping", $event)'
+                        @history='emit("history", $event)'
+                        @archive='emit("archive", $event)'
+                        @reactivate='emit("reactivate", $event)'
+                        @delete='emit("delete", $event)'
+                    />
                 </div>
             </div>
-            <div class='card-body p-0'>
-                <div
-                    v-if='!locators.length'
-                    class='p-3 text-muted'
-                >
-                    No locators in this list.
-                </div>
-                <div
-                    v-else-if='isMobile'
-                    class='d-flex flex-column gap-0'
-                >
-                    <div
-                        v-for='loc in locators'
-                        :key='loc.id'
-                        class='border-bottom p-3'
-                    >
-                        <div class='d-flex justify-content-between align-items-start gap-2'>
-                            <div class='min-width-0'>
-                                <div class='fw-medium'>
+            <div
+                v-else
+                class='table-responsive'
+            >
+                <table class='table table-vcenter mb-0'>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Ping</th>
+                            <th>Status</th>
+                            <th>Last update</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            v-for='loc in locators'
+                            :key='loc.id'
+                        >
+                            <td>
+                                <div class='fw-semibold'>
                                     {{ loc.title }}
                                 </div>
-                                <div class='text-muted small text-break'>
+                                <div class='text-muted small'>
                                     {{ loc.slug }}
                                 </div>
-                            </div>
-                            <span
-                                class='badge flex-shrink-0'
-                                :class='statusBadgeClass(loc)'
-                            >
-                                {{ statusLabel(loc) }}
-                            </span>
-                        </div>
-                        <div class='text-muted small mt-2'>
-                            Ping: {{ formatInterval(loc.pingIntervalSeconds) }}
-                            · Last: {{ formatLastUpdate(loc) }}
-                        </div>
-                        <LocatorRowActions
-                            class='mt-2'
-                            :locator='loc'
-                            :tak-portal-url='takPortalUrl'
-                            :archived='archived'
-                            @send-sms='emit("send-sms", $event)'
-                            @manual-ping='emit("manual-ping", $event)'
-                            @history='emit("history", $event)'
-                            @archive='emit("archive", $event)'
-                            @reactivate='emit("reactivate", $event)'
-                            @delete='emit("delete", $event)'
-                        />
-                    </div>
-                </div>
-                <div
-                    v-else
-                    class='table-responsive'
-                >
-                    <table class='table table-vcenter card-table mb-0'>
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Ping</th>
-                                <th>Status</th>
-                                <th>Last update</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr
-                                v-for='loc in locators'
-                                :key='loc.id'
-                            >
-                                <td>
-                                    <div class='fw-medium'>
-                                        {{ loc.title }}
-                                    </div>
-                                    <div class='text-muted small'>
-                                        {{ loc.slug }}
-                                    </div>
-                                </td>
-                                <td>
-                                    {{ formatInterval(loc.pingIntervalSeconds) }}
-                                </td>
-                                <td>
-                                    <span
-                                        class='badge'
-                                        :class='statusBadgeClass(loc)'
-                                    >
-                                        {{ statusLabel(loc) }}
-                                    </span>
-                                </td>
-                                <td class='text-muted small'>
-                                    {{ formatLastUpdate(loc) }}
-                                </td>
-                                <td>
-                                    <LocatorRowActions
-                                        :locator='loc'
-                                        :tak-portal-url='takPortalUrl'
-                                        :archived='archived'
-                                        @send-sms='emit("send-sms", $event)'
-                                        @manual-ping='emit("manual-ping", $event)'
-                                        @history='emit("history", $event)'
-                                        @archive='emit("archive", $event)'
-                                        @reactivate='emit("reactivate", $event)'
-                                        @delete='emit("delete", $event)'
-                                    />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                            </td>
+                            <td>
+                                {{ formatInterval(loc.pingIntervalSeconds) }}
+                            </td>
+                            <td>
+                                <span
+                                    class='badge'
+                                    :class='statusBadgeClass(loc)'
+                                >
+                                    {{ statusLabel(loc) }}
+                                </span>
+                            </td>
+                            <td class='text-muted small'>
+                                {{ formatLastUpdate(loc) }}
+                            </td>
+                            <td>
+                                <LocatorRowActions
+                                    :locator='loc'
+                                    :tak-portal-url='takPortalUrl'
+                                    :archived='archived'
+                                    @send-sms='emit("send-sms", $event)'
+                                    @manual-ping='emit("manual-ping", $event)'
+                                    @history='emit("history", $event)'
+                                    @archive='emit("archive", $event)'
+                                    @reactivate='emit("reactivate", $event)'
+                                    @delete='emit("delete", $event)'
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
+        </TablerBorder>
     </div>
 </template>
 
 <script setup lang='ts'>
 import { computed } from 'vue';
+import { TablerBorder } from '@tak-ps/vue-tabler';
 import { useAppStore } from '@/stores/app.ts';
 import type { Locator } from '../lib/types.ts';
 import LocatorRowActions from './LocatorRowActions.vue';
 
-defineProps<{
+withDefaults(defineProps<{
     title: string;
     locators: Locator[];
     takPortalUrl: string;
     archived?: boolean;
     rootClass?: string;
-}>();
+}>(), {
+    archived: false,
+    rootClass: '',
+});
 
 const emit = defineEmits<{
     'send-sms': [locator: Locator];

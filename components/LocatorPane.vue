@@ -1,5 +1,5 @@
 <template>
-    <div class='locator-pane p-3'>
+    <div class='locator-pane px-3 py-3'>
         <div
             v-if='screen !== "main"'
             class='d-flex align-items-center gap-2 mb-2 pb-2 border-bottom'
@@ -187,3 +187,11 @@ async function onSendSms(phones: string) {
     }
 }
 </script>
+
+<style scoped>
+.locator-pane {
+    /* Match Mission Info insets; Tabler form surfaces are primary-tinted */
+    --tabler-input-bg: var(--cloudtak-inset-bg);
+    --tblr-bg-forms: var(--cloudtak-inset-bg);
+}
+</style>
