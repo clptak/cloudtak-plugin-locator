@@ -38,22 +38,8 @@
             <TablerPillGroup
                 v-model='activeTab'
                 :options='tabs'
-            >
-                <template #option='{ option }'>
-                    <span class='d-inline-flex align-items-center gap-1'>
-                        <component
-                            :is='tabIcons[option.value]'
-                            v-tooltip='isMobile ? undefined : option.label'
-                            :size='32'
-                            stroke='1'
-                        />
-                        <span
-                            v-if='isMobile'
-                            class='small'
-                        >{{ shortTabLabel(option.value) }}</span>
-                    </span>
-                </template>
-            </TablerPillGroup>
+                name='locator-main-tabs'
+            />
 
             <CellphoneTab v-if='activeTab === "cellphone"' />
             <SmsLocatorTab
@@ -68,15 +54,8 @@
 
 <script setup lang='ts'>
 import { computed, ref } from 'vue';
-import type { Component } from 'vue';
 import { TablerPillGroup, TablerIconButton } from '@tak-ps/vue-tabler';
-import {
-    IconCircleArrowLeft,
-    IconDeviceMobile,
-    IconDeviceMobileMessage,
-    IconSettings,
-} from '@tabler/icons-vue';
-import { useAppStore } from '@/stores/app.ts';
+import { IconCircleArrowLeft } from '@tabler/icons-vue';
 import CellphoneTab from './CellphoneTab.vue';
 import SmsLocatorTab from './SmsLocatorTab.vue';
 import SettingsPanel from './SettingsPanel.vue';
@@ -89,7 +68,6 @@ import { listHistory, sendLocatorLinkSms } from '../api/tak-portal-client.ts';
 type Screen = 'main' | 'history' | 'send-sms';
 
 const store = useLocatorStore();
-const appStore = useAppStore();
 
 const activeTab = ref<string>('cellphone');
 const screen = ref<Screen>('main');
@@ -102,34 +80,17 @@ const historyLoading = ref(false);
 const historyError = ref<Error | undefined>();
 const sendSmsError = ref<Error | undefined>();
 
-const isMobile = computed(() => appStore.isMobileDetected);
-
 const tabs = [
     { value: 'cellphone', label: 'Cellphone Data' },
     { value: 'sms', label: 'SMS Locator' },
     { value: 'settings', label: 'Settings' },
 ];
 
-const tabIcons: Record<string, Component> = {
-    cellphone: IconDeviceMobile,
-    sms: IconDeviceMobileMessage,
-    settings: IconSettings,
-};
-
 const screenTitle = computed(() => {
     if (screen.value === 'history') return 'Locator history';
     if (screen.value === 'send-sms') return 'Send locator link';
     return 'Locator';
 });
-
-function shortTabLabel(value: string): string {
-    const labels: Record<string, string> = {
-        cellphone: 'Ping',
-        sms: 'SMS',
-        settings: 'Settings',
-    };
-    return labels[value] || value;
-}
 
 function requirePortalUrl(): string {
     const url = store.settings.takPortalUrl.trim();

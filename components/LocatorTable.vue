@@ -1,8 +1,9 @@
 <template>
     <div :class='rootClass'>
         <TablerBorder
-            class='cloudtak-bg text-white'
+            class='cloudtak-accent text-white'
             :fill-height='false'
+            :shadow='false'
             gap='sm'
         >
             <template #label>

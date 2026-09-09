@@ -1,40 +1,36 @@
 <template>
-    <TablerBorder
-        class='cloudtak-bg text-white'
-        :fill-height='false'
-        gap='sm'
-    >
-        <template #label>
-            <p class='text-uppercase text-white-50 small mb-0'>
-                Create Locator
-            </p>
-        </template>
-
-        <TablerInput
-            v-model='title'
-            label='Title (optional)'
-            placeholder='Missing Person'
-        />
-        <TablerInput
-            v-model.number='pingIntervalSeconds'
-            type='number'
-            label='Ping interval (seconds)'
-            :description='intervalHelp'
-        />
-        <button
-            type='button'
-            class='btn btn-primary w-100 mt-2'
-            :disabled='props.loading || pingIntervalInvalid'
-            @click='submit'
-        >
-            Create locator
-        </button>
-    </TablerBorder>
+    <div class='row g-2'>
+        <div class='col-12'>
+            <TablerInput
+                v-model='title'
+                label='Title (optional)'
+                placeholder='Missing Person'
+            />
+        </div>
+        <div class='col-12'>
+            <TablerInput
+                v-model.number='pingIntervalSeconds'
+                type='number'
+                label='Ping interval (seconds)'
+                :description='intervalHelp'
+            />
+        </div>
+        <div class='col-12'>
+            <button
+                type='button'
+                class='btn btn-primary w-100 mt-2'
+                :disabled='props.loading || pingIntervalInvalid'
+                @click='submit'
+            >
+                Create locator
+            </button>
+        </div>
+    </div>
 </template>
 
 <script setup lang='ts'>
 import { computed, ref } from 'vue';
-import { TablerInput, TablerBorder } from '@tak-ps/vue-tabler';
+import { TablerInput } from '@tak-ps/vue-tabler';
 import { clampPingIntervalSeconds } from '../lib/locator-url.ts';
 
 const props = withDefaults(defineProps<{

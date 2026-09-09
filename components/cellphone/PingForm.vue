@@ -1,10 +1,17 @@
 <template>
     <div>
-        <TablerPillGroup
-            v-model='mode'
-            class='mb-3'
-            :options='modeOptions'
-        />
+        <div class='d-flex flex-wrap gap-1 mb-3 mt-2'>
+            <button
+                v-for='tab in modeOptions'
+                :key='tab.value'
+                type='button'
+                class='btn btn-sm btn-outline-warning'
+                :class='{ active: mode === tab.value }'
+                @click='mode = tab.value'
+            >
+                {{ tab.label }}
+            </button>
+        </div>
 
         <div class='row g-2'>
             <template v-if='mode !== "email"'>
@@ -145,7 +152,6 @@
 <script setup lang='ts'>
 import { ref, reactive, computed } from 'vue';
 import {
-    TablerPillGroup,
     TablerInput,
     TablerEnum,
     TablerToggle,
@@ -182,8 +188,10 @@ function localDateTimeToUtcISO(local: string): string {
 }
 
 const mapStore = useMapStore();
-const mode = ref<'ping' | 'rtt' | 'email'>('ping');
-const modeOptions = [
+type PingMode = 'ping' | 'rtt' | 'email';
+
+const mode = ref<PingMode>('ping');
+const modeOptions: { value: PingMode; label: string }[] = [
     { value: 'ping', label: 'Cellphone Ping' },
     { value: 'rtt', label: 'RTT Timing Advance' },
     { value: 'email', label: 'Email Parse' },
