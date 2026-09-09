@@ -8,7 +8,6 @@ export const PANE_UID = 'locator';
 export const BOTTOM_BAR_KEY = 'locator';
 
 type HostFloatComponent = Component;
-type BottomBarComponent = Component;
 
 export type PaneGeometry = {
     x: number;
@@ -26,19 +25,15 @@ export const DEFAULT_GEOMETRY: PaneGeometry = {
 
 let api: PluginAPI | null = null;
 let shellComponent: HostFloatComponent | null = null;
-let restoreChipComponent: BottomBarComponent | null = null;
 let savedGeometry: PaneGeometry | null = null;
 let minimized = false;
 
 export function bindFloatMinimize(opts: {
     api: PluginAPI;
     shell: HostFloatComponent;
-    restoreChip: BottomBarComponent;
 }): void {
     api = opts.api;
     shellComponent = opts.shell;
-    restoreChipComponent = opts.restoreChip;
-    ensureBottomBarChip();
 }
 
 export function isMinimized(): boolean {
@@ -80,18 +75,6 @@ function showFloat(geometry: PaneGeometry): void {
     });
 }
 
-function ensureBottomBarChip(): void {
-    if (!restoreChipComponent || !api) return;
-    try {
-        api.bottomBar.add({
-            key: BOTTOM_BAR_KEY,
-            component: restoreChipComponent,
-        });
-    } catch {
-        // Map / bottom bar may not be loaded yet — retry on open/minimize
-    }
-}
-
 function clearBottomBarChip(): void {
     try {
         requireApi().bottomBar.remove(BOTTOM_BAR_KEY);
@@ -106,7 +89,6 @@ function clearBottomBarChip(): void {
  */
 export function openDesktopPane(): void {
     const pluginApi = requireApi();
-    ensureBottomBarChip();
     if (isPopoutOpen()) {
         focusPopout();
         return;
@@ -124,7 +106,6 @@ export function openDesktopPane(): void {
 
 export function minimizeDesktopPane(): void {
     const pluginApi = requireApi();
-    ensureBottomBarChip();
     if (!pluginApi.float.has(PANE_UID) || minimized) return;
 
     savedGeometry = readGeometry();

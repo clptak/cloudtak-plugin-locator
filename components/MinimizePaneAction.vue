@@ -1,6 +1,6 @@
 <template>
     <TablerIconButton
-        title='Minimize to status bar'
+        title='Minimize'
         @click='minimizeDesktopPane'
     >
         <IconMinus

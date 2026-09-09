@@ -22,9 +22,6 @@ const LocatorFloatShell = defineAsyncComponent(
 const LocatorPane = defineAsyncComponent(
     () => import('./components/LocatorPane.vue'),
 );
-const LocatorTaskbarChip = defineAsyncComponent(
-    () => import('./components/LocatorTaskbarChip.vue'),
-);
 
 const MENU_KEY = 'locator';
 const ROUTE_NAME = 'home-menu-locator';
@@ -56,7 +53,6 @@ export default class LocatorPlugin implements PluginInstance {
         bindFloatMinimize({
             api,
             shell: LocatorFloatShell as unknown as HostFloatComponent,
-            restoreChip: LocatorTaskbarChip as unknown as HostBottomBarComponent,
         });
 
         api.routes.add({
@@ -116,6 +112,5 @@ export default class LocatorPlugin implements PluginInstance {
 type MenuItemIconType = NonNullable<Parameters<PluginAPI['menu']['add']>[0]['icon']>;
 type MenuItemConfig = Parameters<PluginAPI['menu']['add']>[0];
 type HostFloatComponent = Parameters<PluginAPI['float']['add']>[0]['component'];
-type HostBottomBarComponent = Parameters<PluginAPI['bottomBar']['add']>[0]['component'];
 
 export const _typecheck: PluginStatic = LocatorPlugin;
