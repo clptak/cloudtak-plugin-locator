@@ -10,7 +10,8 @@ Cellphone plotting code is **vendored in this repository** (`lib/cellphone/`, `c
 |-----|-------------|
 | **Cellphone Data** | Cell ping, RTT timing advance, and carrier email parse |
 | **SMS Locator** | Create/list/archive locators via TAK Portal; send share links via TAK Portal SMS |
-| **Settings** | TAK Portal base URL and connection test |
+
+**Edit settings** (right-aligned button, same pattern as D4H **Edit config**) opens TAK Portal base URL and connection test below the tabs.
 
 ## Prerequisites
 
@@ -63,7 +64,7 @@ Environment variables on **`cloudtak-api`** (e.g. in `tak-stack/.env`):
 
 ### Verify
 
-After rebuilding CloudTAK API, **Test TAK Portal Connection** in Locator → Settings should return locator count without visiting TAK Portal in another tab.
+After rebuilding CloudTAK API, **Test TAK Portal Connection** under Locator → **Edit settings** should return locator count without visiting TAK Portal in another tab.
 
 ---
 

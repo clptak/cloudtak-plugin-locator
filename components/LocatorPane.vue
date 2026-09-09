@@ -35,6 +35,16 @@
         />
 
         <template v-else>
+            <div class='d-flex align-items-center gap-2 flex-wrap mb-3'>
+                <button
+                    type='button'
+                    class='btn btn-outline-secondary btn-sm ms-auto'
+                    @click='showSettings = !showSettings'
+                >
+                    {{ showSettings ? 'Hide settings' : 'Edit settings' }}
+                </button>
+            </div>
+
             <TablerPillGroup
                 v-model='activeTab'
                 :options='tabs'
@@ -47,7 +57,13 @@
                 @history='pushHistory'
                 @send-sms='pushSendSms'
             />
-            <SettingsPanel v-else-if='activeTab === "settings"' />
+
+            <div
+                v-if='showSettings'
+                class='border-top pt-3 mt-3'
+            >
+                <SettingsPanel />
+            </div>
         </template>
     </div>
 </template>
@@ -75,6 +91,8 @@ const drillLocator = ref<Locator | null>(null);
 const defaultSendPhones = ref('');
 const sendingSms = ref(false);
 
+const showSettings = ref(false);
+
 const historyEntries = ref<HistoryEntry[]>([]);
 const historyLoading = ref(false);
 const historyError = ref<Error | undefined>();
@@ -83,7 +101,6 @@ const sendSmsError = ref<Error | undefined>();
 const tabs = [
     { value: 'cellphone', label: 'Cellphone Data' },
     { value: 'sms', label: 'SMS Locator' },
-    { value: 'settings', label: 'Settings' },
 ];
 
 const screenTitle = computed(() => {
