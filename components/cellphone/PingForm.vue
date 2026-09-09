@@ -15,29 +15,35 @@
 
         <div class='row g-2'>
             <template v-if='mode !== "email"'>
-                <div class='col-12'>
+                <div class='col-6'>
                     <TablerInput
                         v-model='form.name'
                         label='Carrier'
                         placeholder='e.g. VZW, ATT, TMOBILE'
                     />
                 </div>
+                <div class='w-100' />
 
-                <div class='col-12'>
+                <div class='col-6'>
                     <TablerInput
                         v-model='form.coordinates'
                         label='Coordinates (DD / DMS / DM / MPS)'
                         placeholder='34.12345 -118.56789'
                     />
                 </div>
+                <div class='w-100' />
 
-                <div :class='mode === "rtt" ? "col-6" : "col-12"'>
+                <div class='col-6'>
                     <TablerInput
                         v-model='form.distance'
                         type='number'
                         :label='mode === "rtt" ? "Distance" : "Range"'
                     />
                 </div>
+                <div
+                    v-if='mode === "rtt"'
+                    class='w-100'
+                />
                 <div
                     v-if='mode === "rtt"'
                     class='col-6'
@@ -51,12 +57,18 @@
 
                 <div class='col-12'>
                     <TablerToggle
+                        v-if='mode === "rtt"'
+                        v-model='rttDistanceInMiles'
+                        label='Distance is in miles (else meters)'
+                    />
+                    <TablerToggle
+                        v-else
                         v-model='form.meters'
                         label='Distance is in meters (else miles)'
                     />
                 </div>
 
-                <div class='col-12'>
+                <div class='col-6'>
                     <TablerInput
                         v-model='form.dateTime'
                         type='datetime-local'
@@ -136,7 +148,7 @@
                 />
             </div>
 
-            <div class='col-12'>
+            <div class='col-6'>
                 <button
                     class='btn btn-primary w-100 mt-2'
                     :disabled='submitting'
@@ -225,6 +237,11 @@ const form = reactive<{
 
 const carrierOptions = CARRIERS.map((c) => c.label);
 const timezoneOptions = US_TIMEZONES.map((tz) => tz.label);
+
+const rttDistanceInMiles = computed({
+    get: () => !form.meters,
+    set: (on: boolean) => { form.meters = !on; },
+});
 
 const carrierLabel = computed({
     get: () => CARRIERS.find((c) => c.id === form.carrier)?.label ?? CARRIERS[0].label,
