@@ -17,7 +17,7 @@ export type PaneGeometry = {
 };
 
 export const DEFAULT_GEOMETRY: PaneGeometry = {
-    width: 800,
+    width: 420,
     height: 640,
     x: 80,
     y: 60,
@@ -73,6 +73,14 @@ function showFloat(geometry: PaneGeometry): void {
         x: geometry.x,
         y: geometry.y,
     });
+}
+
+export function fitDesktopPaneWidth(contentWidth: number): void {
+    if (!api || contentWidth < 280) return;
+    const pane = useFloatStore(api.pinia).panes.get(PANE_UID);
+    if (!pane) return;
+    if (Math.abs(pane.width - contentWidth) < 2) return;
+    pane.width = contentWidth;
 }
 
 function clearBottomBarChip(): void {

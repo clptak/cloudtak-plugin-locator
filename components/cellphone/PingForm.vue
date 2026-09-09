@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class='d-flex flex-wrap gap-1 mb-3 mt-2'>
+        <div class='locator-subtabs mb-3 mt-2'>
             <button
                 v-for='tab in modeOptions'
                 :key='tab.value'
@@ -55,7 +55,7 @@
                     />
                 </div>
 
-                <div class='col-12'>
+                <div class='locator-control-width'>
                     <TablerToggle
                         v-if='mode === "rtt"'
                         v-model='rttDistanceInMiles'
@@ -105,7 +105,7 @@
                 </div>
             </template>
 
-            <div class='col-12'>
+            <div class='locator-control-width'>
                 <TablerToggle
                     v-model='form.addDataSyncLog'
                     :label='mode === "email" ? "Add to Active DataSync" : "Add DataSync Log"'

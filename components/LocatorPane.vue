@@ -35,43 +35,69 @@
         />
 
         <template v-else>
-            <div class='d-flex align-items-center gap-2 flex-wrap mb-3'>
-                <button
-                    type='button'
-                    class='btn btn-outline-secondary btn-sm ms-auto'
-                    @click='showSettings = !showSettings'
-                >
-                    {{ showSettings ? 'Hide settings' : 'Edit settings' }}
-                </button>
-            </div>
-
-            <TablerPillGroup
-                v-model='activeTab'
-                :options='tabs'
-                name='locator-main-tabs'
-            />
-
-            <CellphoneTab v-if='activeTab === "cellphone"' />
-            <SmsLocatorTab
-                v-else-if='activeTab === "sms"'
-                @history='pushHistory'
-                @send-sms='pushSendSms'
-            />
-
             <div
-                v-if='showSettings'
-                class='border-top pt-3 mt-3'
+                ref='chromeEl'
+                class='locator-chrome'
             >
-                <SettingsPanel />
+                <TablerPillGroup
+                    :model-value='activeTab'
+                    class='locator-main-tabs'
+                    :options='tabs'
+                    name='locator-main-tabs'
+                    padding='px-2 py-1'
+                    :full-width='true'
+                    @update:model-value='onMainTab'
+                >
+                    <template #option='{ option }'>
+                        <IconSettings
+                            v-if='option.value === "settings"'
+                            :size='16'
+                            stroke='1.5'
+                            :title='showSettings ? "Hide settings" : "Edit settings"'
+                        />
+                        <span
+                            v-else
+                            class='d-inline-flex align-items-center gap-1'
+                        >
+                            <component
+                                :is='tabIcons[option.value]'
+                                :size='16'
+                                stroke='1.5'
+                                class='flex-shrink-0'
+                            />
+                            <span>{{ option.label }}</span>
+                        </span>
+                    </template>
+                </TablerPillGroup>
+
+                <CellphoneTab v-if='activeTab === "cellphone"' />
+                <SmsLocatorTab
+                    v-else-if='activeTab === "sms"'
+                    @history='pushHistory'
+                    @send-sms='pushSendSms'
+                />
+
+                <div
+                    v-if='showSettings'
+                    class='border-top pt-3 mt-3'
+                >
+                    <SettingsPanel />
+                </div>
             </div>
         </template>
     </div>
 </template>
 
 <script setup lang='ts'>
-import { computed, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
+import type { Component } from 'vue';
 import { TablerPillGroup, TablerIconButton } from '@tak-ps/vue-tabler';
-import { IconCircleArrowLeft } from '@tabler/icons-vue';
+import {
+    IconCircleArrowLeft,
+    IconDeviceMobilePin,
+    IconDeviceMobileSearch,
+    IconSettings,
+} from '@tabler/icons-vue';
 import CellphoneTab from './CellphoneTab.vue';
 import SmsLocatorTab from './SmsLocatorTab.vue';
 import SettingsPanel from './SettingsPanel.vue';
@@ -80,6 +106,7 @@ import LocatorSendSmsView from './LocatorSendSmsView.vue';
 import { useLocatorStore } from '../stores/plugin-state.ts';
 import type { HistoryEntry, Locator } from '../lib/types.ts';
 import { listHistory, sendLocatorLinkSms } from '../api/tak-portal-client.ts';
+import { fitDesktopPaneWidth } from '../lib/floatMinimize.ts';
 
 type Screen = 'main' | 'history' | 'send-sms';
 
@@ -93,6 +120,30 @@ const sendingSms = ref(false);
 
 const showSettings = ref(false);
 
+const chromeEl = ref<HTMLElement | null>(null);
+let paneObserver: ResizeObserver | null = null;
+
+function syncPaneWidth(): void {
+    const el = chromeEl.value;
+    if (!el) return;
+    // Horizontal padding on .locator-pane (px-3 = 1rem each side).
+    const pad = 32;
+    fitDesktopPaneWidth(Math.ceil(el.getBoundingClientRect().width) + pad);
+}
+
+onMounted(() => {
+    const el = chromeEl.value;
+    if (!el) return;
+    paneObserver = new ResizeObserver(() => syncPaneWidth());
+    paneObserver.observe(el);
+    syncPaneWidth();
+});
+
+onUnmounted(() => {
+    paneObserver?.disconnect();
+    paneObserver = null;
+});
+
 const historyEntries = ref<HistoryEntry[]>([]);
 const historyLoading = ref(false);
 const historyError = ref<Error | undefined>();
@@ -101,7 +152,21 @@ const sendSmsError = ref<Error | undefined>();
 const tabs = [
     { value: 'cellphone', label: 'Cellphone Data' },
     { value: 'sms', label: 'SMS Locator' },
+    { value: 'settings', label: 'Settings' },
 ];
+
+const tabIcons: Record<string, Component> = {
+    cellphone: IconDeviceMobilePin,
+    sms: IconDeviceMobileSearch,
+};
+
+function onMainTab(value: string): void {
+    if (value === 'settings') {
+        showSettings.value = !showSettings.value;
+        return;
+    }
+    activeTab.value = value;
+}
 
 const screenTitle = computed(() => {
     if (screen.value === 'history') return 'Locator history';
@@ -171,5 +236,37 @@ async function onSendSms(phones: string) {
     /* Match Mission Info insets; Tabler form surfaces are primary-tinted */
     --tabler-input-bg: var(--cloudtak-inset-bg);
     --tblr-bg-forms: var(--cloudtak-inset-bg);
+    width: max-content;
+    max-width: 100%;
+}
+
+.locator-chrome {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: max-content;
+    max-width: 100%;
+}
+
+.locator-chrome :deep(.locator-main-tabs) {
+    width: 100%;
+    display: flex;
+}
+
+.locator-chrome :deep(.locator-main-tabs > label:last-of-type) {
+    flex: 0 0 auto;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
+
+.locator-chrome :deep(.locator-subtabs) {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+    width: max-content;
+}
+
+.locator-chrome :deep(.locator-control-width) {
+    width: 100%;
 }
 </style>

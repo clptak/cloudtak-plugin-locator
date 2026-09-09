@@ -11,7 +11,7 @@ Cellphone plotting code is **vendored in this repository** (`lib/cellphone/`, `c
 | **Cellphone Data** | Cell ping, RTT timing advance, and carrier email parse |
 | **SMS Locator** | Create/list/archive locators via TAK Portal; send share links via TAK Portal SMS |
 
-**Edit settings** (right-aligned button, same pattern as D4H **Edit config**) opens TAK Portal base URL and connection test below the tabs.
+**Edit settings** (gear on the main tab bar) opens TAK Portal base URL and connection test below the tabs.
 
 ## Prerequisites
 
