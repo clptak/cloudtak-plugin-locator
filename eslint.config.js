@@ -31,6 +31,6 @@ export default ts.config(
         },
     },
     {
-        ignores: ['node_modules/**', 'server/**'],
+        ignores: ['node_modules/**'],
     },
 );

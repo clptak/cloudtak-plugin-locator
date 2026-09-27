@@ -227,10 +227,10 @@ async function testPortal(): Promise<void> {
 
 onMounted(() => {
     void loadGroups();
-    void fetchPortalSettings().then((saved) => {
-        if (!saved.channel && !saved.takPortalUrl) return;
-        local.channel = saved.channel;
-        local.takPortalUrl = saved.takPortalUrl;
+    void fetchPortalSettings().then((remote) => {
+        if (!remote.channel && !remote.takPortalUrl) return;
+        local.channel = remote.channel;
+        local.takPortalUrl = remote.takPortalUrl;
         saved.value = cloneDraft(local);
     }).catch(() => {
         /* the form still works from the local draft */
