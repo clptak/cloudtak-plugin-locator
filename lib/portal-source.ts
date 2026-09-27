@@ -1,11 +1,8 @@
-import { std, stdurl } from '@/std.ts';
+import { std } from '@/std.ts';
 import { normalizeTakPortalBaseUrl } from './locator-url.ts';
-import { extractPackageJson } from './package-zip.ts';
 
-export const PORTAL_PACKAGE_NAME = 'cloudtak_locator_portal';
-export const PORTAL_FILE_NAME = 'cloudtak_locator_portal.json';
 export const PORTAL_UNAVAILABLE_MESSAGE =
-    'A CloudTAK admin must publish a TAK Portal URL for this account\'s channel before you can create locators.';
+    'A CloudTAK admin must set a TAK Portal URL for one of this account\'s channels before you can create locators.';
 
 const ADMIN_DRAFT_KEY = 'cloudtak-plugin-locator-admin:v1';
 const LEGACY_SETTINGS_KEY = 'cloudtak-plugin-locator-settings';
@@ -15,16 +12,14 @@ export type AdminDraft = {
     takPortalUrl: string;
 };
 
+export type PortalSettings = {
+    channel: string;
+    takPortalUrl: string;
+};
+
 export type SharedPortal =
     | { ok: true; takPortalUrl: string; channel: string }
     | { ok: false; reason: 'missing' | 'error'; message: string };
-
-type PackageRow = {
-    uid: string;
-    name: string;
-    hash: string;
-    created: number;
-};
 
 export function loadAdminDraft(): AdminDraft {
     let channel = '';
@@ -97,6 +92,11 @@ export async function listUserChannels(): Promise<string[]> {
     return [...names].sort((a, b) => a.localeCompare(b));
 }
 
+export function userIsOnChannel(channel: string, groupNames: string[]): boolean {
+    const wanted = channel.trim();
+    return groupNames.some((name) => name.trim() === wanted);
+}
+
 export async function fetchIsSystemAdmin(): Promise<boolean> {
     try {
         const profile = await std('/api/profile') as { system_admin?: boolean };
@@ -106,125 +106,63 @@ export async function fetchIsSystemAdmin(): Promise<boolean> {
     }
 }
 
-function packageRows(listed: unknown): PackageRow[] {
-    if (!listed || typeof listed !== 'object' || !Array.isArray((listed as { items?: unknown }).items)) {
-        return [];
-    }
-
-    const rows: PackageRow[] = [];
-    for (const item of (listed as { items: unknown[] }).items) {
-        if (!item || typeof item !== 'object') continue;
-        const row = item as { uid?: unknown; name?: unknown; hash?: unknown; created?: unknown };
-        if (row.name !== PORTAL_PACKAGE_NAME) continue;
-        if (typeof row.uid !== 'string' || !row.uid) continue;
-        if (typeof row.hash !== 'string' || !row.hash) continue;
-        const created = typeof row.created === 'string' ? Date.parse(row.created) : 0;
-        rows.push({
-            uid: row.uid,
-            name: row.name,
-            hash: row.hash,
-            created: Number.isNaN(created) ? 0 : created,
-        });
-    }
-    rows.sort((a, b) => b.created - a.created);
-    return rows;
+function asSettings(raw: unknown): PortalSettings {
+    const row = raw && typeof raw === 'object' ? raw as { channel?: unknown; takPortalUrl?: unknown } : {};
+    return {
+        channel: typeof row.channel === 'string' ? row.channel.trim() : '',
+        takPortalUrl: typeof row.takPortalUrl === 'string' ? normalizeTakPortalBaseUrl(row.takPortalUrl) : '',
+    };
 }
 
-async function listPortalPackages(): Promise<PackageRow[]> {
-    const url = stdurl('/api/marti/package');
-    url.searchParams.set('filter', PORTAL_PACKAGE_NAME);
-
-    const listed = await std(url);
-    if (!listed || typeof listed !== 'object' || !Array.isArray((listed as { items?: unknown }).items)) {
-        throw new Error('Locator package list was not understood.');
-    }
-    return packageRows(listed);
+/** Saved admin setting. Empty strings mean nothing has been saved yet. */
+export async function fetchPortalSettings(): Promise<PortalSettings> {
+    return asSettings(await std('/api/locator/settings'));
 }
 
-function parsePortalJson(text: string): SharedPortal {
-    let parsed: unknown;
-    try {
-        parsed = JSON.parse(text);
-    } catch {
-        return { ok: false, reason: 'error', message: 'Locator package is not valid JSON.' };
-    }
-
-    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
-        return { ok: false, reason: 'error', message: 'Locator package must be an object.' };
-    }
-
-    const record = parsed as { takPortalUrl?: unknown; channel?: unknown };
-    const takPortalUrl = typeof record.takPortalUrl === 'string'
-        ? normalizeTakPortalBaseUrl(record.takPortalUrl)
-        : '';
-    if (!takPortalUrl) {
-        return { ok: false, reason: 'error', message: 'Locator package is missing a TAK Portal URL.' };
-    }
-
-    const channel = typeof record.channel === 'string' ? record.channel.trim() : '';
-    return { ok: true, takPortalUrl, channel };
-}
-
-async function readPackageText(hash: string): Promise<string> {
-    const fileUrl = stdurl(`/api/marti/api/files/${encodeURIComponent(hash)}`);
-    fileUrl.searchParams.set('name', `${PORTAL_PACKAGE_NAME}.zip`);
-    const downloaded = await std(fileUrl);
-
-    if (downloaded instanceof Response) {
-        return extractPackageJson(await downloaded.arrayBuffer(), PORTAL_FILE_NAME);
-    }
-    if (typeof downloaded === 'string') return downloaded;
-    if (downloaded && typeof downloaded === 'object') return JSON.stringify(downloaded);
-    throw new Error('Locator package download was not a file.');
-}
-
-/** Load the portal URL from a package this account can see. */
+/**
+ * The URL is available only when this account's TAK channels include the
+ * channel a system admin saved.
+ */
 export async function loadSharedPortal(): Promise<SharedPortal> {
-    let rows: PackageRow[];
+    let saved: PortalSettings;
     try {
-        rows = await listPortalPackages();
-    } catch (err) {
-        const message = err instanceof Error ? err.message : String(err);
-        return { ok: false, reason: 'error', message: `Locator package list failed: ${message}` };
-    }
-
-    const newest = rows[0];
-    if (!newest) {
-        return { ok: false, reason: 'missing', message: PORTAL_UNAVAILABLE_MESSAGE };
-    }
-
-    try {
-        const text = await readPackageText(newest.hash);
-        return parsePortalJson(text);
+        saved = await fetchPortalSettings();
     } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
         return { ok: false, reason: 'error', message };
     }
+
+    if (!saved.channel || !saved.takPortalUrl) {
+        return { ok: false, reason: 'missing', message: PORTAL_UNAVAILABLE_MESSAGE };
+    }
+
+    let channels: string[];
+    try {
+        channels = await listUserChannels();
+    } catch (err) {
+        const message = err instanceof Error ? err.message : String(err);
+        return { ok: false, reason: 'error', message };
+    }
+
+    if (!userIsOnChannel(saved.channel, channels)) {
+        return {
+            ok: false,
+            reason: 'missing',
+            message: `Locators are limited to the ${saved.channel} channel.`,
+        };
+    }
+
+    return { ok: true, takPortalUrl: saved.takPortalUrl, channel: saved.channel };
 }
 
-/**
- * Publish the URL onto one channel using the signed-in user's TAK certificate.
- * TAK Server only lists that package for members of the channel.
- */
+/** Save the URL in CloudTAK for one TAK channel. System admin only. */
 export async function publishPortalSettings(channel: string, takPortalUrl: string): Promise<void> {
     const group = channel.trim();
     const url = assertPortalUrl(takPortalUrl);
     if (!group) throw new Error('Choose a TAK channel.');
 
-    const upload = stdurl('/api/marti/package');
-    upload.searchParams.set('name', PORTAL_PACKAGE_NAME);
-    upload.searchParams.append('groups', group);
-    upload.searchParams.append('keywords', 'cloudtak-locator');
-
-    const body = new FormData();
-    body.append(
-        'file',
-        new File(
-            [JSON.stringify({ takPortalUrl: url, channel: group })],
-            PORTAL_FILE_NAME,
-            { type: 'application/json' },
-        ),
-    );
-
-    await std(upload, { method: 'POST', body });
+    await std('/api/locator/settings', {
+        method: 'PUT',
+        body: { channel: group, takPortalUrl: url },
+    });
 }

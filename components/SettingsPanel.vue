@@ -98,6 +98,7 @@ import {
 import { testTakPortalConnection } from '../api/tak-portal-client.ts';
 import {
     assertPortalUrl,
+    fetchPortalSettings,
     listUserChannels,
     loadAdminDraft,
     publishPortalSettings,
@@ -188,7 +189,7 @@ async function save(): Promise<void> {
         saved.value = cloneDraft(next);
         local.channel = channel;
         local.takPortalUrl = takPortalUrl;
-        successMessage.value = `TAK Portal URL published to ${channel}.`;
+        successMessage.value = `TAK Portal URL saved for ${channel}.`;
         emit('published');
     } catch (err) {
         error.value = err instanceof Error ? err : new Error(String(err));
@@ -226,5 +227,13 @@ async function testPortal(): Promise<void> {
 
 onMounted(() => {
     void loadGroups();
+    void fetchPortalSettings().then((saved) => {
+        if (!saved.channel && !saved.takPortalUrl) return;
+        local.channel = saved.channel;
+        local.takPortalUrl = saved.takPortalUrl;
+        saved.value = cloneDraft(local);
+    }).catch(() => {
+        /* the form still works from the local draft */
+    });
 });
 </script>

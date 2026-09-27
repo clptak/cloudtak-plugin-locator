@@ -32,5 +32,6 @@
             "@/*": ["../../CloudTAK/api/web/src/*"]
         }
     },
-    "include": ["env.d.ts", "**/*.ts", "**/*.vue"]
+    "include": ["env.d.ts", "**/*.ts", "**/*.vue"],
+    "exclude": ["server"]
 }
