@@ -49,16 +49,7 @@
                     @update:model-value='onMainTab'
                 >
                     <template #option='{ option }'>
-                        <IconSettings
-                            v-if='option.value === "settings"'
-                            :size='16'
-                            stroke='1.5'
-                            :title='showSettings ? "Hide settings" : "Edit settings"'
-                        />
-                        <span
-                            v-else
-                            class='d-inline-flex align-items-center gap-1'
-                        >
+                        <span class='d-inline-flex align-items-center gap-1'>
                             <component
                                 :is='tabIcons[option.value]'
                                 :size='16'
@@ -78,10 +69,10 @@
                 />
 
                 <div
-                    v-if='showSettings'
+                    v-if='isSystemAdmin'
                     class='border-top pt-3 mt-3'
                 >
-                    <SettingsPanel />
+                    <SettingsPanel @published='onPortalPublished' />
                 </div>
             </div>
         </template>
@@ -96,7 +87,6 @@ import {
     IconCircleArrowLeft,
     IconDeviceMobilePin,
     IconDeviceMobileSearch,
-    IconSettings,
 } from '@tabler/icons-vue';
 import CellphoneTab from './CellphoneTab.vue';
 import SmsLocatorTab from './SmsLocatorTab.vue';
@@ -107,6 +97,7 @@ import { useLocatorStore } from '../stores/plugin-state.ts';
 import type { HistoryEntry, Locator } from '../lib/types.ts';
 import { listHistory, sendLocatorLinkSms } from '../api/tak-portal-client.ts';
 import { fitDesktopPaneWidth } from '../lib/floatMinimize.ts';
+import { fetchIsSystemAdmin, PORTAL_UNAVAILABLE_MESSAGE } from '../lib/portal-source.ts';
 
 type Screen = 'main' | 'history' | 'send-sms';
 
@@ -118,7 +109,7 @@ const drillLocator = ref<Locator | null>(null);
 const defaultSendPhones = ref('');
 const sendingSms = ref(false);
 
-const showSettings = ref(false);
+const isSystemAdmin = ref(false);
 
 const chromeEl = ref<HTMLElement | null>(null);
 let paneObserver: ResizeObserver | null = null;
@@ -132,6 +123,9 @@ function syncPaneWidth(): void {
 }
 
 onMounted(() => {
+    void fetchIsSystemAdmin().then((admin) => {
+        isSystemAdmin.value = admin;
+    });
     const el = chromeEl.value;
     if (!el) return;
     paneObserver = new ResizeObserver(() => syncPaneWidth());
@@ -152,7 +146,6 @@ const sendSmsError = ref<Error | undefined>();
 const tabs = [
     { value: 'cellphone', label: 'Cellphone Data' },
     { value: 'sms', label: 'SMS Locator' },
-    { value: 'settings', label: 'Settings' },
 ];
 
 const tabIcons: Record<string, Component> = {
@@ -161,11 +154,11 @@ const tabIcons: Record<string, Component> = {
 };
 
 function onMainTab(value: string): void {
-    if (value === 'settings') {
-        showSettings.value = !showSettings.value;
-        return;
-    }
     activeTab.value = value;
+}
+
+async function onPortalPublished(): Promise<void> {
+    await store.loadSharedPortal();
 }
 
 const screenTitle = computed(() => {
@@ -176,7 +169,7 @@ const screenTitle = computed(() => {
 
 function requirePortalUrl(): string {
     const url = store.settings.takPortalUrl.trim();
-    if (!url) throw new Error('Configure TAK Portal Base URL in Settings.');
+    if (!url) throw new Error(PORTAL_UNAVAILABLE_MESSAGE);
     return url;
 }
 
@@ -251,12 +244,6 @@ async function onSendSms(phones: string) {
 .locator-chrome :deep(.locator-main-tabs) {
     width: 100%;
     display: flex;
-}
-
-.locator-chrome :deep(.locator-main-tabs > label:last-of-type) {
-    flex: 0 0 auto;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
 }
 
 .locator-chrome :deep(.locator-subtabs) {

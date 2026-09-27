@@ -11,11 +11,11 @@ Cellphone plotting code is **vendored in this repository** (`lib/cellphone/`, `c
 | **Cellphone Data** | Cell ping, RTT timing advance, and carrier email parse |
 | **SMS Locator** | Create/list/archive locators via TAK Portal; send share links via TAK Portal SMS |
 
-**Edit settings** (gear on the main tab bar) opens TAK Portal base URL and connection test below the tabs.
+A CloudTAK system admin sets the TAK Portal base URL for one TAK channel. Members of that channel can create locators. The settings block sits under the tabs and follows the schedule plugin layout: channel pull-down, URL, **Test TAK Portal Connection**, **Save**, **Reset**.
 
 ## Prerequisites
 
-1. **TAK Portal** with the locate feature and your user granted `page.locate` on the portal. Locator API calls use the **CloudTAK → TAK Portal bridge** (`/api/takportal/locate/*`) — no cross-origin browser auth. See [TAK Portal bridge (CloudTAK API)](#tak-portal-bridge-cloudtak-api). The **TAK Portal Base URL** in Settings is still used for public share links (`/locate/{slug}`).
+1. **TAK Portal** with the locate feature and your user granted `page.locate` on the portal. Locator API calls use the **CloudTAK → TAK Portal bridge** (`/api/takportal/locate/*`) — no cross-origin browser auth. See [TAK Portal bridge (CloudTAK API)](#tak-portal-bridge-cloudtak-api). A system admin publishes the **TAK Portal Base URL** onto a TAK channel. That URL is used for public share links (`/locate/{slug}`). Only members of the channel can see it and create locators.
 
 2. **TAK Portal Server Settings** — TAK URL/certs for relaying GPS pings to TAK Server, plus SMS provider credentials. The plugin does **not** store Twilio settings; it calls TAK Portal `POST /api/locate/locators/:id/send-link-sms`, which uses portal SMS configuration to build and send the link.
 
@@ -64,7 +64,7 @@ Environment variables on **`cloudtak-api`** (e.g. in `tak-stack/.env`):
 
 ### Verify
 
-After rebuilding CloudTAK API, **Test TAK Portal Connection** under Locator → **Edit settings** should return locator count without visiting TAK Portal in another tab.
+After rebuilding CloudTAK API, sign in as a CloudTAK system admin, open **Locator**, and use **Test TAK Portal Connection** in the settings block under the tabs. It should return a locator count without visiting TAK Portal in another tab. Choose the TAK channel, enter the base URL, and **Save** so members of that channel can create locators.
 
 ---
 

@@ -1,60 +1,83 @@
 <template>
     <div class='col-12'>
-        <LocatorCreateCard
-            :loading='creating'
-            @create='onCreate'
-        />
-
         <TablerLoading
-            v-if='loading'
+            v-if='store.loadingPortal'
             class='mt-3'
             :compact='true'
-            desc='Loading locators…'
+            desc='Loading TAK Portal settings…'
         />
 
         <TablerAlert
-            v-else-if='loadError'
+            v-else-if='store.portalError'
             class='mt-3'
-            :err='loadError'
+            :err='store.portalError'
+        />
+
+        <TablerInlineAlert
+            v-else-if='!store.hasTakPortalUrl()'
+            class='mt-3'
+            severity='info'
+            title='Locators'
+            :description='PORTAL_UNAVAILABLE_MESSAGE'
         />
 
         <template v-else>
-            <LocatorTable
-                root-class='mt-3'
-                title='Active Locators'
-                :locators='activeLocators'
-                :tak-portal-url='store.settings.takPortalUrl'
-                @send-sms='emit("send-sms", $event)'
-                @manual-ping='onManualPing'
-                @history='emit("history", $event)'
-                @archive='onArchive'
-                @delete='onDelete'
+            <LocatorCreateCard
+                :loading='creating'
+                @create='onCreate'
             />
 
-            <LocatorTable
-                v-if='archivedLocators.length'
-                root-class='mt-3'
-                title='Archived Locators'
-                :locators='archivedLocators'
-                archived
-                :tak-portal-url='store.settings.takPortalUrl'
-                @reactivate='onReactivate'
-                @delete='onDelete'
+            <TablerLoading
+                v-if='loading'
+                class='mt-3'
+                :compact='true'
+                desc='Loading locators…'
+            />
+
+            <TablerAlert
+                v-else-if='loadError'
+                class='mt-3'
+                :err='loadError'
+            />
+
+            <template v-else>
+                <LocatorTable
+                    root-class='mt-3'
+                    title='Active Locators'
+                    :locators='activeLocators'
+                    :tak-portal-url='store.settings.takPortalUrl'
+                    @send-sms='emit("send-sms", $event)'
+                    @manual-ping='onManualPing'
+                    @history='emit("history", $event)'
+                    @archive='onArchive'
+                    @delete='onDelete'
+                />
+
+                <LocatorTable
+                    v-if='archivedLocators.length'
+                    root-class='mt-3'
+                    title='Archived Locators'
+                    :locators='archivedLocators'
+                    archived
+                    :tak-portal-url='store.settings.takPortalUrl'
+                    @reactivate='onReactivate'
+                    @delete='onDelete'
+                />
+            </template>
+
+            <TablerInlineAlert
+                v-if='actionMessage'
+                class='mt-3'
+                severity='info'
+                title='Action'
+                :description='actionMessage'
             />
         </template>
-
-        <TablerInlineAlert
-            v-if='actionMessage'
-            class='mt-3'
-            severity='info'
-            title='Action'
-            :description='actionMessage'
-        />
     </div>
 </template>
 
 <script setup lang='ts'>
-import { computed, onMounted, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { TablerLoading, TablerAlert, TablerInlineAlert } from '@tak-ps/vue-tabler';
 import { useLocatorStore } from '../stores/plugin-state.ts';
 import type { Locator } from '../lib/types.ts';
@@ -69,6 +92,7 @@ import {
 import LocatorCreateCard from './LocatorCreateCard.vue';
 import LocatorTable from './LocatorTable.vue';
 import { getLocatorHistoryMapSync } from '../lib/locator-history-map-sync.ts';
+import { PORTAL_UNAVAILABLE_MESSAGE } from '../lib/portal-source.ts';
 
 const emit = defineEmits<{
     history: [locator: Locator];
@@ -88,13 +112,12 @@ const archivedLocators = computed(() => locators.value.filter((l) => l.archived)
 
 function requirePortalUrl(): string {
     const url = store.settings.takPortalUrl.trim();
-    if (!url) throw new Error('Configure TAK Portal Base URL in Settings.');
+    if (!url) throw new Error(PORTAL_UNAVAILABLE_MESSAGE);
     return url;
 }
 
 async function refresh() {
     if (!store.hasTakPortalUrl()) {
-        loadError.value = new Error('Configure TAK Portal Base URL in Settings.');
         locators.value = [];
         return;
     }
@@ -169,7 +192,16 @@ async function onDelete(loc: Locator) {
     }
 }
 
-onMounted(() => {
-    void refresh();
-});
+watch(
+    () => store.settings.takPortalUrl,
+    () => {
+        if (store.hasTakPortalUrl()) {
+            void refresh();
+            return;
+        }
+        locators.value = [];
+        loadError.value = undefined;
+    },
+    { immediate: true },
+);
 </script>

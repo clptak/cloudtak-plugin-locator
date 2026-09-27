@@ -43,6 +43,7 @@ export default class LocatorPlugin implements PluginInstance {
         const api = this.api;
         const store = useLocatorStore(api.pinia);
         store.setEnabled(true);
+        await store.loadSharedPortal();
 
         this.historyMapSync = new LocatorHistoryMapSync(api.pinia);
         setLocatorHistoryMapSync(this.historyMapSync);
@@ -88,7 +89,7 @@ export default class LocatorPlugin implements PluginInstance {
             key: MENU_KEY,
             label: 'Locator',
             route: ROUTE_NAME,
-            tooltip: 'Cellphone ping, SMS locator, and TAK Portal settings',
+            tooltip: 'Cellphone ping and SMS locator',
             description: 'Cell ping, missing-person SMS locator via TAK Portal',
             icon: markRaw(IconDeviceMobilePin) as unknown as MenuItemIconType,
         } as MenuItemConfig);
