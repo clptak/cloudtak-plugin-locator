@@ -5,6 +5,7 @@ import { loadSharedPortal as fetchSharedPortal } from '../lib/portal-source.ts';
 
 const DEFAULT_SETTINGS: PluginSettings = {
     takPortalUrl: '',
+    channel: '',
 };
 
 export const useLocatorStore = defineStore('locator-plugin', () => {
@@ -27,7 +28,10 @@ export const useLocatorStore = defineStore('locator-plugin', () => {
         try {
             const result = await fetchSharedPortal();
             if (result.ok) {
-                settings.value = { takPortalUrl: result.takPortalUrl };
+                settings.value = {
+                    takPortalUrl: result.takPortalUrl,
+                    channel: result.channel,
+                };
                 portalError.value = undefined;
                 return;
             }

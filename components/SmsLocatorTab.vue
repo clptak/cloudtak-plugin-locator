@@ -137,7 +137,10 @@ async function onCreate(payload: { title: string; pingIntervalSeconds: number })
     creating.value = true;
     actionMessage.value = '';
     try {
-        const loc = await createLocator(requirePortalUrl(), payload);
+        const loc = await createLocator(requirePortalUrl(), {
+            ...payload,
+            channel: store.settings.channel,
+        });
         await refresh();
         emit('send-sms', loc);
     } catch (err) {

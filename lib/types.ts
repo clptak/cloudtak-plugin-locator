@@ -32,4 +32,5 @@ export type HistoryEntry = {
 
 export type PluginSettings = {
     takPortalUrl: string;
+    channel: string;
 };

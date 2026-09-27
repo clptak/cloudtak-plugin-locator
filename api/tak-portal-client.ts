@@ -81,8 +81,11 @@ export async function listLocators(baseUrl: string): Promise<Locator[]> {
 
 export async function createLocator(
     baseUrl: string,
-    input: { title?: string; pingIntervalSeconds?: number },
+    input: { title?: string; pingIntervalSeconds?: number; channel: string },
 ): Promise<Locator> {
+    const channel = String(input.channel || '').trim();
+    if (!channel) throw new Error('Channel is required.');
+
     const data = await portalFetch<ApiOk<{ locator: Locator }>>(
         baseUrl,
         '/api/locate/locators',
@@ -94,6 +97,7 @@ export async function createLocator(
                 pingIntervalSeconds: clampPingIntervalSeconds(
                     input.pingIntervalSeconds ?? 60,
                 ),
+                channel,
             }),
         },
     );
