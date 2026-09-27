@@ -130,22 +130,15 @@ function packageRows(listed: unknown): PackageRow[] {
     return rows;
 }
 
-async function listPortalPackages(impersonate: boolean): Promise<PackageRow[]> {
+async function listPortalPackages(): Promise<PackageRow[]> {
     const url = stdurl('/api/marti/package');
     url.searchParams.set('filter', PORTAL_PACKAGE_NAME);
-    if (impersonate) url.searchParams.set('impersonate', 'true');
 
     const listed = await std(url);
     if (!listed || typeof listed !== 'object' || !Array.isArray((listed as { items?: unknown }).items)) {
         throw new Error('Locator package list was not understood.');
     }
     return packageRows(listed);
-}
-
-async function deletePortalPackage(uid: string): Promise<void> {
-    const url = stdurl(`/api/marti/package/${encodeURIComponent(uid)}`);
-    url.searchParams.set('impersonate', 'true');
-    await std(url, { method: 'DELETE' });
 }
 
 function parsePortalJson(text: string): SharedPortal {
@@ -189,7 +182,7 @@ async function readPackageText(hash: string): Promise<string> {
 export async function loadSharedPortal(): Promise<SharedPortal> {
     let rows: PackageRow[];
     try {
-        rows = await listPortalPackages(false);
+        rows = await listPortalPackages();
     } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
         return { ok: false, reason: 'error', message: `Locator package list failed: ${message}` };
@@ -210,15 +203,13 @@ export async function loadSharedPortal(): Promise<SharedPortal> {
 }
 
 /**
- * Publish the URL onto one channel and remove older locator packages
- * so a previous channel no longer keeps access.
+ * Publish the URL onto one channel using the signed-in user's TAK certificate.
+ * TAK Server only lists that package for members of the channel.
  */
-export async function publishPortalSettings(channel: string, takPortalUrl: string): Promise<string | undefined> {
+export async function publishPortalSettings(channel: string, takPortalUrl: string): Promise<void> {
     const group = channel.trim();
     const url = assertPortalUrl(takPortalUrl);
     if (!group) throw new Error('Choose a TAK channel.');
-
-    const previous = await listPortalPackages(true);
 
     const upload = stdurl('/api/marti/package');
     upload.searchParams.set('name', PORTAL_PACKAGE_NAME);
@@ -236,18 +227,4 @@ export async function publishPortalSettings(channel: string, takPortalUrl: strin
     );
 
     await std(upload, { method: 'POST', body });
-
-    const failures: string[] = [];
-    for (const row of previous) {
-        try {
-            await deletePortalPackage(row.uid);
-        } catch (err) {
-            const message = err instanceof Error ? err.message : String(err);
-            failures.push(message);
-        }
-    }
-    if (failures.length) {
-        return `URL published to ${group}, but an older package could not be removed: ${failures[0]}`;
-    }
-    return undefined;
 }

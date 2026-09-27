@@ -182,18 +182,14 @@ async function save(): Promise<void> {
 
     saving.value = true;
     try {
-        const warning = await publishPortalSettings(channel, takPortalUrl);
+        await publishPortalSettings(channel, takPortalUrl);
         const next = { channel, takPortalUrl };
         saveAdminDraft(next);
         saved.value = cloneDraft(next);
         local.channel = channel;
         local.takPortalUrl = takPortalUrl;
-        emit('published');
-        if (warning) {
-            error.value = new Error(warning);
-            return;
-        }
         successMessage.value = `TAK Portal URL published to ${channel}.`;
+        emit('published');
     } catch (err) {
         error.value = err instanceof Error ? err : new Error(String(err));
     } finally {
