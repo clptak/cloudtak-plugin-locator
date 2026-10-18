@@ -133,6 +133,9 @@ export async function loadSharedPortal(): Promise<SharedPortal> {
     }
 
     if (!saved.channel || !saved.takPortalUrl) {
+        // #region agent log
+        fetch('http://127.0.0.1:7766/ingest/b99aed6b-aeaa-4ac7-9f78-aa5b2dff3df2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4f73a6'},body:JSON.stringify({sessionId:'4f73a6',location:'lib/portal-source.ts:loadSharedPortal',message:'locator settings missing',data:{hasChannel:Boolean(saved.channel),hasUrl:Boolean(saved.takPortalUrl),channel:saved.channel},timestamp:Date.now(),hypothesisId:'A',runId:'pre-fix'})}).catch(()=>{});
+        // #endregion
         return { ok: false, reason: 'missing', message: PORTAL_UNAVAILABLE_MESSAGE };
     }
 
@@ -141,10 +144,18 @@ export async function loadSharedPortal(): Promise<SharedPortal> {
         channels = await listUserChannels();
     } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
+        // #region agent log
+        fetch('http://127.0.0.1:7766/ingest/b99aed6b-aeaa-4ac7-9f78-aa5b2dff3df2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4f73a6'},body:JSON.stringify({sessionId:'4f73a6',location:'lib/portal-source.ts:listUserChannels',message:'marti group list failed',data:{message,savedChannel:saved.channel},timestamp:Date.now(),hypothesisId:'E',runId:'pre-fix'})}).catch(()=>{});
+        // #endregion
         return { ok: false, reason: 'error', message };
     }
 
-    if (!userIsOnChannel(saved.channel, channels)) {
+    const onChannel = userIsOnChannel(saved.channel, channels);
+    // #region agent log
+    fetch('http://127.0.0.1:7766/ingest/b99aed6b-aeaa-4ac7-9f78-aa5b2dff3df2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4f73a6'},body:JSON.stringify({sessionId:'4f73a6',location:'lib/portal-source.ts:loadSharedPortal',message:'settings vs user channels',data:{savedChannel:saved.channel,onChannel,channelCount:channels.length,channels},timestamp:Date.now(),hypothesisId:'A',runId:'pre-fix'})}).catch(()=>{});
+    // #endregion
+
+    if (!onChannel) {
         return {
             ok: false,
             reason: 'missing',

@@ -16,18 +16,24 @@ function bridgeUrl(portalPath: string): string {
 }
 
 function readBridgeError(err: unknown): Error {
+    let parsed = '';
     if (err instanceof Error && 'body' in err) {
         const body = (err as Error & { body?: unknown }).body;
         if (body && typeof body === 'object') {
             if ('error' in body && body.error) {
-                return new Error(String((body as ApiErr).error));
-            }
-            if ('message' in body && body.message) {
-                return new Error(String((body as { message: string }).message));
+                parsed = String((body as ApiErr).error);
+            } else if ('message' in body && body.message) {
+                parsed = String((body as { message: string }).message);
             }
         }
     }
-    return err instanceof Error ? err : new Error(String(err));
+    const out = parsed
+        ? new Error(parsed)
+        : (err instanceof Error ? err : new Error(String(err)));
+    // #region agent log
+    fetch('http://127.0.0.1:7766/ingest/b99aed6b-aeaa-4ac7-9f78-aa5b2dff3df2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4f73a6'},body:JSON.stringify({sessionId:'4f73a6',location:'api/tak-portal-client.ts:readBridgeError',message:'bridge error',data:{parsed:parsed||out.message,status:(err as {status?:unknown})?.status??null},timestamp:Date.now(),hypothesisId:'C',runId:'pre-fix'})}).catch(()=>{});
+    // #endregion
+    return out;
 }
 
 async function portalFetch<T>(
@@ -84,6 +90,9 @@ export async function createLocator(
     input: { title?: string; pingIntervalSeconds?: number; channel: string },
 ): Promise<Locator> {
     const channel = String(input.channel || '').trim();
+    // #region agent log
+    fetch('http://127.0.0.1:7766/ingest/b99aed6b-aeaa-4ac7-9f78-aa5b2dff3df2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4f73a6'},body:JSON.stringify({sessionId:'4f73a6',location:'api/tak-portal-client.ts:createLocator',message:'create payload channel',data:{channel,channelEmpty:!channel},timestamp:Date.now(),hypothesisId:'B',runId:'pre-fix'})}).catch(()=>{});
+    // #endregion
     if (!channel) throw new Error('Channel is required.');
 
     const data = await portalFetch<ApiOk<{ locator: Locator }>>(
