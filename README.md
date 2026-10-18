@@ -60,7 +60,7 @@ Environment variables on **`cloudtak-api`** (e.g. in `tak-stack/.env`):
 | `PORTAL_BRIDGE_MEMBER_GROUPS` | Same Authentik group name(s) as `TAK_PORTAL_BRIDGE_EXTRA_GROUPS` (comma-separated). Lets bridged CloudTAK users pass portal auth **without** global admin — grants locate-only access. |
 | `PORTAL_BRIDGE_MEMBER_PERMISSIONS` | Optional; default `page.locate` |
 
-**TAK Portal patch required (until upstream merges it):** bridge members can create locators on their bridge channel only if TAK Portal includes the patch on [clptak/TAK-Portal `locate-bridge`](https://github.com/clptak/TAK-Portal/tree/locate-bridge) (`services/locatorAccess.service.js`, `mergeBridgeMemberChannels`). Without it, create fails with `Channel not in your agency scope.` Updating TAK Portal to a release tag drops the patch, so re-apply it after every portal update.
+**TAK Portal patch required (until upstream merges it):** bridge members can create locators on their bridge channel only if TAK Portal includes the patch on [clptak/TAK-Portal `locate-bridge`](https://github.com/clptak/TAK-Portal/tree/locate-bridge) (`services/locatorAccess.service.js`, `mergeBridgeMemberChannels`; upstream [PR #63](https://github.com/AdventureSeeker423/TAK-Portal/pull/63)). Without it, create fails with `Channel not in your agency scope.` Updating TAK Portal to a release tag drops the patch, so re-apply it after every portal update.
 
 **Permission mapping:** TAK Portal checks `page.locate` from portal roles/overrides. CloudTAK `system_admin` users get global portal admin when `TAK_PORTAL_BRIDGE_GLOBAL_GROUP` matches your portal admin group. Other users need matching groups in `TAK_PORTAL_BRIDGE_EXTRA_GROUPS` or per-user permission overrides in TAK Portal.
 
