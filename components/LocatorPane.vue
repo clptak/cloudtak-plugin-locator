@@ -125,9 +125,6 @@ function syncPaneWidth(): void {
 onMounted(() => {
     void fetchIsSystemAdmin().then((admin) => {
         isSystemAdmin.value = admin;
-        // #region agent log
-        fetch('http://127.0.0.1:7766/ingest/b99aed6b-aeaa-4ac7-9f78-aa5b2dff3df2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4f73a6'},body:JSON.stringify({sessionId:'4f73a6',location:'components/LocatorPane.vue:onMounted',message:'cloudtak system admin flag',data:{isSystemAdmin:admin},timestamp:Date.now(),hypothesisId:'C',runId:'pre-fix'})}).catch(()=>{});
-        // #endregion
     });
     const el = chromeEl.value;
     if (!el) return;
