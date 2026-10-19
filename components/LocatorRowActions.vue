@@ -22,6 +22,15 @@
             >
                 History
             </button>
+            <button
+                type='button'
+                class='btn btn-sm btn-outline-secondary'
+                :disabled='!canPostDataSync || posting'
+                :title='canPostDataSync ? "Post the current marker and line once" : "Needs an active mission"'
+                @click='emit("post-data-sync", locator)'
+            >
+                Post to DataSync
+            </button>
             <a
                 class='btn btn-sm btn-outline-secondary'
                 :href='publicUrl'
@@ -62,16 +71,23 @@ import { computed } from 'vue';
 import type { Locator } from '../lib/types.ts';
 import { publicLocateUrl } from '../lib/locator-url.ts';
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
     locator: Locator;
     takPortalUrl: string;
     archived?: boolean;
-}>();
+    canPostDataSync?: boolean;
+    posting?: boolean;
+}>(), {
+    archived: false,
+    canPostDataSync: false,
+    posting: false,
+});
 
 const emit = defineEmits<{
     'send-sms': [locator: Locator];
     'manual-ping': [locator: Locator];
     history: [locator: Locator];
+    'post-data-sync': [locator: Locator];
     archive: [locator: Locator];
     reactivate: [locator: Locator];
     delete: [locator: Locator];

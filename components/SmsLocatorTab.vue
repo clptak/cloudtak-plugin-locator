@@ -41,14 +41,25 @@
             />
 
             <template v-else>
+                <TablerToggle
+                    class='mt-3'
+                    :model-value='store.showHistoryOnMap'
+                    label='Show locator history'
+                    description='Draws each active locator on the Locator history overlay every 15 seconds. Does not write to DataSync.'
+                    @update:model-value='onShowHistory'
+                />
+
                 <LocatorTable
                     root-class='mt-3'
                     title='Active Locators'
                     :locators='activeLocators'
                     :tak-portal-url='store.settings.takPortalUrl'
+                    :can-post-data-sync='canPostDataSync'
+                    :posting-id='postingId'
                     @send-sms='emit("send-sms", $event)'
                     @manual-ping='onManualPing'
                     @history='emit("history", $event)'
+                    @post-data-sync='onPostDataSync'
                     @archive='onArchive'
                     @delete='onDelete'
                 />
@@ -66,6 +77,14 @@
             </template>
 
             <TablerInlineAlert
+                v-if='actionError'
+                class='mt-3'
+                severity='danger'
+                title='DataSync'
+                :description='actionError'
+            />
+
+            <TablerInlineAlert
                 v-if='actionMessage'
                 class='mt-3'
                 severity='info'
@@ -78,7 +97,8 @@
 
 <script setup lang='ts'>
 import { computed, ref, watch } from 'vue';
-import { TablerLoading, TablerAlert, TablerInlineAlert } from '@tak-ps/vue-tabler';
+import { TablerLoading, TablerAlert, TablerInlineAlert, TablerToggle } from '@tak-ps/vue-tabler';
+import { useMapStore } from '@/stores/map.ts';
 import { useLocatorStore } from '../stores/plugin-state.ts';
 import type { Locator } from '../lib/types.ts';
 import {
@@ -100,12 +120,17 @@ const emit = defineEmits<{
 }>();
 
 const store = useLocatorStore();
+const mapStore = useMapStore();
 
 const locators = ref<Locator[]>([]);
 const loading = ref(false);
 const loadError = ref<Error | undefined>();
 const creating = ref(false);
+const postingId = ref('');
 const actionMessage = ref('');
+const actionError = ref('');
+
+const canPostDataSync = computed(() => Boolean(mapStore.mission?.meta.guid));
 
 const activeLocators = computed(() => locators.value.filter((l) => !l.archived));
 const archivedLocators = computed(() => locators.value.filter((l) => l.archived));
@@ -150,6 +175,11 @@ async function onCreate(payload: { title: string; pingIntervalSeconds: number })
     }
 }
 
+function onShowHistory(value: boolean): void {
+    store.setShowHistoryOnMap(value);
+    void getLocatorHistoryMapSync()?.syncOnce();
+}
+
 async function onManualPing(loc: Locator) {
     actionMessage.value = '';
     try {
@@ -157,6 +187,22 @@ async function onManualPing(loc: Locator) {
         void getLocatorHistoryMapSync()?.syncOnce();
     } catch (err) {
         loadError.value = err instanceof Error ? err : new Error(String(err));
+    }
+}
+
+async function onPostDataSync(loc: Locator) {
+    actionMessage.value = '';
+    actionError.value = '';
+    postingId.value = loc.id;
+    try {
+        const sync = getLocatorHistoryMapSync();
+        if (!sync) throw new Error('Locator history is not running.');
+        await sync.postLocator(requirePortalUrl(), loc);
+        actionMessage.value = `Posted "${loc.title}" to DataSync.`;
+    } catch (err) {
+        actionError.value = err instanceof Error ? err.message : String(err);
+    } finally {
+        postingId.value = '';
     }
 }
 

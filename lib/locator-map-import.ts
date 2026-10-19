@@ -6,14 +6,13 @@ type MapWorkerDb = {
 };
 
 /**
- * Import or update a authored GeoJSON feature on the local map.
- * Preserves Point CoT type (e.g. a-h-G) after normalize_geojson.
+ * Normalize an authored GeoJSON feature and keep Point CoT type (e.g. a-h-G).
+ * Does not write to the map or a mission.
  */
-export async function importAuthoredGeoJsonFeature(
-    mapWorkerDb: MapWorkerDb,
+export async function normalizeAuthoredGeoJsonFeature(
     feat: Feature,
     stableId: string,
-): Promise<void> {
+): Promise<Feature> {
     const origProps = (feat.properties ?? {}) as Record<string, unknown>;
     const cotType = typeof origProps.type === 'string' ? origProps.type : undefined;
 
@@ -41,6 +40,19 @@ export async function importAuthoredGeoJsonFeature(
         }
     }
 
+    return norm;
+}
+
+/**
+ * Import or update an authored GeoJSON feature on the active mission when one is open.
+ * Preserves Point CoT type (e.g. a-h-G) after normalize_geojson.
+ */
+export async function importAuthoredGeoJsonFeature(
+    mapWorkerDb: MapWorkerDb,
+    feat: Feature,
+    stableId: string,
+): Promise<void> {
+    const norm = await normalizeAuthoredGeoJsonFeature(feat, stableId);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     await mapWorkerDb.add(norm as any, { authored: true });
 }

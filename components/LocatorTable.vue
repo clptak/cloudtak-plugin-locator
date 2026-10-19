@@ -60,9 +60,12 @@
                         :locator='loc'
                         :tak-portal-url='takPortalUrl'
                         :archived='archived'
+                        :can-post-data-sync='canPostDataSync'
+                        :posting='postingId === loc.id'
                         @send-sms='emit("send-sms", $event)'
                         @manual-ping='emit("manual-ping", $event)'
                         @history='emit("history", $event)'
+                        @post-data-sync='emit("post-data-sync", $event)'
                         @archive='emit("archive", $event)'
                         @reactivate='emit("reactivate", $event)'
                         @delete='emit("delete", $event)'
@@ -115,9 +118,12 @@
                                     :locator='loc'
                                     :tak-portal-url='takPortalUrl'
                                     :archived='archived'
+                                    :can-post-data-sync='canPostDataSync'
+                                    :posting='postingId === loc.id'
                                     @send-sms='emit("send-sms", $event)'
                                     @manual-ping='emit("manual-ping", $event)'
                                     @history='emit("history", $event)'
+                                    @post-data-sync='emit("post-data-sync", $event)'
                                     @archive='emit("archive", $event)'
                                     @reactivate='emit("reactivate", $event)'
                                     @delete='emit("delete", $event)'
@@ -144,15 +150,20 @@ withDefaults(defineProps<{
     takPortalUrl: string;
     archived?: boolean;
     rootClass?: string;
+    canPostDataSync?: boolean;
+    postingId?: string;
 }>(), {
     archived: false,
     rootClass: '',
+    canPostDataSync: false,
+    postingId: '',
 });
 
 const emit = defineEmits<{
     'send-sms': [locator: Locator];
     'manual-ping': [locator: Locator];
     history: [locator: Locator];
+    'post-data-sync': [locator: Locator];
     archive: [locator: Locator];
     reactivate: [locator: Locator];
     delete: [locator: Locator];

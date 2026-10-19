@@ -8,6 +8,10 @@ type MissionLayerStub = {
 };
 
 export function useMapStore(_pinia?: unknown): {
+    isMapLoaded: boolean;
+    map: {
+        getSource(id: string): { type: string; setData(data: unknown): Promise<void> } | undefined;
+    };
     mission?: {
         meta: { guid: string };
         layer: {
