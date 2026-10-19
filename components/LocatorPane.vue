@@ -253,7 +253,12 @@ async function onSendSms(phones: string) {
     width: max-content;
 }
 
-.locator-chrome :deep(.locator-control-width) {
-    width: 100%;
+.locator-chrome :deep(.locator-control-width .col-12.d-flex) {
+    width: max-content;
+    max-width: 100%;
+}
+
+.locator-chrome :deep(.locator-control-width .ms-auto) {
+    margin-left: 0.5rem !important;
 }
 </style>
