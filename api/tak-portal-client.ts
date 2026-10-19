@@ -71,6 +71,37 @@ export async function testTakPortalConnection(baseUrl: string): Promise<Locator[
     return data.locators ?? [];
 }
 
+export type LocateChannel = {
+    name: string;
+    displayName: string;
+    baseKey: string;
+};
+
+export async function listLocateMeta(
+    baseUrl: string,
+): Promise<{ channels: LocateChannel[]; colors: string[] }> {
+    const data = await portalFetch<ApiOk<{ channels?: LocateChannel[]; colors?: string[] }>>(
+        baseUrl,
+        '/api/locate/meta',
+    );
+    return {
+        channels: Array.isArray(data.channels) ? data.channels : [],
+        colors: Array.isArray(data.colors) ? data.colors.filter((c) => typeof c === 'string' && c) : [],
+    };
+}
+
+export async function listLocateMissions(baseUrl: string, channel: string): Promise<string[]> {
+    const name = String(channel || '').trim();
+    if (!name) return [];
+    const data = await portalFetch<ApiOk<{ missions?: { name?: string }[] }>>(
+        baseUrl,
+        `/api/locate/missions?channel=${encodeURIComponent(name)}`,
+    );
+    return (data.missions ?? [])
+        .map((m) => String(m?.name || '').trim())
+        .filter(Boolean);
+}
+
 export async function listLocators(baseUrl: string): Promise<Locator[]> {
     const data = await portalFetch<ApiOk<{ locators: Locator[] }>>(
         baseUrl,
@@ -81,10 +112,28 @@ export async function listLocators(baseUrl: string): Promise<Locator[]> {
 
 export async function createLocator(
     baseUrl: string,
-    input: { title?: string; pingIntervalSeconds?: number; channel: string },
+    input: {
+        title?: string;
+        pingIntervalSeconds?: number;
+        channel: string;
+        mission?: string;
+        color?: string;
+    },
 ): Promise<Locator> {
     const channel = String(input.channel || '').trim();
     if (!channel) throw new Error('Channel is required.');
+    const mission = String(input.mission || '').trim();
+    const color = String(input.color || 'Magenta').trim() || 'Magenta';
+
+    const body: Record<string, unknown> = {
+        title: String(input.title || '').trim(),
+        pingIntervalSeconds: clampPingIntervalSeconds(
+            input.pingIntervalSeconds ?? 60,
+        ),
+        channel,
+        color,
+    };
+    if (mission) body.mission = mission;
 
     const data = await portalFetch<ApiOk<{ locator: Locator }>>(
         baseUrl,
@@ -92,13 +141,7 @@ export async function createLocator(
         {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                title: String(input.title || '').trim(),
-                pingIntervalSeconds: clampPingIntervalSeconds(
-                    input.pingIntervalSeconds ?? 60,
-                ),
-                channel,
-            }),
+            body: JSON.stringify(body),
         },
     );
     return data.locator;

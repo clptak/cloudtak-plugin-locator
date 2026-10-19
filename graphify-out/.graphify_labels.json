@@ -11,5 +11,6 @@
   "9": "CloudTAK Locator Plugin",
   "10": "coordinates.ts",
   "11": "check-like-docker.sh",
-  "12": "FloatingPane.vue"
+  "12": "FloatingPane.vue",
+  "13": "LocatorCreateCard.vue"
 }

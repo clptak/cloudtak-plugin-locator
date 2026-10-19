@@ -212,6 +212,7 @@ npm run typecheck
 
 - **Cellphone ping / RTT / email** → client-side GeoJSON → CloudTAK map worker (`lib/cellphone/`).
 - **Locator CRUD / history / manual ping / SMS send** → CloudTAK `/api/takportal/locate/*` bridge → internal TAK Portal (`api/tak-portal-client.ts`).
+- **Create locator** can set an optional channel, an optional DataSync mission on that channel, and an icon color (default Magenta). A blank channel uses the channel saved in settings.
 - **Locator history on the map** is off until **Show locator history** is turned on. It draws the latest fix (`a-h-G`) and the magenta trail on a **Locator history** overlay and refreshes every 15 seconds. That overlay is not DataSync. **Post to DataSync** on an active locator writes the current marker and line into the active mission once.
 - **Public share page & GPS relay** → TAK Portal `/locate/:slug` (unchanged).
 

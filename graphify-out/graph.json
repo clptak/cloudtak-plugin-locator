@@ -319,6 +319,58 @@
       "source_location": "L5"
     },
     {
+      "id": "api_tak_portal_client_locatechannel",
+      "label": "LocateChannel",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "SmsLocatorTab.vue",
+      "file_type": "code",
+      "norm_label": "locatechannel",
+      "source_file": "api/tak-portal-client.ts",
+      "source_location": "L74"
+    },
+    {
+      "id": "lib_types_historyentry",
+      "label": "HistoryEntry",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "SmsLocatorTab.vue",
+      "file_type": "code",
+      "norm_label": "historyentry",
+      "source_file": "lib/types.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "lib_types_locator",
+      "label": "Locator",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "SmsLocatorTab.vue",
+      "file_type": "code",
+      "norm_label": "locator",
+      "source_file": "lib/types.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_types_pluginsettings",
+      "label": "PluginSettings",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "SmsLocatorTab.vue",
+      "file_type": "code",
+      "norm_label": "pluginsettings",
+      "source_file": "lib/types.ts",
+      "source_location": "L33"
+    },
+    {
       "id": "index_hostfloatcomponent",
       "label": "HostFloatComponent",
       "_callable": true,
@@ -382,45 +434,6 @@
       "norm_label": "panegeometry",
       "source_file": "lib/floatMinimize.ts",
       "source_location": "L12"
-    },
-    {
-      "id": "lib_types_historyentry",
-      "label": "HistoryEntry",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "historyentry",
-      "source_file": "lib/types.ts",
-      "source_location": "L21"
-    },
-    {
-      "id": "lib_types_locator",
-      "label": "Locator",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "locator",
-      "source_file": "lib/types.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "lib_types_pluginsettings",
-      "label": "PluginSettings",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "pluginsettings",
-      "source_file": "lib/types.ts",
-      "source_location": "L33"
     },
     {
       "id": "stubs_float_store_pane",
@@ -764,18 +777,6 @@
       "source_location": "L88"
     },
     {
-      "id": "api_tak_portal_client_listhistory",
-      "label": "listHistory()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "locator-history-map-sync.ts",
-      "file_type": "code",
-      "norm_label": "listhistory()",
-      "source_file": "api/tak-portal-client.ts",
-      "source_location": "L166"
-    },
-    {
       "id": "index_locatorplugin_constructor",
       "label": ".constructor()",
       "_callable": true,
@@ -956,18 +957,6 @@
       "source_location": "L244"
     },
     {
-      "id": "lib_locator_history_map_sync_locatorhistorymapsync_postlocator",
-      "label": ".postLocator()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "locator-history-map-sync.ts",
-      "file_type": "code",
-      "norm_label": ".postlocator()",
-      "source_file": "lib/locator-history-map-sync.ts",
-      "source_location": "L227"
-    },
-    {
       "id": "lib_locator_history_map_sync_locatorhistorymapsync_removeoverlay",
       "label": ".removeOverlay()",
       "_callable": true,
@@ -1074,6 +1063,18 @@
       "norm_label": "normalizeauthoredgeojsonfeature()",
       "source_file": "lib/locator-map-import.ts",
       "source_location": "L12"
+    },
+    {
+      "id": "lib_popout_bindpopout",
+      "label": "bindPopout()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "locator-history-map-sync.ts",
+      "file_type": "code",
+      "norm_label": "bindpopout()",
+      "source_file": "lib/popout.ts",
+      "source_location": "L27"
     },
     {
       "id": "stubs_map_store_usemapstore",
@@ -1244,6 +1245,102 @@
       "source_location": "L39"
     },
     {
+      "id": "api_tak_portal_client_listlocatemeta",
+      "label": "listLocateMeta()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "listlocatemeta()",
+      "source_file": "api/tak-portal-client.ts",
+      "source_location": "L80"
+    },
+    {
+      "id": "api_tak_portal_client_listlocatemissions",
+      "label": "listLocateMissions()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "listlocatemissions()",
+      "source_file": "api/tak-portal-client.ts",
+      "source_location": "L93"
+    },
+    {
+      "id": "components_locatorcreatecard_loadmeta",
+      "label": "loadMeta()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "loadmeta()",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L195"
+    },
+    {
+      "id": "components_locatorcreatecard_loadmissions",
+      "label": "loadMissions()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "loadmissions()",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L219"
+    },
+    {
+      "id": "components_locatorcreatecard_ondocumentclick",
+      "label": "onDocumentClick()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "ondocumentclick()",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L188"
+    },
+    {
+      "id": "components_locatorcreatecard_pickcolor",
+      "label": "pickColor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "pickcolor()",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L183"
+    },
+    {
+      "id": "components_locatorcreatecard_submit",
+      "label": "submit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "submit()",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L241"
+    },
+    {
+      "id": "components_locatorcreatecard_teamcolorhex",
+      "label": "teamColorHex()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "teamcolorhex()",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L179"
+    },
+    {
       "id": "api_tak_portal_client_archivelocator",
       "label": "archiveLocator()",
       "_callable": true,
@@ -1253,7 +1350,7 @@
       "file_type": "code",
       "norm_label": "archivelocator()",
       "source_file": "api/tak-portal-client.ts",
-      "source_location": "L131"
+      "source_location": "L174"
     },
     {
       "id": "api_tak_portal_client_bridgeurl",
@@ -1277,7 +1374,7 @@
       "file_type": "code",
       "norm_label": "createlocator()",
       "source_file": "api/tak-portal-client.ts",
-      "source_location": "L82"
+      "source_location": "L113"
     },
     {
       "id": "api_tak_portal_client_deletelocator",
@@ -1289,7 +1386,7 @@
       "file_type": "code",
       "norm_label": "deletelocator()",
       "source_file": "api/tak-portal-client.ts",
-      "source_location": "L149"
+      "source_location": "L192"
     },
     {
       "id": "api_tak_portal_client_listlocators",
@@ -1301,7 +1398,7 @@
       "file_type": "code",
       "norm_label": "listlocators()",
       "source_file": "api/tak-portal-client.ts",
-      "source_location": "L74"
+      "source_location": "L105"
     },
     {
       "id": "api_tak_portal_client_manualping",
@@ -1313,7 +1410,7 @@
       "file_type": "code",
       "norm_label": "manualping()",
       "source_file": "api/tak-portal-client.ts",
-      "source_location": "L157"
+      "source_location": "L200"
     },
     {
       "id": "api_tak_portal_client_portalfetch",
@@ -1337,7 +1434,7 @@
       "file_type": "code",
       "norm_label": "reactivatelocator()",
       "source_file": "api/tak-portal-client.ts",
-      "source_location": "L140"
+      "source_location": "L183"
     },
     {
       "id": "api_tak_portal_client_readbridgeerror",
@@ -1361,10 +1458,10 @@
       "file_type": "code",
       "norm_label": "updatelocator()",
       "source_file": "api/tak-portal-client.ts",
-      "source_location": "L107"
+      "source_location": "L150"
     },
     {
-      "id": "components_locatorcreatecard_submit",
+      "id": "components_locatorsendsmsview_submit",
       "label": "submit()",
       "_callable": true,
       "_origin": "ast",
@@ -1372,8 +1469,8 @@
       "community_name": "SmsLocatorTab.vue",
       "file_type": "code",
       "norm_label": "submit()",
-      "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L60"
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L75"
     },
     {
       "id": "components_smslocatortab_onarchive",
@@ -1385,7 +1482,7 @@
       "file_type": "code",
       "norm_label": "onarchive()",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L209"
+      "source_location": "L220"
     },
     {
       "id": "components_smslocatortab_oncreate",
@@ -1397,7 +1494,7 @@
       "file_type": "code",
       "norm_label": "oncreate()",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L161"
+      "source_location": "L163"
     },
     {
       "id": "components_smslocatortab_ondelete",
@@ -1409,7 +1506,7 @@
       "file_type": "code",
       "norm_label": "ondelete()",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L231"
+      "source_location": "L242"
     },
     {
       "id": "components_smslocatortab_onmanualping",
@@ -1421,7 +1518,7 @@
       "file_type": "code",
       "norm_label": "onmanualping()",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L183"
+      "source_location": "L194"
     },
     {
       "id": "components_smslocatortab_onpostdatasync",
@@ -1433,7 +1530,7 @@
       "file_type": "code",
       "norm_label": "onpostdatasync()",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L193"
+      "source_location": "L204"
     },
     {
       "id": "components_smslocatortab_onreactivate",
@@ -1445,7 +1542,7 @@
       "file_type": "code",
       "norm_label": "onreactivate()",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L220"
+      "source_location": "L231"
     },
     {
       "id": "components_smslocatortab_onshowhistory",
@@ -1457,7 +1554,7 @@
       "file_type": "code",
       "norm_label": "onshowhistory()",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L178"
+      "source_location": "L189"
     },
     {
       "id": "components_smslocatortab_refresh",
@@ -1469,7 +1566,7 @@
       "file_type": "code",
       "norm_label": "refresh()",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L144"
+      "source_location": "L146"
     },
     {
       "id": "components_smslocatortab_requireportalurl",
@@ -1481,7 +1578,7 @@
       "file_type": "code",
       "norm_label": "requireportalurl()",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L138"
+      "source_location": "L140"
     },
     {
       "id": "lib_locator_history_map_sync_getlocatorhistorymapsync",
@@ -1508,28 +1605,16 @@
       "source_location": "L10"
     },
     {
-      "id": "stubs_std_std",
-      "label": "std()",
+      "id": "lib_locator_url_publiclocateurl",
+      "label": "publicLocateUrl()",
       "_callable": true,
       "_origin": "ast",
       "community": 2,
       "community_name": "SmsLocatorTab.vue",
       "file_type": "code",
-      "norm_label": "std()",
-      "source_file": "stubs/std.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "stubs_std_stdurl",
-      "label": "stdurl()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "stdurl()",
-      "source_file": "stubs/std.ts",
-      "source_location": "L2"
+      "norm_label": "publiclocateurl()",
+      "source_file": "lib/locator-url.ts",
+      "source_location": "L5"
     },
     {
       "id": "components_popoutpaneaction_popout",
@@ -1676,18 +1761,6 @@
       "source_location": "L124"
     },
     {
-      "id": "lib_popout_bindpopout",
-      "label": "bindPopout()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "index.ts",
-      "file_type": "code",
-      "norm_label": "bindpopout()",
-      "source_file": "lib/popout.ts",
-      "source_location": "L27"
-    },
-    {
       "id": "lib_popout_cleanup",
       "label": "cleanup()",
       "_callable": true,
@@ -1820,6 +1893,18 @@
       "source_location": "L86"
     },
     {
+      "id": "stubs_app_store_useappstore",
+      "label": "useAppStore()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "useappstore()",
+      "source_file": "stubs/app-store.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "components_locatorhistoryview_formatposition",
       "label": "formatPosition()",
       "_callable": true,
@@ -1842,18 +1927,6 @@
       "norm_label": "formattime()",
       "source_file": "components/LocatorHistoryView.vue",
       "source_location": "L104"
-    },
-    {
-      "id": "components_locatorsendsmsview_submit",
-      "label": "submit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "submit()",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L75"
     },
     {
       "id": "components_locatortable_formatinterval",
@@ -1904,18 +1977,6 @@
       "source_location": "L180"
     },
     {
-      "id": "lib_locator_url_publiclocateurl",
-      "label": "publicLocateUrl()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "publiclocateurl()",
-      "source_file": "lib/locator-url.ts",
-      "source_location": "L5"
-    },
-    {
       "id": "lib_menutemplate_routerback",
       "label": "routerBack()",
       "_callable": true,
@@ -1926,18 +1987,6 @@
       "norm_label": "routerback()",
       "source_file": "lib/MenuTemplate.vue",
       "source_location": "L214"
-    },
-    {
-      "id": "stubs_app_store_useappstore",
-      "label": "useAppStore()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "useappstore()",
-      "source_file": "stubs/app-store.ts",
-      "source_location": "L1"
     },
     {
       "id": "stubs_float_store_usefloatstore",
@@ -2180,6 +2229,42 @@
       "source_location": "L13"
     },
     {
+      "id": "stubs_std_std",
+      "label": "std()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": "std()",
+      "source_file": "stubs/std.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "stubs_std_stdurl",
+      "label": "stdurl()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": "stdurl()",
+      "source_file": "stubs/std.ts",
+      "source_location": "L2"
+    },
+    {
+      "id": "api_tak_portal_client_listhistory",
+      "label": "listHistory()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "LocatorPane.vue",
+      "file_type": "code",
+      "norm_label": "listhistory()",
+      "source_file": "api/tak-portal-client.ts",
+      "source_location": "L209"
+    },
+    {
       "id": "api_tak_portal_client_sendlocatorlinksms",
       "label": "sendLocatorLinkSms()",
       "_callable": true,
@@ -2189,7 +2274,7 @@
       "file_type": "code",
       "norm_label": "sendlocatorlinksms()",
       "source_file": "api/tak-portal-client.ts",
-      "source_location": "L179"
+      "source_location": "L222"
     },
     {
       "id": "components_locatorpane_onmaintab",
@@ -2298,6 +2383,18 @@
       "norm_label": "fitdesktoppanewidth()",
       "source_file": "lib/floatMinimize.ts",
       "source_location": "L78"
+    },
+    {
+      "id": "lib_locator_history_map_sync_locatorhistorymapsync_postlocator",
+      "label": ".postLocator()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "LocatorPane.vue",
+      "file_type": "code",
+      "norm_label": ".postlocator()",
+      "source_file": "lib/locator-history-map-sync.ts",
+      "source_location": "L227"
     },
     {
       "id": "components_cellphone_pingform",
@@ -2741,6 +2838,270 @@
       "source_location": "L1"
     },
     {
+      "id": "components_locatorcreatecard",
+      "label": "LocatorCreateCard.vue",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "locatorcreatecard.vue",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_locatorcreatecard_channel",
+      "label": "channel",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "channel",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L149"
+    },
+    {
+      "id": "components_locatorcreatecard_channelnames",
+      "label": "channelNames",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "channelnames",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L153"
+    },
+    {
+      "id": "components_locatorcreatecard_channeloptions",
+      "label": "channelOptions",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "channeloptions",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L168"
+    },
+    {
+      "id": "components_locatorcreatecard_color",
+      "label": "color",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "color",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L151"
+    },
+    {
+      "id": "components_locatorcreatecard_coloropen",
+      "label": "colorOpen",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "coloropen",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L159"
+    },
+    {
+      "id": "components_locatorcreatecard_coloroptions",
+      "label": "colorOptions",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "coloroptions",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L170"
+    },
+    {
+      "id": "components_locatorcreatecard_colorroot",
+      "label": "colorRoot",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "colorroot",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L160"
+    },
+    {
+      "id": "components_locatorcreatecard_colors",
+      "label": "colors",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "colors",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L155"
+    },
+    {
+      "id": "components_locatorcreatecard_effectivechannel",
+      "label": "effectiveChannel",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "effectivechannel",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L166"
+    },
+    {
+      "id": "components_locatorcreatecard_emit",
+      "label": "emit",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "emit",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L138"
+    },
+    {
+      "id": "components_locatorcreatecard_fallback_colors",
+      "label": "FALLBACK_COLORS",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "fallback_colors",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L126"
+    },
+    {
+      "id": "components_locatorcreatecard_formerror",
+      "label": "formError",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "formerror",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L158"
+    },
+    {
+      "id": "components_locatorcreatecard_intervalhelp",
+      "label": "intervalHelp",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "intervalhelp",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L162"
+    },
+    {
+      "id": "components_locatorcreatecard_metaloading",
+      "label": "metaLoading",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "metaloading",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L156"
+    },
+    {
+      "id": "components_locatorcreatecard_mission",
+      "label": "mission",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "mission",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L150"
+    },
+    {
+      "id": "components_locatorcreatecard_missionoptions",
+      "label": "missionOptions",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "missionoptions",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L169"
+    },
+    {
+      "id": "components_locatorcreatecard_missions",
+      "label": "missions",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "missions",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L154"
+    },
+    {
+      "id": "components_locatorcreatecard_missionsloading",
+      "label": "missionsLoading",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "missionsloading",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L157"
+    },
+    {
+      "id": "components_locatorcreatecard_pingintervalinvalid",
+      "label": "pingIntervalInvalid",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "pingintervalinvalid",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L172"
+    },
+    {
+      "id": "components_locatorcreatecard_pingintervalseconds",
+      "label": "pingIntervalSeconds",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "pingintervalseconds",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L152"
+    },
+    {
+      "id": "components_locatorcreatecard_props",
+      "label": "props",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L128"
+    },
+    {
+      "id": "components_locatorcreatecard_team_color_hex",
+      "label": "TEAM_COLOR_HEX",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "team_color_hex",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L109"
+    },
+    {
+      "id": "components_locatorcreatecard_title",
+      "label": "title",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "title",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L148"
+    },
+    {
       "id": "api_tak_portal_client",
       "label": "tak-portal-client.ts",
       "_origin": "ast",
@@ -2752,80 +3113,124 @@
       "source_location": "L1"
     },
     {
-      "id": "components_locatorcreatecard",
-      "label": "LocatorCreateCard.vue",
+      "id": "components_locatorrowactions",
+      "label": "LocatorRowActions.vue",
       "_origin": "ast",
       "community": 2,
       "community_name": "SmsLocatorTab.vue",
       "file_type": "code",
-      "norm_label": "locatorcreatecard.vue",
-      "source_file": "components/LocatorCreateCard.vue",
+      "norm_label": "locatorrowactions.vue",
+      "source_file": "components/LocatorRowActions.vue",
       "source_location": "L1"
     },
     {
-      "id": "components_locatorcreatecard_emit",
+      "id": "components_locatorrowactions_emit",
       "label": "emit",
       "_origin": "ast",
       "community": 2,
       "community_name": "SmsLocatorTab.vue",
       "file_type": "code",
       "norm_label": "emit",
-      "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L42"
+      "source_file": "components/LocatorRowActions.vue",
+      "source_location": "L86"
     },
     {
-      "id": "components_locatorcreatecard_intervalhelp",
-      "label": "intervalHelp",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "intervalhelp",
-      "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L49"
-    },
-    {
-      "id": "components_locatorcreatecard_pingintervalinvalid",
-      "label": "pingIntervalInvalid",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "pingintervalinvalid",
-      "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L53"
-    },
-    {
-      "id": "components_locatorcreatecard_pingintervalseconds",
-      "label": "pingIntervalSeconds",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "pingintervalseconds",
-      "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L47"
-    },
-    {
-      "id": "components_locatorcreatecard_props",
+      "id": "components_locatorrowactions_props",
       "label": "props",
       "_origin": "ast",
       "community": 2,
       "community_name": "SmsLocatorTab.vue",
       "file_type": "code",
       "norm_label": "props",
-      "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L36"
+      "source_file": "components/LocatorRowActions.vue",
+      "source_location": "L74"
     },
     {
-      "id": "components_locatorcreatecard_title",
-      "label": "title",
+      "id": "components_locatorrowactions_publicurl",
+      "label": "publicUrl",
       "_origin": "ast",
       "community": 2,
       "community_name": "SmsLocatorTab.vue",
       "file_type": "code",
-      "norm_label": "title",
-      "source_file": "components/LocatorCreateCard.vue",
+      "norm_label": "publicurl",
+      "source_file": "components/LocatorRowActions.vue",
+      "source_location": "L96"
+    },
+    {
+      "id": "components_locatorsendsmsview",
+      "label": "LocatorSendSmsView.vue",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "SmsLocatorTab.vue",
+      "file_type": "code",
+      "norm_label": "locatorsendsmsview.vue",
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_locatorsendsmsview_displayerror",
+      "label": "displayError",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "SmsLocatorTab.vue",
+      "file_type": "code",
+      "norm_label": "displayerror",
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L61"
+    },
+    {
+      "id": "components_locatorsendsmsview_emit",
+      "label": "emit",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "SmsLocatorTab.vue",
+      "file_type": "code",
+      "norm_label": "emit",
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L54"
+    },
+    {
+      "id": "components_locatorsendsmsview_localerror",
+      "label": "localError",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "SmsLocatorTab.vue",
+      "file_type": "code",
+      "norm_label": "localerror",
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L59"
+    },
+    {
+      "id": "components_locatorsendsmsview_phones",
+      "label": "phones",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "SmsLocatorTab.vue",
+      "file_type": "code",
+      "norm_label": "phones",
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L58"
+    },
+    {
+      "id": "components_locatorsendsmsview_previewurl",
+      "label": "previewUrl",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "SmsLocatorTab.vue",
+      "file_type": "code",
+      "norm_label": "previewurl",
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L70"
+    },
+    {
+      "id": "components_locatorsendsmsview_props",
+      "label": "props",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "SmsLocatorTab.vue",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "components/LocatorSendSmsView.vue",
       "source_location": "L46"
     },
     {
@@ -2848,7 +3253,7 @@
       "file_type": "code",
       "norm_label": "actionerror",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L131"
+      "source_location": "L133"
     },
     {
       "id": "components_smslocatortab_actionmessage",
@@ -2859,7 +3264,7 @@
       "file_type": "code",
       "norm_label": "actionmessage",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L130"
+      "source_location": "L132"
     },
     {
       "id": "components_smslocatortab_activelocators",
@@ -2870,7 +3275,7 @@
       "file_type": "code",
       "norm_label": "activelocators",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L135"
+      "source_location": "L137"
     },
     {
       "id": "components_smslocatortab_archivedlocators",
@@ -2881,7 +3286,7 @@
       "file_type": "code",
       "norm_label": "archivedlocators",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L136"
+      "source_location": "L138"
     },
     {
       "id": "components_smslocatortab_canpostdatasync",
@@ -2892,7 +3297,7 @@
       "file_type": "code",
       "norm_label": "canpostdatasync",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L133"
+      "source_location": "L135"
     },
     {
       "id": "components_smslocatortab_creating",
@@ -2903,7 +3308,7 @@
       "file_type": "code",
       "norm_label": "creating",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L128"
+      "source_location": "L130"
     },
     {
       "id": "components_smslocatortab_emit",
@@ -2914,7 +3319,7 @@
       "file_type": "code",
       "norm_label": "emit",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L117"
+      "source_location": "L119"
     },
     {
       "id": "components_smslocatortab_loaderror",
@@ -2925,7 +3330,7 @@
       "file_type": "code",
       "norm_label": "loaderror",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L127"
+      "source_location": "L129"
     },
     {
       "id": "components_smslocatortab_loading",
@@ -2936,7 +3341,7 @@
       "file_type": "code",
       "norm_label": "loading",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L126"
+      "source_location": "L128"
     },
     {
       "id": "components_smslocatortab_locators",
@@ -2947,7 +3352,7 @@
       "file_type": "code",
       "norm_label": "locators",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L125"
+      "source_location": "L127"
     },
     {
       "id": "components_smslocatortab_mapstore",
@@ -2958,7 +3363,7 @@
       "file_type": "code",
       "norm_label": "mapstore",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L123"
+      "source_location": "L125"
     },
     {
       "id": "components_smslocatortab_postingid",
@@ -2969,7 +3374,7 @@
       "file_type": "code",
       "norm_label": "postingid",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L129"
+      "source_location": "L131"
     },
     {
       "id": "components_smslocatortab_store",
@@ -2980,7 +3385,7 @@
       "file_type": "code",
       "norm_label": "store",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L122"
+      "source_location": "L124"
     },
     {
       "id": "lib_locator_url",
@@ -2994,14 +3399,14 @@
       "source_location": "L1"
     },
     {
-      "id": "stubs_std",
-      "label": "std.ts",
+      "id": "lib_types",
+      "label": "types.ts",
       "_origin": "ast",
       "community": 2,
       "community_name": "SmsLocatorTab.vue",
       "file_type": "code",
-      "norm_label": "std.ts",
-      "source_file": "stubs/std.ts",
+      "norm_label": "types.ts",
+      "source_file": "lib/types.ts",
       "source_location": "L1"
     },
     {
@@ -3181,6 +3586,17 @@
       "source_location": "L24"
     },
     {
+      "id": "stubs_app_store",
+      "label": "app-store.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "app-store.ts",
+      "source_file": "stubs/app-store.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "ref_tabler_icons_vue",
       "label": "@tabler/icons-vue",
       "_origin": "ast",
@@ -3190,17 +3606,6 @@
       "norm_label": "@tabler/icons-vue",
       "source_file": "package.json",
       "source_location": "L19"
-    },
-    {
-      "id": "ref_tak_ps_vue_tabler",
-      "label": "@tak-ps/vue-tabler",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "index.ts",
-      "file_type": "concept",
-      "norm_label": "@tak-ps/vue-tabler",
-      "source_file": "package.json",
-      "source_location": "L18"
     },
     {
       "id": "components_locatorhistoryview",
@@ -3234,127 +3639,6 @@
       "norm_label": "ismobile",
       "source_file": "components/LocatorHistoryView.vue",
       "source_location": "L102"
-    },
-    {
-      "id": "components_locatorrowactions",
-      "label": "LocatorRowActions.vue",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "locatorrowactions.vue",
-      "source_file": "components/LocatorRowActions.vue",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_locatorrowactions_emit",
-      "label": "emit",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "emit",
-      "source_file": "components/LocatorRowActions.vue",
-      "source_location": "L86"
-    },
-    {
-      "id": "components_locatorrowactions_props",
-      "label": "props",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "props",
-      "source_file": "components/LocatorRowActions.vue",
-      "source_location": "L74"
-    },
-    {
-      "id": "components_locatorrowactions_publicurl",
-      "label": "publicUrl",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "publicurl",
-      "source_file": "components/LocatorRowActions.vue",
-      "source_location": "L96"
-    },
-    {
-      "id": "components_locatorsendsmsview",
-      "label": "LocatorSendSmsView.vue",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "locatorsendsmsview.vue",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_locatorsendsmsview_displayerror",
-      "label": "displayError",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "displayerror",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L61"
-    },
-    {
-      "id": "components_locatorsendsmsview_emit",
-      "label": "emit",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "emit",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L54"
-    },
-    {
-      "id": "components_locatorsendsmsview_localerror",
-      "label": "localError",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "localerror",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L59"
-    },
-    {
-      "id": "components_locatorsendsmsview_phones",
-      "label": "phones",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "phones",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L58"
-    },
-    {
-      "id": "components_locatorsendsmsview_previewurl",
-      "label": "previewUrl",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "previewurl",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L70"
-    },
-    {
-      "id": "components_locatorsendsmsview_props",
-      "label": "props",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "props",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L46"
     },
     {
       "id": "components_locatortable",
@@ -3489,28 +3773,6 @@
       "source_location": "L176"
     },
     {
-      "id": "lib_types",
-      "label": "types.ts",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "types.ts",
-      "source_file": "lib/types.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "stubs_app_store",
-      "label": "app-store.ts",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "app-store.ts",
-      "source_file": "stubs/app-store.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "stubs_float_store",
       "label": "float-store.ts",
       "_origin": "ast",
@@ -3520,6 +3782,17 @@
       "norm_label": "float-store.ts",
       "source_file": "stubs/float-store.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "ref_tak_ps_vue_tabler",
+      "label": "@tak-ps/vue-tabler",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "concept",
+      "norm_label": "@tak-ps/vue-tabler",
+      "source_file": "package.json",
+      "source_location": "L18"
     },
     {
       "id": "ref_vue",
@@ -3751,6 +4024,17 @@
       "norm_label": "uselocatorstore",
       "source_file": "stores/plugin-state.ts",
       "source_location": "L21"
+    },
+    {
+      "id": "stubs_std",
+      "label": "std.ts",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": "std.ts",
+      "source_file": "stubs/std.ts",
+      "source_location": "L1"
     },
     {
       "id": "ref_pinia",
@@ -4815,7 +5099,7 @@
       "node_kind": "heading",
       "norm_label": "license",
       "source_file": "README.md",
-      "source_location": "L218"
+      "source_location": "L219"
     },
     {
       "id": "readme_prerequisites",
@@ -4904,8 +5188,8 @@
     {
       "id": "ref_geojson",
       "label": "ref_geojson",
-      "community": 1,
-      "community_name": "locator-history-map-sync.ts",
+      "community": 0,
+      "community_name": "PingForm.vue",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_geojson",
@@ -4979,7 +5263,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "api/tak-portal-client.ts",
-      "source_location": "L97",
+      "source_location": "L130",
       "weight": 1.0
     },
     {
@@ -5027,7 +5311,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "api/tak-portal-client.ts",
-      "source_location": "L115",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
@@ -5163,6 +5447,30 @@
       "weight": 1.0
     },
     {
+      "source": "components_locatorcreatecard_loadmeta",
+      "target": "api_tak_portal_client_listlocatemeta",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L204",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard_loadmissions",
+      "target": "api_tak_portal_client_listlocatemissions",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L229",
+      "weight": 1.0
+    },
+    {
       "source": "components_locatorcreatecard_submit",
       "target": "components_locatorcreatecard_emit",
       "relation": "calls",
@@ -5171,7 +5479,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L61",
+      "source_location": "L248",
       "weight": 1.0
     },
     {
@@ -5183,7 +5491,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L63",
+      "source_location": "L250",
       "weight": 1.0
     },
     {
@@ -5459,7 +5767,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L212",
+      "source_location": "L223",
       "weight": 1.0
     },
     {
@@ -5471,7 +5779,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L212",
+      "source_location": "L223",
       "weight": 1.0
     },
     {
@@ -5483,7 +5791,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L213",
+      "source_location": "L224",
       "weight": 1.0
     },
     {
@@ -5495,7 +5803,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L165",
+      "source_location": "L173",
       "weight": 1.0
     },
     {
@@ -5507,7 +5815,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L165",
+      "source_location": "L173",
       "weight": 1.0
     },
     {
@@ -5519,7 +5827,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L169",
+      "source_location": "L180",
       "weight": 1.0
     },
     {
@@ -5531,7 +5839,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L170",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
@@ -5543,7 +5851,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L236",
+      "source_location": "L247",
       "weight": 1.0
     },
     {
@@ -5555,7 +5863,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L236",
+      "source_location": "L247",
       "weight": 1.0
     },
     {
@@ -5567,7 +5875,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L237",
+      "source_location": "L248",
       "weight": 1.0
     },
     {
@@ -5579,7 +5887,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L186",
+      "source_location": "L197",
       "weight": 1.0
     },
     {
@@ -5591,23 +5899,11 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L186",
+      "source_location": "L197",
       "weight": 1.0
     },
     {
       "source": "components_smslocatortab_onmanualping",
-      "target": "lib_locator_history_map_sync_getlocatorhistorymapsync",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L187",
-      "weight": 1.0
-    },
-    {
-      "source": "components_smslocatortab_onpostdatasync",
       "target": "lib_locator_history_map_sync_getlocatorhistorymapsync",
       "relation": "calls",
       "_origin": "ast",
@@ -5620,6 +5916,18 @@
     },
     {
       "source": "components_smslocatortab_onpostdatasync",
+      "target": "lib_locator_history_map_sync_getlocatorhistorymapsync",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "components/SmsLocatorTab.vue",
+      "source_location": "L209",
+      "weight": 1.0
+    },
+    {
+      "source": "components_smslocatortab_onpostdatasync",
       "target": "components_smslocatortab_requireportalurl",
       "relation": "calls",
       "_origin": "ast",
@@ -5627,7 +5935,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L200",
+      "source_location": "L211",
       "weight": 1.0
     },
     {
@@ -5639,7 +5947,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L223",
+      "source_location": "L234",
       "weight": 1.0
     },
     {
@@ -5651,7 +5959,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L223",
+      "source_location": "L234",
       "weight": 1.0
     },
     {
@@ -5663,7 +5971,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L224",
+      "source_location": "L235",
       "weight": 1.0
     },
     {
@@ -5675,7 +5983,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L180",
+      "source_location": "L191",
       "weight": 1.0
     },
     {
@@ -5687,7 +5995,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L153",
+      "source_location": "L155",
       "weight": 1.0
     },
     {
@@ -5699,7 +6007,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L153",
+      "source_location": "L155",
       "weight": 1.0
     },
     {
@@ -7023,6 +7331,30 @@
       "weight": 1.0
     },
     {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_loadmeta",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L195",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_loadmissions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L219",
+      "weight": 1.0
+    },
+    {
       "source": "components_locatorpane",
       "target": "components_locatorpane_syncpanewidth",
       "relation": "contains",
@@ -7067,7 +7399,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L144",
+      "source_location": "L146",
       "weight": 1.0
     },
     {
@@ -7376,6 +7708,30 @@
     },
     {
       "source": "components_locatorcreatecard",
+      "target": "api_tak_portal_client_listlocatemeta",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "api_tak_portal_client_listlocatemissions",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
       "target": "lib_locator_url_clamppingintervalseconds",
       "relation": "imports",
       "_origin": "ast",
@@ -7383,7 +7739,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L34",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -7731,7 +8087,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L101",
+      "source_location": "L103",
       "weight": 1.0
     },
     {
@@ -7743,7 +8099,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L102",
+      "source_location": "L104",
       "weight": 1.0
     },
     {
@@ -7755,7 +8111,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L103",
+      "source_location": "L105",
       "weight": 1.0
     },
     {
@@ -7767,7 +8123,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L104",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -7779,7 +8135,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L104",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -7791,7 +8147,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L104",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -7803,7 +8159,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L104",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -7815,7 +8171,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L104",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -7827,7 +8183,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L104",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -7839,7 +8195,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L114",
+      "source_location": "L116",
       "weight": 1.0
     },
     {
@@ -7851,7 +8207,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L115",
+      "source_location": "L117",
       "weight": 1.0
     },
     {
@@ -8585,7 +8941,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L32",
+      "source_location": "L103",
       "weight": 1.0
     },
     {
@@ -8597,7 +8953,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L33",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "api_tak_portal_client",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L105",
       "weight": 1.0
     },
     {
@@ -8609,7 +8977,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L34",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -9183,19 +9551,7 @@
     },
     {
       "source": "components_smslocatortab",
-      "target": "ref_tak_ps_vue_tabler",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L100",
-      "weight": 1.0
-    },
-    {
-      "source": "components_smslocatortab",
-      "target": "stubs_map_store",
+      "target": "ref_vue",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -9207,7 +9563,7 @@
     },
     {
       "source": "components_smslocatortab",
-      "target": "stores_plugin_state",
+      "target": "ref_tak_ps_vue_tabler",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -9219,7 +9575,7 @@
     },
     {
       "source": "components_smslocatortab",
-      "target": "lib_types",
+      "target": "stubs_map_store",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -9227,6 +9583,30 @@
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
       "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "components_smslocatortab",
+      "target": "stores_plugin_state",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/SmsLocatorTab.vue",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "components_smslocatortab",
+      "target": "lib_types",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/SmsLocatorTab.vue",
+      "source_location": "L105",
       "type_only": true,
       "weight": 1.0
     },
@@ -9239,7 +9619,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L104",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -9251,7 +9631,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L112",
+      "source_location": "L114",
       "weight": 1.0
     },
     {
@@ -9263,7 +9643,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L113",
+      "source_location": "L115",
       "weight": 1.0
     },
     {
@@ -9275,7 +9655,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L114",
+      "source_location": "L116",
       "weight": 1.0
     },
     {
@@ -9287,19 +9667,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L115",
-      "weight": 1.0
-    },
-    {
-      "source": "components_smslocatortab",
-      "target": "ref_vue",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L99",
+      "source_location": "L117",
       "weight": 1.0
     },
     {
@@ -9952,13 +10320,35 @@
     },
     {
       "source": "api_tak_portal_client",
+      "target": "api_tak_portal_client_listlocators",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/tak-portal-client.ts",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "api_tak_portal_client",
+      "target": "api_tak_portal_client_createlocator",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/tak-portal-client.ts",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "api_tak_portal_client",
       "target": "api_tak_portal_client_updatelocator",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "api/tak-portal-client.ts",
-      "source_location": "L107",
+      "source_location": "L150",
       "weight": 1.0
     },
     {
@@ -9969,62 +10359,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "api/tak-portal-client.ts",
-      "source_location": "L131",
-      "weight": 1.0
-    },
-    {
-      "source": "api_tak_portal_client",
-      "target": "api_tak_portal_client_reactivatelocator",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "api/tak-portal-client.ts",
-      "source_location": "L140",
-      "weight": 1.0
-    },
-    {
-      "source": "api_tak_portal_client",
-      "target": "api_tak_portal_client_deletelocator",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "api/tak-portal-client.ts",
-      "source_location": "L149",
-      "weight": 1.0
-    },
-    {
-      "source": "api_tak_portal_client",
-      "target": "api_tak_portal_client_manualping",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "api/tak-portal-client.ts",
-      "source_location": "L157",
-      "weight": 1.0
-    },
-    {
-      "source": "api_tak_portal_client",
-      "target": "api_tak_portal_client_listhistory",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "api/tak-portal-client.ts",
-      "source_location": "L166",
-      "weight": 1.0
-    },
-    {
-      "source": "api_tak_portal_client",
-      "target": "api_tak_portal_client_sendlocatorlinksms",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "api/tak-portal-client.ts",
-      "source_location": "L179",
+      "source_location": "L174",
       "weight": 1.0
     },
     {
@@ -10036,6 +10371,61 @@
       "confidence_score": 1.0,
       "source_file": "api/tak-portal-client.ts",
       "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "api_tak_portal_client",
+      "target": "api_tak_portal_client_reactivatelocator",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/tak-portal-client.ts",
+      "source_location": "L183",
+      "weight": 1.0
+    },
+    {
+      "source": "api_tak_portal_client",
+      "target": "api_tak_portal_client_deletelocator",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/tak-portal-client.ts",
+      "source_location": "L192",
+      "weight": 1.0
+    },
+    {
+      "source": "api_tak_portal_client",
+      "target": "api_tak_portal_client_manualping",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/tak-portal-client.ts",
+      "source_location": "L200",
+      "weight": 1.0
+    },
+    {
+      "source": "api_tak_portal_client",
+      "target": "api_tak_portal_client_listhistory",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/tak-portal-client.ts",
+      "source_location": "L209",
+      "weight": 1.0
+    },
+    {
+      "source": "api_tak_portal_client",
+      "target": "api_tak_portal_client_sendlocatorlinksms",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/tak-portal-client.ts",
+      "source_location": "L222",
       "weight": 1.0
     },
     {
@@ -10084,7 +10474,7 @@
     },
     {
       "source": "api_tak_portal_client",
-      "target": "api_tak_portal_client_listlocators",
+      "target": "api_tak_portal_client_locatechannel",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10106,13 +10496,24 @@
     },
     {
       "source": "api_tak_portal_client",
-      "target": "api_tak_portal_client_createlocator",
+      "target": "api_tak_portal_client_listlocatemeta",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "api/tak-portal-client.ts",
-      "source_location": "L82",
+      "source_location": "L80",
+      "weight": 1.0
+    },
+    {
+      "source": "api_tak_portal_client",
+      "target": "api_tak_portal_client_listlocatemissions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/tak-portal-client.ts",
+      "source_location": "L93",
       "weight": 1.0
     },
     {
@@ -10315,13 +10716,35 @@
     },
     {
       "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_team_color_hex",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_fallback_colors",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L126",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
       "target": "components_locatorcreatecard_props",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L36",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -10332,7 +10755,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L42",
+      "source_location": "L138",
       "weight": 1.0
     },
     {
@@ -10343,7 +10766,40 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L46",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_channel",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L149",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_mission",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L150",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_color",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
@@ -10354,7 +10810,95 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L47",
+      "source_location": "L152",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_channelnames",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L153",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_missions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L154",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_colors",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L155",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_metaloading",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L156",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_missionsloading",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L157",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_formerror",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_coloropen",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_colorroot",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L160",
       "weight": 1.0
     },
     {
@@ -10365,7 +10909,51 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L49",
+      "source_location": "L162",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_effectivechannel",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L166",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_channeloptions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L168",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_missionoptions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L169",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_coloroptions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L170",
       "weight": 1.0
     },
     {
@@ -10376,7 +10964,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L53",
+      "source_location": "L172",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_teamcolorhex",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L179",
+      "weight": 1.0
+    },
+    {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_pickcolor",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L183",
       "weight": 1.0
     },
     {
@@ -10387,7 +10997,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/LocatorCreateCard.vue",
-      "source_location": "L60",
+      "source_location": "L241",
       "weight": 1.0
     },
     {
@@ -11091,7 +11701,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L117",
+      "source_location": "L119",
       "weight": 1.0
     },
     {
@@ -11102,7 +11712,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L122",
+      "source_location": "L124",
       "weight": 1.0
     },
     {
@@ -11113,7 +11723,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L123",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -11124,7 +11734,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L125",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -11135,7 +11745,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L126",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -11146,7 +11756,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L127",
+      "source_location": "L129",
       "weight": 1.0
     },
     {
@@ -11157,7 +11767,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L128",
+      "source_location": "L130",
       "weight": 1.0
     },
     {
@@ -11168,7 +11778,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L129",
+      "source_location": "L131",
       "weight": 1.0
     },
     {
@@ -11179,7 +11789,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L130",
+      "source_location": "L132",
       "weight": 1.0
     },
     {
@@ -11190,7 +11800,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L131",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -11201,7 +11811,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L133",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -11212,7 +11822,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L135",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -11223,7 +11833,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L136",
+      "source_location": "L138",
       "weight": 1.0
     },
     {
@@ -11234,7 +11844,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L138",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -11245,7 +11855,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L161",
+      "source_location": "L163",
       "weight": 1.0
     },
     {
@@ -11256,7 +11866,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L178",
+      "source_location": "L189",
       "weight": 1.0
     },
     {
@@ -11267,7 +11877,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L183",
+      "source_location": "L194",
       "weight": 1.0
     },
     {
@@ -11278,7 +11888,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L193",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -11289,7 +11899,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L209",
+      "source_location": "L220",
       "weight": 1.0
     },
     {
@@ -11300,7 +11910,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L220",
+      "source_location": "L231",
       "weight": 1.0
     },
     {
@@ -11311,7 +11921,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SmsLocatorTab.vue",
-      "source_location": "L231",
+      "source_location": "L242",
       "weight": 1.0
     },
     {
@@ -13093,7 +13703,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L218",
+      "source_location": "L219",
       "weight": 1.0
     },
     {
@@ -13936,6 +14546,18 @@
       "weight": 1.0
     },
     {
+      "source": "components_locatorcreatecard",
+      "target": "components_locatorcreatecard_ondocumentclick",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "components/LocatorCreateCard.vue",
+      "source_location": "L266",
+      "weight": 1.0
+    },
+    {
       "source": "lib_popout_openpopout",
       "target": "lib_popout_onpopoutclosed",
       "relation": "indirect_call",
@@ -13985,5 +14607,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "76ebcc9fdd8dcf366ddc56cad7ea97e6199c34f9"
+  "built_at_commit": "da38851c75a8fabc2336357df0911e27dae81674"
 }

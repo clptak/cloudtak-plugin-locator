@@ -24,6 +24,8 @@
         <template v-else>
             <LocatorCreateCard
                 :loading='creating'
+                :tak-portal-url='store.settings.takPortalUrl'
+                :saved-channel='store.settings.channel'
                 @create='onCreate'
             />
 
@@ -158,13 +160,22 @@ async function refresh() {
     }
 }
 
-async function onCreate(payload: { title: string; pingIntervalSeconds: number }) {
+async function onCreate(payload: {
+    title: string;
+    pingIntervalSeconds: number;
+    channel: string;
+    mission: string;
+    color: string;
+}) {
     creating.value = true;
     actionMessage.value = '';
     try {
         const loc = await createLocator(requirePortalUrl(), {
-            ...payload,
-            channel: store.settings.channel,
+            title: payload.title,
+            pingIntervalSeconds: payload.pingIntervalSeconds,
+            channel: payload.channel.trim() || store.settings.channel,
+            mission: payload.mission,
+            color: payload.color,
         });
         await refresh();
         emit('send-sms', loc);
