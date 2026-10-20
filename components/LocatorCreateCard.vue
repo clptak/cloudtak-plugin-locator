@@ -76,6 +76,50 @@
                 :description='intervalHelp'
             />
         </div>
+        <div class='col-12 d-flex align-items-center justify-content-between'>
+            <span>Additional fields</span>
+            <button
+                type='button'
+                class='btn btn-secondary'
+                :disabled='fields.length >= 40'
+                @click='fields = addLocateField(fields)'
+            >
+                Add Field
+            </button>
+        </div>
+        <div
+            v-for='row in fields'
+            :key='row.key'
+            class='col-12 cloudtak-accent border rounded-3 p-2'
+        >
+            <TablerEnum
+                label='Type'
+                :model-value='typeMenuLabel(row.type)'
+                :options='typeLabelsFor(fields, row)'
+                @update:model-value='applyFieldType(row, String($event))'
+            />
+            <TablerInput
+                v-model='row.label'
+                label='Label'
+            />
+            <TablerInput
+                v-if='row.type === "choice"'
+                v-model='row.options'
+                label='Options'
+                description='Comma-separated.'
+            />
+            <TablerToggle
+                v-model='row.required'
+                label='Required'
+            />
+            <button
+                type='button'
+                class='btn btn-outline-danger'
+                @click='removeField(row.key)'
+            >
+                Remove
+            </button>
+        </div>
         <div class='col-12'>
             <button
                 type='button'
@@ -101,8 +145,18 @@
 
 <script setup lang='ts'>
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
-import { TablerEnum, TablerInlineAlert, TablerInput } from '@tak-ps/vue-tabler';
+import { TablerEnum, TablerInlineAlert, TablerInput, TablerToggle } from '@tak-ps/vue-tabler';
 import { listLocateMeta, listLocateMissions } from '../api/tak-portal-client.ts';
+import {
+    addLocateField,
+    applyFieldType,
+    collectLocateFields,
+    defaultLocateFields,
+    typeLabelsFor,
+    typeMenuLabel,
+    type LocateFieldDraft,
+    type LocateFieldPayload,
+} from '../lib/locate-form.ts';
 import { clampPingIntervalSeconds } from '../lib/locator-url.ts';
 
 /** ATAK team colours. Same hex as CloudTAK team-colors.ts. */
@@ -142,6 +196,7 @@ const emit = defineEmits<{
         channel: string;
         mission: string;
         color: string;
+        form: { fields: LocateFieldPayload[] };
     }];
 }>();
 
@@ -156,6 +211,7 @@ const colors = ref<string[]>(FALLBACK_COLORS);
 const metaLoading = ref(false);
 const missionsLoading = ref(false);
 const formError = ref('');
+const fields = ref<LocateFieldDraft[]>(defaultLocateFields());
 const colorOpen = ref(false);
 const colorRoot = ref<HTMLElement | null>(null);
 
@@ -238,11 +294,20 @@ async function loadMissions(): Promise<void> {
     }
 }
 
+function removeField(key: number): void {
+    fields.value = fields.value.filter((row) => row.key !== key);
+}
+
 function submit() {
     formError.value = '';
     const chosenMission = mission.value.trim();
     if (chosenMission && !missions.value.includes(chosenMission)) {
         formError.value = 'That DataSync is not on the selected channel.';
+        return;
+    }
+    const collected = collectLocateFields(fields.value);
+    if (!collected.ok) {
+        formError.value = collected.error;
         return;
     }
     emit('create', {
@@ -251,6 +316,7 @@ function submit() {
         channel: channel.value.trim(),
         mission: chosenMission,
         color: color.value.trim() || 'Magenta',
+        form: { fields: collected.fields },
     });
 }
 

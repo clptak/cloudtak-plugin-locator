@@ -106,6 +106,7 @@ import { computed, ref, watch } from 'vue';
 import { TablerLoading, TablerAlert, TablerInlineAlert, TablerToggle } from '@tak-ps/vue-tabler';
 import { useMapStore } from '@/stores/map.ts';
 import { useLocatorStore } from '../stores/plugin-state.ts';
+import type { LocateFieldPayload } from '../lib/locate-form.ts';
 import type { Locator } from '../lib/types.ts';
 import {
     archiveLocator,
@@ -172,6 +173,7 @@ async function onCreate(payload: {
     channel: string;
     mission: string;
     color: string;
+    form: { fields: LocateFieldPayload[] };
 }) {
     creating.value = true;
     actionMessage.value = '';
@@ -182,6 +184,7 @@ async function onCreate(payload: {
             channel: payload.channel.trim() || store.settings.channel,
             mission: payload.mission,
             color: payload.color,
+            form: payload.form,
         });
         await refresh();
         emit('send-sms', loc);

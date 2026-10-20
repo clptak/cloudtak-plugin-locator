@@ -1,4 +1,5 @@
 import type { HistoryEntry, Locator } from '../lib/types.ts';
+import type { LocateFieldPayload } from '../lib/locate-form.ts';
 import { clampPingIntervalSeconds } from '../lib/locator-url.ts';
 import { std } from '@/std.ts';
 
@@ -118,6 +119,7 @@ export async function createLocator(
         channel: string;
         mission?: string;
         color?: string;
+        form?: { fields: LocateFieldPayload[] };
     },
 ): Promise<Locator> {
     const channel = String(input.channel || '').trim();
@@ -134,6 +136,7 @@ export async function createLocator(
         color,
     };
     if (mission) body.mission = mission;
+    if (input.form) body.form = input.form;
 
     const data = await portalFetch<ApiOk<{ locator: Locator }>>(
         baseUrl,
