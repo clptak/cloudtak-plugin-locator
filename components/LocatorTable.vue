@@ -62,8 +62,10 @@
                         :archived='archived'
                         :can-post-data-sync='canPostDataSync'
                         :posting='postingId === loc.id'
+                        :reporting='reportingId === loc.id'
                         @send-sms='emit("send-sms", $event)'
                         @manual-ping='emit("manual-ping", $event)'
+                        @report='emit("report", $event)'
                         @history='emit("history", $event)'
                         @post-data-sync='emit("post-data-sync", $event)'
                         @archive='emit("archive", $event)'
@@ -120,8 +122,10 @@
                                     :archived='archived'
                                     :can-post-data-sync='canPostDataSync'
                                     :posting='postingId === loc.id'
+                                    :reporting='reportingId === loc.id'
                                     @send-sms='emit("send-sms", $event)'
                                     @manual-ping='emit("manual-ping", $event)'
+                                    @report='emit("report", $event)'
                                     @history='emit("history", $event)'
                                     @post-data-sync='emit("post-data-sync", $event)'
                                     @archive='emit("archive", $event)'
@@ -152,16 +156,19 @@ withDefaults(defineProps<{
     rootClass?: string;
     canPostDataSync?: boolean;
     postingId?: string;
+    reportingId?: string;
 }>(), {
     archived: false,
     rootClass: '',
     canPostDataSync: false,
     postingId: '',
+    reportingId: '',
 });
 
 const emit = defineEmits<{
     'send-sms': [locator: Locator];
     'manual-ping': [locator: Locator];
+    report: [locator: Locator];
     history: [locator: Locator];
     'post-data-sync': [locator: Locator];
     archive: [locator: Locator];

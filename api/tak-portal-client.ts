@@ -206,6 +206,12 @@ export async function manualPing(baseUrl: string, id: string): Promise<string> {
     return data.message || 'Devices with this link open will send a location update soon.';
 }
 
+export async function downloadLocatorReport(id: string): Promise<void> {
+    await std(`/api/takportal/locate/locators/${encodeURIComponent(id)}/report.pdf`, {
+        download: 'locate-report.pdf',
+    });
+}
+
 export async function listHistory(
     baseUrl: string,
     id: string,

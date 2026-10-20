@@ -18,6 +18,14 @@
             <button
                 type='button'
                 class='btn btn-sm btn-secondary'
+                :disabled='reporting'
+                @click='emit("report", locator)'
+            >
+                PDF Report
+            </button>
+            <button
+                type='button'
+                class='btn btn-sm btn-secondary'
                 @click='emit("history", locator)'
             >
                 History
@@ -51,6 +59,14 @@
             <button
                 type='button'
                 class='btn btn-sm btn-secondary'
+                :disabled='reporting'
+                @click='emit("report", locator)'
+            >
+                PDF Report
+            </button>
+            <button
+                type='button'
+                class='btn btn-sm btn-secondary'
                 @click='emit("reactivate", locator)'
             >
                 Reactivate
@@ -77,15 +93,18 @@ const props = withDefaults(defineProps<{
     archived?: boolean;
     canPostDataSync?: boolean;
     posting?: boolean;
+    reporting?: boolean;
 }>(), {
     archived: false,
     canPostDataSync: false,
     posting: false,
+    reporting: false,
 });
 
 const emit = defineEmits<{
     'send-sms': [locator: Locator];
     'manual-ping': [locator: Locator];
+    report: [locator: Locator];
     history: [locator: Locator];
     'post-data-sync': [locator: Locator];
     archive: [locator: Locator];

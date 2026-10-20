@@ -7,6 +7,7 @@ export async function std(
     url: string | URL,
     opts?: {
         token?: string;
+        download?: boolean | string;
         headers?: Record<string, string>;
         body?: unknown;
         method?: string;

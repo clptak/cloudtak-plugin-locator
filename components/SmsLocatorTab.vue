@@ -58,8 +58,10 @@
                     :tak-portal-url='store.settings.takPortalUrl'
                     :can-post-data-sync='canPostDataSync'
                     :posting-id='postingId'
+                    :reporting-id='reportingId'
                     @send-sms='emit("send-sms", $event)'
                     @manual-ping='onManualPing'
+                    @report='onReport'
                     @history='emit("history", $event)'
                     @post-data-sync='onPostDataSync'
                     @archive='onArchive'
@@ -73,6 +75,8 @@
                     :locators='archivedLocators'
                     archived
                     :tak-portal-url='store.settings.takPortalUrl'
+                    :reporting-id='reportingId'
+                    @report='onReport'
                     @reactivate='onReactivate'
                     @delete='onDelete'
                 />
@@ -108,6 +112,7 @@ import {
     createLocator,
     deleteLocator,
     listLocators,
+    downloadLocatorReport,
     manualPing,
     reactivateLocator,
 } from '../api/tak-portal-client.ts';
@@ -129,6 +134,7 @@ const loading = ref(false);
 const loadError = ref<Error | undefined>();
 const creating = ref(false);
 const postingId = ref('');
+const reportingId = ref('');
 const actionMessage = ref('');
 const actionError = ref('');
 
@@ -189,6 +195,19 @@ async function onCreate(payload: {
 function onShowHistory(value: boolean): void {
     store.setShowHistoryOnMap(value);
     void getLocatorHistoryMapSync()?.syncOnce();
+}
+
+async function onReport(loc: Locator) {
+    actionMessage.value = '';
+    actionError.value = '';
+    reportingId.value = loc.id;
+    try {
+        await downloadLocatorReport(loc.id);
+    } catch (err) {
+        actionError.value = err instanceof Error ? err.message : String(err);
+    } finally {
+        reportingId.value = '';
+    }
 }
 
 async function onManualPing(loc: Locator) {
