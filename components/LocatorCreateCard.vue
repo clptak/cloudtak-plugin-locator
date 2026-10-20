@@ -289,8 +289,9 @@ onUnmounted(() => {
     max-height: 14rem;
     overflow: auto;
     border-radius: 0.25rem;
-    background: var(--cloudtak-inset-bg, #1b2431);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: var(--cloudtak-surface-bg, rgba(20, 20, 25, 0.96));
+    color: var(--cloudtak-surface-color, rgba(255, 255, 255, 0.92));
+    border: 1px solid var(--cloudtak-surface-border, rgba(255, 255, 255, 0.14));
 }
 
 .locator-color-option {
