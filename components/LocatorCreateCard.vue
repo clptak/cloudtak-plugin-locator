@@ -76,49 +76,82 @@
                 :description='intervalHelp'
             />
         </div>
-        <div class='col-12 d-flex align-items-center justify-content-between'>
-            <span>Additional fields</span>
-            <button
-                type='button'
-                class='btn btn-secondary'
-                :disabled='fields.length >= 40'
-                @click='fields = addLocateField(fields)'
+        <div class='col-12'>
+            <TablerBorder
+                class='cloudtak-accent text-white'
+                :fill-height='false'
+                :shadow='false'
+                gap='sm'
             >
-                Add Field
-            </button>
-        </div>
-        <div
-            v-for='row in fields'
-            :key='row.key'
-            class='col-12 cloudtak-accent border rounded-3 p-2'
-        >
-            <TablerEnum
-                label='Type'
-                :model-value='typeMenuLabel(row.type)'
-                :options='typeLabelsFor(fields, row)'
-                @update:model-value='applyFieldType(row, String($event))'
-            />
-            <TablerInput
-                v-model='row.label'
-                label='Label'
-            />
-            <TablerInput
-                v-if='row.type === "choice"'
-                v-model='row.options'
-                label='Options'
-                description='Comma-separated.'
-            />
-            <TablerToggle
-                v-model='row.required'
-                label='Required'
-            />
-            <button
-                type='button'
-                class='btn btn-outline-danger'
-                @click='removeField(row.key)'
-            >
-                Remove
-            </button>
+                <template #label>
+                    <button
+                        type='button'
+                        class='btn btn-link text-white text-decoration-none p-0 d-flex align-items-center gap-2'
+                        :aria-expanded='fieldsOpen'
+                        aria-controls='locator-extra-fields'
+                        @click='fieldsOpen = !fieldsOpen'
+                    >
+                        <IconChevronRight
+                            :size='18'
+                            stroke='2'
+                            class='locator-fields-chevron'
+                            :class='{ "locator-fields-open": fieldsOpen }'
+                        />
+                        <span class='text-uppercase text-white-50 small'>
+                            Additional fields
+                        </span>
+                    </button>
+                </template>
+                <div
+                    v-if='fieldsOpen'
+                    id='locator-extra-fields'
+                    class='d-flex flex-column gap-2'
+                >
+                    <div>
+                        <button
+                            type='button'
+                            class='btn btn-secondary'
+                            :disabled='fields.length >= 40'
+                            @click='fields = addLocateField(fields)'
+                        >
+                            Add Field
+                        </button>
+                    </div>
+                    <div
+                        v-for='row in fields'
+                        :key='row.key'
+                        class='border rounded-3 p-2'
+                    >
+                        <TablerEnum
+                            label='Type'
+                            :model-value='typeMenuLabel(row.type)'
+                            :options='typeLabelsFor(fields, row)'
+                            @update:model-value='applyFieldType(row, String($event))'
+                        />
+                        <TablerInput
+                            v-model='row.label'
+                            label='Label'
+                        />
+                        <TablerInput
+                            v-if='row.type === "choice"'
+                            v-model='row.options'
+                            label='Options'
+                            description='Comma-separated.'
+                        />
+                        <TablerToggle
+                            v-model='row.required'
+                            label='Required'
+                        />
+                        <button
+                            type='button'
+                            class='btn btn-outline-danger'
+                            @click='removeField(row.key)'
+                        >
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </TablerBorder>
         </div>
         <div class='col-12'>
             <button
@@ -145,7 +178,8 @@
 
 <script setup lang='ts'>
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
-import { TablerEnum, TablerInlineAlert, TablerInput, TablerToggle } from '@tak-ps/vue-tabler';
+import { IconChevronRight } from '@tabler/icons-vue';
+import { TablerBorder, TablerEnum, TablerInlineAlert, TablerInput, TablerToggle } from '@tak-ps/vue-tabler';
 import { listLocateMeta, listLocateMissions } from '../api/tak-portal-client.ts';
 import {
     addLocateField,
@@ -212,6 +246,7 @@ const metaLoading = ref(false);
 const missionsLoading = ref(false);
 const formError = ref('');
 const fields = ref<LocateFieldDraft[]>(defaultLocateFields());
+const fieldsOpen = ref(false);
 const colorOpen = ref(false);
 const colorRoot = ref<HTMLElement | null>(null);
 
@@ -338,6 +373,14 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.locator-fields-chevron {
+    transition: transform 0.15s ease;
+}
+
+.locator-fields-open {
+    transform: rotate(90deg);
+}
+
 .locator-color-chip {
     width: 0.85rem;
     height: 0.85rem;
