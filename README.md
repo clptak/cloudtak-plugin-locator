@@ -15,7 +15,7 @@ A CloudTAK system admin sets the TAK Portal base URL for one TAK channel. CloudT
 
 ## Prerequisites
 
-1. **TAK Portal** with the locate feature and your user granted `page.locate` on the portal. Locator API calls use the **CloudTAK → TAK Portal bridge** (`/api/takportal/locate/*`) — no cross-origin browser auth. See [TAK Portal bridge (CloudTAK API)](#tak-portal-bridge-cloudtak-api). A system admin saves the **TAK Portal Base URL** and a TAK channel in CloudTAK (`PUT /api/locator/settings`). That URL is used for public share links (`/locate/{slug}`). Create is enabled only when the signed-in user's TAK channels include the saved channel. CloudTAK loads it from `api/stateless/routes/locator-settings.ts`.
+1. **TAK Portal** with the locate feature and your user granted `page.locate` on the portal. Locator API calls use the **CloudTAK → TAK Portal bridge** (`/api/takportal/locate/*`) — no cross-origin browser auth. See [TAK Portal bridge (CloudTAK API)](#tak-portal-bridge-cloudtak-api). A system admin saves the **TAK Portal Base URL** and a TAK channel in CloudTAK (`PUT /api/locator/settings`). That URL is used for public share links (`/locate/{slug}`). Create is enabled when the saved channel is in the channel list CloudTAK already loaded. The plugin does not call `GET /api/marti/group` itself. If that local list is not ready yet, the form still opens and TAK Portal enforces the channel. CloudTAK loads it from `api/stateless/routes/locator-settings.ts`.
 
 2. **TAK Portal Server Settings** — TAK URL/certs for relaying GPS pings to TAK Server, plus SMS provider credentials. The plugin does **not** store Twilio settings; it calls TAK Portal `POST /api/locate/locators/:id/send-link-sms`, which uses portal SMS configuration to build and send the link.
 

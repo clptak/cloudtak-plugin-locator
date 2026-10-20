@@ -154,7 +154,12 @@ async function loadGroups(): Promise<void> {
     loadingGroups.value = true;
     groupWarning.value = '';
     try {
-        groups.value = await listUserChannels();
+        const listed = await listUserChannels();
+        if (!listed) {
+            groupWarning.value = 'TAK channels are still loading. Close settings and open them again.';
+            return;
+        }
+        groups.value = listed;
         if (!groups.value.length) {
             groupWarning.value = 'This account has no TAK channels.';
         }

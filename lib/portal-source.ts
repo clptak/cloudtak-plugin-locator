@@ -1,5 +1,9 @@
+import GroupManager from '@/base/group.ts';
 import { std } from '@/std.ts';
+import { accessFromSavedChannels } from './portal-access.ts';
 import { normalizeTakPortalBaseUrl } from './locator-url.ts';
+
+export { userIsOnChannel } from './portal-access.ts';
 
 export const PORTAL_UNAVAILABLE_MESSAGE =
     'A CloudTAK admin must set a TAK Portal URL for one of this account\'s channels before you can create locators.';
@@ -77,24 +81,20 @@ export function assertPortalUrl(raw: string): string {
     return url;
 }
 
-/** Read the signed-in user's TAK channels. */
-export async function listUserChannels(): Promise<string[]> {
-    const listed = await std('/api/marti/group?useCache=true');
-    const rows = listed && typeof listed === 'object' && Array.isArray((listed as { data?: unknown }).data)
-        ? (listed as { data: { name?: unknown }[] }).data
-        : null;
-    if (!rows) throw new Error('Failed to load TAK channels');
-
+/**
+ * Channel names CloudTAK already stored.
+ * Null when that cache is not ready.
+ * A second live GET /api/marti/group races CloudTAK's own group sync and
+ * often dies at the 20s client timeout, which replaced the SMS tab.
+ */
+export async function listUserChannels(): Promise<string[] | null> {
+    if (!await GroupManager.hydrated()) return null;
+    const rows = await GroupManager.list();
     const names = new Set<string>();
     for (const row of rows) {
         if (typeof row.name === 'string' && row.name.trim()) names.add(row.name.trim());
     }
     return [...names].sort((a, b) => a.localeCompare(b));
-}
-
-export function userIsOnChannel(channel: string, groupNames: string[]): boolean {
-    const wanted = channel.trim();
-    return groupNames.some((name) => name.trim() === wanted);
 }
 
 export async function fetchIsSystemAdmin(): Promise<boolean> {
@@ -136,23 +136,12 @@ export async function loadSharedPortal(): Promise<SharedPortal> {
         return { ok: false, reason: 'missing', message: PORTAL_UNAVAILABLE_MESSAGE };
     }
 
-    let channels: string[];
     try {
-        channels = await listUserChannels();
+        return accessFromSavedChannels(saved, await listUserChannels(), PORTAL_UNAVAILABLE_MESSAGE);
     } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
         return { ok: false, reason: 'error', message };
     }
-
-    if (!userIsOnChannel(saved.channel, channels)) {
-        return {
-            ok: false,
-            reason: 'missing',
-            message: `Locators are limited to the ${saved.channel} channel.`,
-        };
-    }
-
-    return { ok: true, takPortalUrl: saved.takPortalUrl, channel: saved.channel };
 }
 
 /** Save the URL in CloudTAK for one TAK channel. System admin only. */

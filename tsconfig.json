@@ -22,6 +22,7 @@
         "paths": {
             "@/stores/app.ts": ["./stubs/app-store.ts"],
             "@/stores/map.ts": ["./stubs/map-store.ts"],
+            "@/base/group.ts": ["./stubs/group.ts"],
             "@/base/overlay.ts": ["./stubs/overlay.ts"],
             "@/base/overlay-class.ts": ["./stubs/overlay-class.ts"],
             "@/std.ts": ["./stubs/std.ts"],
