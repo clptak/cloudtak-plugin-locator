@@ -1,17 +1,17 @@
-# Graph Report - cloudtak-plugin-locator  (2026-10-19)
+# Graph Report - cloudtak-plugin-locator  (2026-10-20)
 
 ## Corpus Check
-- 45 files · ~15,475 words
+- 48 files · ~15,799 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 2 file(s) not represented in the graph (top: (none) 2)
 
 ## Summary
-- 452 nodes · 811 edges · 14 communities (12 shown, 2 thin omitted)
+- 466 nodes · 831 edges · 14 communities (12 shown, 2 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `da38851c`
+- Built from commit: `d441f0f7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -37,22 +37,22 @@
 4. `LocatorHistoryMapSync` - 12 edges
 5. `openPopout()` - 12 edges
 6. `@tak-ps/vue-tabler` - 12 edges
-7. `Locator` - 10 edges
-8. `useLocatorStore` - 10 edges
-9. `Overlay` - 10 edges
-10. `std()` - 10 edges
+7. `paths` - 11 edges
+8. `Locator` - 10 edges
+9. `useLocatorStore` - 10 edges
+10. `Overlay` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `portalFetch()` --calls--> `std()`  [EXTRACTED]
   api/tak-portal-client.ts → stubs/std.ts
 - `updateLocator()` --calls--> `clampPingIntervalSeconds()`  [EXTRACTED]
   api/tak-portal-client.ts → lib/locator-url.ts
+- `pushHistory()` --calls--> `listHistory()`  [EXTRACTED]
+  components/LocatorPane.vue → api/tak-portal-client.ts
 - `submit()` --calls--> `clampPingIntervalSeconds()`  [EXTRACTED]
   components/LocatorCreateCard.vue → lib/locator-url.ts
 - `publicUrl` --calls--> `publicLocateUrl()`  [EXTRACTED]
   components/LocatorRowActions.vue → lib/locator-url.ts
-- `previewUrl` --calls--> `publicLocateUrl()`  [EXTRACTED]
-  components/LocatorSendSmsView.vue → lib/locator-url.ts
 
 ## Import Cycles
 - None detected.
@@ -65,35 +65,35 @@ Nodes (48): carrierLabel, carrierOptions, error, form, localDateTimeToUtcISO(), 
 
 ### Community 1 - "locator-history-map-sync.ts"
 Cohesion: 0.07
-Nodes (28): LocatorPlugin, callsignWithReceivedHhmm(), formatReceivedHhmm(), LOCATION_HISTORY_POINT_TYPE, LOCATION_HISTORY_STROKE, locationHistoryGeoJsonFeatures(), LocationHistoryGeoJsonOptions, LocationHistoryPointMeta (+20 more)
+Nodes (29): listHistory(), LocatorPlugin, callsignWithReceivedHhmm(), formatReceivedHhmm(), LOCATION_HISTORY_POINT_TYPE, LOCATION_HISTORY_STROKE, locationHistoryGeoJsonFeatures(), LocationHistoryGeoJsonOptions (+21 more)
 
 ### Community 2 - "SmsLocatorTab.vue"
-Cohesion: 0.06
-Nodes (51): ApiErr, ApiOk, archiveLocator(), bridgeUrl(), createLocator(), deleteLocator(), listLocators(), LocateChannel (+43 more)
+Cohesion: 0.09
+Nodes (37): ApiErr, ApiOk, archiveLocator(), bridgeUrl(), createLocator(), deleteLocator(), listLocators(), LocateChannel (+29 more)
 
 ### Community 3 - "index.ts"
-Cohesion: 0.08
-Nodes (38): emit, popOut(), HostFloatComponent, LocatorFloatShell, LocatorPane, MenuItemConfig, MenuItemIconType, _typecheck (+30 more)
+Cohesion: 0.07
+Nodes (44): emit, popOut(), HostFloatComponent, LocatorFloatShell, LocatorPane, MenuItemConfig, MenuItemIconType, _typecheck (+36 more)
 
 ### Community 4 - "vue"
-Cohesion: 0.07
-Nodes (14): appStore, isMobile, appStore, emit, isMobile, *.vue, appStore, backType (+6 more)
+Cohesion: 0.08
+Nodes (23): appStore, isMobile, emit, props, publicUrl, displayError, emit, localError (+15 more)
 
 ### Community 5 - "SettingsPanel.vue"
-Cohesion: 0.08
-Nodes (41): testTakPortalConnection(), channelOptions, clearFeedback(), cloneDraft(), emit, error, groups, groupWarning (+33 more)
+Cohesion: 0.06
+Nodes (47): testTakPortalConnection(), channelOptions, clearFeedback(), cloneDraft(), emit, error, groups, groupWarning (+39 more)
 
 ### Community 6 - "package.json"
 Cohesion: 0.06
-Nodes (37): description, devDependencies, eslint, @eslint/js, eslint-plugin-vue, globals, @tak-ps/cloudtak, typescript (+29 more)
+Nodes (36): description, devDependencies, eslint, @eslint/js, eslint-plugin-vue, globals, @tak-ps/cloudtak, typescript (+28 more)
 
 ### Community 7 - "compilerOptions"
 Cohesion: 0.06
-Nodes (31): compilerOptions, allowImportingTsExtensions, baseUrl, composite, esModuleInterop, forceConsistentCasingInFileNames, jsx, jsxImportSource (+23 more)
+Nodes (32): compilerOptions, allowImportingTsExtensions, baseUrl, composite, esModuleInterop, forceConsistentCasingInFileNames, jsx, jsxImportSource (+24 more)
 
 ### Community 8 - "LocatorPane.vue"
 Cohesion: 0.09
-Nodes (23): listHistory(), sendLocatorLinkSms(), activeTab, chromeEl, defaultSendPhones, drillLocator, historyEntries, historyError (+15 more)
+Nodes (22): sendLocatorLinkSms(), activeTab, chromeEl, defaultSendPhones, drillLocator, historyEntries, historyError, historyLoading (+14 more)
 
 ### Community 9 - "CloudTAK Locator Plugin"
 Cohesion: 0.12
@@ -109,23 +109,23 @@ Nodes (28): listLocateMeta(), listLocateMissions(), channel, channelNames, chann
 
 ## Knowledge Gaps
 - **4 isolated node(s):** `@vue/tsconfig`, `eslint`, `typescript`, `vue-tsc`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 228 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 235 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `vue` connect `vue` to `PingForm.vue`, `SmsLocatorTab.vue`, `index.ts`, `SettingsPanel.vue`, `package.json`, `LocatorPane.vue`, `LocatorCreateCard.vue`?**
-  _High betweenness centrality (0.208) - this node is a cross-community bridge._
+  _High betweenness centrality (0.200) - this node is a cross-community bridge._
 - **What connects `@vue/tsconfig`, `eslint`, `typescript` to the rest of the system?**
   _4 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `PingForm.vue` be split into smaller, more focused modules?**
-  _Cohesion score 0.06265664160401002 - nodes in this community are weakly interconnected._
-- **Why does `@tak-ps/vue-tabler` connect `vue` to `PingForm.vue`, `SmsLocatorTab.vue`, `index.ts`, `SettingsPanel.vue`, `package.json`, `LocatorPane.vue`, `LocatorCreateCard.vue`?**
-  _High betweenness centrality (0.107) - this node is a cross-community bridge._
+  _Cohesion score 0.06298701298701298 - nodes in this community are weakly interconnected._
+- **Why does `@tak-ps/vue-tabler` connect `index.ts` to `PingForm.vue`, `SmsLocatorTab.vue`, `vue`, `SettingsPanel.vue`, `package.json`, `LocatorPane.vue`, `LocatorCreateCard.vue`?**
+  _High betweenness centrality (0.104) - this node is a cross-community bridge._
 - **Should `locator-history-map-sync.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.07164404223227752 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07003367003367003 - nodes in this community are weakly interconnected._
 - **Should `SmsLocatorTab.vue` be split into smaller, more focused modules?**
-  _Cohesion score 0.06328320802005012 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09102564102564102 - nodes in this community are weakly interconnected._
 - **Should `index.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.0824829931972789 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06654567453115548 - nodes in this community are weakly interconnected._

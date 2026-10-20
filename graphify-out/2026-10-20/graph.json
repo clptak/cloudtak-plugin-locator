@@ -332,45 +332,6 @@
       "source_location": "L74"
     },
     {
-      "id": "lib_types_historyentry",
-      "label": "HistoryEntry",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "historyentry",
-      "source_file": "lib/types.ts",
-      "source_location": "L21"
-    },
-    {
-      "id": "lib_types_locator",
-      "label": "Locator",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "locator",
-      "source_file": "lib/types.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "lib_types_pluginsettings",
-      "label": "PluginSettings",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "pluginsettings",
-      "source_file": "lib/types.ts",
-      "source_location": "L33"
-    },
-    {
       "id": "index_hostfloatcomponent",
       "label": "HostFloatComponent",
       "_callable": true,
@@ -436,6 +397,45 @@
       "source_location": "L12"
     },
     {
+      "id": "lib_types_historyentry",
+      "label": "HistoryEntry",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "historyentry",
+      "source_file": "lib/types.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "lib_types_locator",
+      "label": "Locator",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "locator",
+      "source_file": "lib/types.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_types_pluginsettings",
+      "label": "PluginSettings",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "pluginsettings",
+      "source_file": "lib/types.ts",
+      "source_location": "L33"
+    },
+    {
       "id": "stubs_float_store_pane",
       "label": "Pane",
       "_callable": true,
@@ -449,6 +449,32 @@
       "source_location": "L4"
     },
     {
+      "id": "lib_portal_access_portalaccess",
+      "label": "PortalAccess",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": "portalaccess",
+      "source_file": "lib/portal-access.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "lib_portal_access_savedportal",
+      "label": "SavedPortal",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": "savedportal",
+      "source_file": "lib/portal-access.ts",
+      "source_location": "L6"
+    },
+    {
       "id": "lib_portal_source_admindraft",
       "label": "AdminDraft",
       "_callable": true,
@@ -459,7 +485,7 @@
       "file_type": "code",
       "norm_label": "admindraft",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L10"
+      "source_location": "L14"
     },
     {
       "id": "lib_portal_source_portalsettings",
@@ -472,7 +498,7 @@
       "file_type": "code",
       "norm_label": "portalsettings",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L15"
+      "source_location": "L19"
     },
     {
       "id": "lib_portal_source_sharedportal",
@@ -485,7 +511,33 @@
       "file_type": "code",
       "norm_label": "sharedportal",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L20"
+      "source_location": "L24"
+    },
+    {
+      "id": "stubs_group_groupchannel",
+      "label": "GroupChannel",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": "groupchannel",
+      "source_file": "stubs/group.ts",
+      "source_location": "L2"
+    },
+    {
+      "id": "stubs_group_groupmanager",
+      "label": "GroupManager",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": "groupmanager",
+      "source_file": "stubs/group.ts",
+      "source_location": "L4"
     },
     {
       "id": "components_locatorpane_screen",
@@ -777,6 +829,18 @@
       "source_location": "L88"
     },
     {
+      "id": "api_tak_portal_client_listhistory",
+      "label": "listHistory()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "locator-history-map-sync.ts",
+      "file_type": "code",
+      "norm_label": "listhistory()",
+      "source_file": "api/tak-portal-client.ts",
+      "source_location": "L209"
+    },
+    {
       "id": "index_locatorplugin_constructor",
       "label": ".constructor()",
       "_callable": true,
@@ -955,6 +1019,18 @@
       "norm_label": ".ensureoverlay()",
       "source_file": "lib/locator-history-map-sync.ts",
       "source_location": "L244"
+    },
+    {
+      "id": "lib_locator_history_map_sync_locatorhistorymapsync_postlocator",
+      "label": ".postLocator()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "locator-history-map-sync.ts",
+      "file_type": "code",
+      "norm_label": ".postlocator()",
+      "source_file": "lib/locator-history-map-sync.ts",
+      "source_location": "L227"
     },
     {
       "id": "lib_locator_history_map_sync_locatorhistorymapsync_removeoverlay",
@@ -1461,18 +1537,6 @@
       "source_location": "L150"
     },
     {
-      "id": "components_locatorsendsmsview_submit",
-      "label": "submit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "submit()",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L75"
-    },
-    {
       "id": "components_smslocatortab_onarchive",
       "label": "onArchive()",
       "_callable": true,
@@ -1605,18 +1669,6 @@
       "source_location": "L10"
     },
     {
-      "id": "lib_locator_url_publiclocateurl",
-      "label": "publicLocateUrl()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "publiclocateurl()",
-      "source_file": "lib/locator-url.ts",
-      "source_location": "L5"
-    },
-    {
       "id": "components_popoutpaneaction_popout",
       "label": "popOut()",
       "_callable": true,
@@ -1747,6 +1799,18 @@
       "norm_label": "showfloat()",
       "source_file": "lib/floatMinimize.ts",
       "source_location": "L60"
+    },
+    {
+      "id": "lib_menutemplate_routerback",
+      "label": "routerBack()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "routerback()",
+      "source_file": "lib/MenuTemplate.vue",
+      "source_location": "L214"
     },
     {
       "id": "lib_popout_addstyleclone",
@@ -1893,18 +1957,6 @@
       "source_location": "L86"
     },
     {
-      "id": "stubs_app_store_useappstore",
-      "label": "useAppStore()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "index.ts",
-      "file_type": "code",
-      "norm_label": "useappstore()",
-      "source_file": "stubs/app-store.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "components_locatorhistoryview_formatposition",
       "label": "formatPosition()",
       "_callable": true,
@@ -1927,6 +1979,18 @@
       "norm_label": "formattime()",
       "source_file": "components/LocatorHistoryView.vue",
       "source_location": "L104"
+    },
+    {
+      "id": "components_locatorsendsmsview_submit",
+      "label": "submit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "submit()",
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L75"
     },
     {
       "id": "components_locatortable_formatinterval",
@@ -1977,16 +2041,28 @@
       "source_location": "L180"
     },
     {
-      "id": "lib_menutemplate_routerback",
-      "label": "routerBack()",
+      "id": "lib_locator_url_publiclocateurl",
+      "label": "publicLocateUrl()",
       "_callable": true,
       "_origin": "ast",
       "community": 4,
       "community_name": "vue",
       "file_type": "code",
-      "norm_label": "routerback()",
-      "source_file": "lib/MenuTemplate.vue",
-      "source_location": "L214"
+      "norm_label": "publiclocateurl()",
+      "source_file": "lib/locator-url.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "stubs_app_store_useappstore",
+      "label": "useAppStore()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "useappstore()",
+      "source_file": "stubs/app-store.ts",
+      "source_location": "L1"
     },
     {
       "id": "stubs_float_store_usefloatstore",
@@ -2058,7 +2134,7 @@
       "file_type": "code",
       "norm_label": "reset()",
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L201"
+      "source_location": "L206"
     },
     {
       "id": "components_settingspanel_save",
@@ -2070,7 +2146,7 @@
       "file_type": "code",
       "norm_label": "save()",
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L168"
+      "source_location": "L173"
     },
     {
       "id": "components_settingspanel_testportal",
@@ -2082,7 +2158,7 @@
       "file_type": "code",
       "norm_label": "testportal()",
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L207"
+      "source_location": "L212"
     },
     {
       "id": "lib_locator_url_normalizetakportalbaseurl",
@@ -2097,6 +2173,30 @@
       "source_location": "L1"
     },
     {
+      "id": "lib_portal_access_accessfromsavedchannels",
+      "label": "accessFromSavedChannels()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": "accessfromsavedchannels()",
+      "source_file": "lib/portal-access.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "lib_portal_access_userisonchannel",
+      "label": "userIsOnChannel()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": "userisonchannel()",
+      "source_file": "lib/portal-access.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "lib_portal_source_assertportalurl",
       "label": "assertPortalUrl()",
       "_callable": true,
@@ -2106,7 +2206,7 @@
       "file_type": "code",
       "norm_label": "assertportalurl()",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L64"
+      "source_location": "L68"
     },
     {
       "id": "lib_portal_source_assettings",
@@ -2154,7 +2254,7 @@
       "file_type": "code",
       "norm_label": "listuserchannels()",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L81"
+      "source_location": "L90"
     },
     {
       "id": "lib_portal_source_loadadmindraft",
@@ -2166,7 +2266,7 @@
       "file_type": "code",
       "norm_label": "loadadmindraft()",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L24"
+      "source_location": "L28"
     },
     {
       "id": "lib_portal_source_loadsharedportal",
@@ -2190,7 +2290,7 @@
       "file_type": "code",
       "norm_label": "publishportalsettings()",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L159"
+      "source_location": "L148"
     },
     {
       "id": "lib_portal_source_saveadmindraft",
@@ -2202,19 +2302,7 @@
       "file_type": "code",
       "norm_label": "saveadmindraft()",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L57"
-    },
-    {
-      "id": "lib_portal_source_userisonchannel",
-      "label": "userIsOnChannel()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "SettingsPanel.vue",
-      "file_type": "code",
-      "norm_label": "userisonchannel()",
-      "source_file": "lib/portal-source.ts",
-      "source_location": "L95"
+      "source_location": "L61"
     },
     {
       "id": "stores_plugin_state_readshowhistoryonmap",
@@ -2227,6 +2315,30 @@
       "norm_label": "readshowhistoryonmap()",
       "source_file": "stores/plugin-state.ts",
       "source_location": "L13"
+    },
+    {
+      "id": "stubs_group_groupmanager_hydrated",
+      "label": ".hydrated()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": ".hydrated()",
+      "source_file": "stubs/group.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "stubs_group_groupmanager_list",
+      "label": ".list()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": ".list()",
+      "source_file": "stubs/group.ts",
+      "source_location": "L9"
     },
     {
       "id": "stubs_std_std",
@@ -2251,18 +2363,6 @@
       "norm_label": "stdurl()",
       "source_file": "stubs/std.ts",
       "source_location": "L2"
-    },
-    {
-      "id": "api_tak_portal_client_listhistory",
-      "label": "listHistory()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "LocatorPane.vue",
-      "file_type": "code",
-      "norm_label": "listhistory()",
-      "source_file": "api/tak-portal-client.ts",
-      "source_location": "L209"
     },
     {
       "id": "api_tak_portal_client_sendlocatorlinksms",
@@ -2383,18 +2483,6 @@
       "norm_label": "fitdesktoppanewidth()",
       "source_file": "lib/floatMinimize.ts",
       "source_location": "L78"
-    },
-    {
-      "id": "lib_locator_history_map_sync_locatorhistorymapsync_postlocator",
-      "label": ".postLocator()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "LocatorPane.vue",
-      "file_type": "code",
-      "norm_label": ".postlocator()",
-      "source_file": "lib/locator-history-map-sync.ts",
-      "source_location": "L227"
     },
     {
       "id": "components_cellphone_pingform",
@@ -3113,127 +3201,6 @@
       "source_location": "L1"
     },
     {
-      "id": "components_locatorrowactions",
-      "label": "LocatorRowActions.vue",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "locatorrowactions.vue",
-      "source_file": "components/LocatorRowActions.vue",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_locatorrowactions_emit",
-      "label": "emit",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "emit",
-      "source_file": "components/LocatorRowActions.vue",
-      "source_location": "L86"
-    },
-    {
-      "id": "components_locatorrowactions_props",
-      "label": "props",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "props",
-      "source_file": "components/LocatorRowActions.vue",
-      "source_location": "L74"
-    },
-    {
-      "id": "components_locatorrowactions_publicurl",
-      "label": "publicUrl",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "publicurl",
-      "source_file": "components/LocatorRowActions.vue",
-      "source_location": "L96"
-    },
-    {
-      "id": "components_locatorsendsmsview",
-      "label": "LocatorSendSmsView.vue",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "locatorsendsmsview.vue",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_locatorsendsmsview_displayerror",
-      "label": "displayError",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "displayerror",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L61"
-    },
-    {
-      "id": "components_locatorsendsmsview_emit",
-      "label": "emit",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "emit",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L54"
-    },
-    {
-      "id": "components_locatorsendsmsview_localerror",
-      "label": "localError",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "localerror",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L59"
-    },
-    {
-      "id": "components_locatorsendsmsview_phones",
-      "label": "phones",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "phones",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L58"
-    },
-    {
-      "id": "components_locatorsendsmsview_previewurl",
-      "label": "previewUrl",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "previewurl",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L70"
-    },
-    {
-      "id": "components_locatorsendsmsview_props",
-      "label": "props",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "props",
-      "source_file": "components/LocatorSendSmsView.vue",
-      "source_location": "L46"
-    },
-    {
       "id": "components_smslocatortab",
       "label": "SmsLocatorTab.vue",
       "_origin": "ast",
@@ -3399,17 +3366,6 @@
       "source_location": "L1"
     },
     {
-      "id": "lib_types",
-      "label": "types.ts",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "types.ts",
-      "source_file": "lib/types.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "components_locatorfloatshell",
       "label": "LocatorFloatShell.vue",
       "_origin": "ast",
@@ -3553,6 +3509,72 @@
       "source_location": "L7"
     },
     {
+      "id": "lib_menutemplate",
+      "label": "MenuTemplate.vue",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "menutemplate.vue",
+      "source_file": "lib/MenuTemplate.vue",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_menutemplate_appstore",
+      "label": "appStore",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "appstore",
+      "source_file": "lib/MenuTemplate.vue",
+      "source_location": "L177"
+    },
+    {
+      "id": "lib_menutemplate_backtype",
+      "label": "backType",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "backtype",
+      "source_file": "lib/MenuTemplate.vue",
+      "source_location": "L222"
+    },
+    {
+      "id": "lib_menutemplate_ismodal",
+      "label": "isModal",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "ismodal",
+      "source_file": "lib/MenuTemplate.vue",
+      "source_location": "L235"
+    },
+    {
+      "id": "lib_menutemplate_props",
+      "label": "props",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "lib/MenuTemplate.vue",
+      "source_location": "L179"
+    },
+    {
+      "id": "lib_menutemplate_router",
+      "label": "router",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "router",
+      "source_file": "lib/MenuTemplate.vue",
+      "source_location": "L176"
+    },
+    {
       "id": "lib_popout",
       "label": "popout.ts",
       "_origin": "ast",
@@ -3586,17 +3608,6 @@
       "source_location": "L24"
     },
     {
-      "id": "stubs_app_store",
-      "label": "app-store.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "index.ts",
-      "file_type": "code",
-      "norm_label": "app-store.ts",
-      "source_file": "stubs/app-store.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "ref_tabler_icons_vue",
       "label": "@tabler/icons-vue",
       "_origin": "ast",
@@ -3606,6 +3617,28 @@
       "norm_label": "@tabler/icons-vue",
       "source_file": "package.json",
       "source_location": "L19"
+    },
+    {
+      "id": "ref_tak_ps_cloudtak",
+      "label": "@tak-ps/cloudtak",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "concept",
+      "norm_label": "@tak-ps/cloudtak",
+      "source_file": "package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "ref_tak_ps_vue_tabler",
+      "label": "@tak-ps/vue-tabler",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "concept",
+      "norm_label": "@tak-ps/vue-tabler",
+      "source_file": "package.json",
+      "source_location": "L18"
     },
     {
       "id": "components_locatorhistoryview",
@@ -3639,6 +3672,127 @@
       "norm_label": "ismobile",
       "source_file": "components/LocatorHistoryView.vue",
       "source_location": "L102"
+    },
+    {
+      "id": "components_locatorrowactions",
+      "label": "LocatorRowActions.vue",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "locatorrowactions.vue",
+      "source_file": "components/LocatorRowActions.vue",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_locatorrowactions_emit",
+      "label": "emit",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "emit",
+      "source_file": "components/LocatorRowActions.vue",
+      "source_location": "L86"
+    },
+    {
+      "id": "components_locatorrowactions_props",
+      "label": "props",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "components/LocatorRowActions.vue",
+      "source_location": "L74"
+    },
+    {
+      "id": "components_locatorrowactions_publicurl",
+      "label": "publicUrl",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "publicurl",
+      "source_file": "components/LocatorRowActions.vue",
+      "source_location": "L96"
+    },
+    {
+      "id": "components_locatorsendsmsview",
+      "label": "LocatorSendSmsView.vue",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "locatorsendsmsview.vue",
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_locatorsendsmsview_displayerror",
+      "label": "displayError",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "displayerror",
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L61"
+    },
+    {
+      "id": "components_locatorsendsmsview_emit",
+      "label": "emit",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "emit",
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L54"
+    },
+    {
+      "id": "components_locatorsendsmsview_localerror",
+      "label": "localError",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "localerror",
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L59"
+    },
+    {
+      "id": "components_locatorsendsmsview_phones",
+      "label": "phones",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "phones",
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L58"
+    },
+    {
+      "id": "components_locatorsendsmsview_previewurl",
+      "label": "previewUrl",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "previewurl",
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L70"
+    },
+    {
+      "id": "components_locatorsendsmsview_props",
+      "label": "props",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "components/LocatorSendSmsView.vue",
+      "source_location": "L46"
     },
     {
       "id": "components_locatortable",
@@ -3707,70 +3861,26 @@
       "source_location": "L3"
     },
     {
-      "id": "lib_menutemplate",
-      "label": "MenuTemplate.vue",
+      "id": "lib_types",
+      "label": "types.ts",
       "_origin": "ast",
       "community": 4,
       "community_name": "vue",
       "file_type": "code",
-      "norm_label": "menutemplate.vue",
-      "source_file": "lib/MenuTemplate.vue",
+      "norm_label": "types.ts",
+      "source_file": "lib/types.ts",
       "source_location": "L1"
     },
     {
-      "id": "lib_menutemplate_appstore",
-      "label": "appStore",
+      "id": "stubs_app_store",
+      "label": "app-store.ts",
       "_origin": "ast",
       "community": 4,
       "community_name": "vue",
       "file_type": "code",
-      "norm_label": "appstore",
-      "source_file": "lib/MenuTemplate.vue",
-      "source_location": "L177"
-    },
-    {
-      "id": "lib_menutemplate_backtype",
-      "label": "backType",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "backtype",
-      "source_file": "lib/MenuTemplate.vue",
-      "source_location": "L222"
-    },
-    {
-      "id": "lib_menutemplate_ismodal",
-      "label": "isModal",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "ismodal",
-      "source_file": "lib/MenuTemplate.vue",
-      "source_location": "L235"
-    },
-    {
-      "id": "lib_menutemplate_props",
-      "label": "props",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "props",
-      "source_file": "lib/MenuTemplate.vue",
-      "source_location": "L179"
-    },
-    {
-      "id": "lib_menutemplate_router",
-      "label": "router",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "router",
-      "source_file": "lib/MenuTemplate.vue",
-      "source_location": "L176"
+      "norm_label": "app-store.ts",
+      "source_file": "stubs/app-store.ts",
+      "source_location": "L1"
     },
     {
       "id": "stubs_float_store",
@@ -3782,17 +3892,6 @@
       "norm_label": "float-store.ts",
       "source_file": "stubs/float-store.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "ref_tak_ps_vue_tabler",
-      "label": "@tak-ps/vue-tabler",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "vue",
-      "file_type": "concept",
-      "norm_label": "@tak-ps/vue-tabler",
-      "source_file": "package.json",
-      "source_location": "L18"
     },
     {
       "id": "ref_vue",
@@ -3971,6 +4070,17 @@
       "source_location": "L137"
     },
     {
+      "id": "lib_portal_access",
+      "label": "portal-access.ts",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": "portal-access.ts",
+      "source_file": "lib/portal-access.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "lib_portal_source",
       "label": "portal-source.ts",
       "_origin": "ast",
@@ -3990,7 +4100,29 @@
       "file_type": "code",
       "norm_label": "portal_unavailable_message",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L4"
+      "source_location": "L8"
+    },
+    {
+      "id": "lib_portal_source_test",
+      "label": "portal-source.test.ts",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": "portal-source.test.ts",
+      "source_file": "lib/portal-source.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_portal_source_test_saved",
+      "label": "saved",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": "saved",
+      "source_file": "lib/portal-source.test.ts",
+      "source_location": "L5"
     },
     {
       "id": "stores_plugin_state",
@@ -4024,6 +4156,17 @@
       "norm_label": "uselocatorstore",
       "source_file": "stores/plugin-state.ts",
       "source_location": "L21"
+    },
+    {
+      "id": "stubs_group",
+      "label": "group.ts",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "file_type": "code",
+      "norm_label": "group.ts",
+      "source_file": "stubs/group.ts",
+      "source_location": "L1"
     },
     {
       "id": "stubs_std",
@@ -4422,17 +4565,6 @@
       "source_location": "L29"
     },
     {
-      "id": "ref_tak_ps_cloudtak",
-      "label": "@tak-ps/cloudtak",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@tak-ps/cloudtak",
-      "source_file": "package.json",
-      "source_location": "L16"
-    },
-    {
       "id": "ref_typescript",
       "label": "typescript",
       "_origin": "ast",
@@ -4727,7 +4859,18 @@
       "file_type": "code",
       "norm_label": "include",
       "source_file": "tsconfig.json",
-      "source_location": "L37"
+      "source_location": "L38"
+    },
+    {
+      "id": "tsconfig_paths_base_group_ts",
+      "label": "@/base/group.ts",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "@/base/group.ts",
+      "source_file": "tsconfig.json",
+      "source_location": "L25"
     },
     {
       "id": "tsconfig_paths_base_overlay_class_ts",
@@ -4738,7 +4881,7 @@
       "file_type": "code",
       "norm_label": "@/base/overlay-class.ts",
       "source_file": "tsconfig.json",
-      "source_location": "L26"
+      "source_location": "L27"
     },
     {
       "id": "tsconfig_paths_base_overlay_ts",
@@ -4749,7 +4892,7 @@
       "file_type": "code",
       "norm_label": "@/base/overlay.ts",
       "source_file": "tsconfig.json",
-      "source_location": "L25"
+      "source_location": "L26"
     },
     {
       "id": "tsconfig_paths_src_components_cloudtak_util_floatingpane_vue",
@@ -4760,7 +4903,7 @@
       "file_type": "code",
       "norm_label": "../../../src/components/cloudtak/util/floatingpane.vue",
       "source_file": "tsconfig.json",
-      "source_location": "L31"
+      "source_location": "L32"
     },
     {
       "id": "tsconfig_paths_src_std_ts",
@@ -4771,7 +4914,7 @@
       "file_type": "code",
       "norm_label": "../../../src/std.ts",
       "source_file": "tsconfig.json",
-      "source_location": "L28"
+      "source_location": "L29"
     },
     {
       "id": "tsconfig_paths_src_stores_float_ts",
@@ -4782,7 +4925,7 @@
       "file_type": "code",
       "norm_label": "../../../src/stores/float.ts",
       "source_file": "tsconfig.json",
-      "source_location": "L30"
+      "source_location": "L31"
     },
     {
       "id": "tsconfig_paths_src_stores_map_ts",
@@ -4793,7 +4936,7 @@
       "file_type": "code",
       "norm_label": "../../../src/stores/map.ts",
       "source_file": "tsconfig.json",
-      "source_location": "L29"
+      "source_location": "L30"
     },
     {
       "id": "tsconfig_paths_std_ts",
@@ -4804,7 +4947,7 @@
       "file_type": "code",
       "norm_label": "@/std.ts",
       "source_file": "tsconfig.json",
-      "source_location": "L27"
+      "source_location": "L28"
     },
     {
       "id": "tsconfig_paths_stores_app_ts",
@@ -5188,8 +5331,8 @@
     {
       "id": "ref_geojson",
       "label": "ref_geojson",
-      "community": 0,
-      "community_name": "PingForm.vue",
+      "community": 1,
+      "community_name": "locator-history-map-sync.ts",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_geojson",
@@ -5208,6 +5351,17 @@
       "type": "external"
     },
     {
+      "id": "ref_src_stores_app_ts",
+      "label": "ref_src_stores_app_ts",
+      "community": 3,
+      "community_name": "index.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_src_stores_app_ts",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "ref_src_stores_float_ts",
       "label": "ref_src_stores_float_ts",
       "community": 3,
@@ -5219,24 +5373,35 @@
       "type": "external"
     },
     {
-      "id": "ref_src_stores_app_ts",
-      "label": "ref_src_stores_app_ts",
-      "community": 4,
-      "community_name": "vue",
+      "id": "ref_vue_router",
+      "label": "ref_vue_router",
+      "community": 3,
+      "community_name": "index.ts",
       "external": true,
       "file_type": "concept",
-      "norm_label": "ref_src_stores_app_ts",
+      "norm_label": "ref_vue_router",
       "source_file": "",
       "type": "external"
     },
     {
-      "id": "ref_vue_router",
-      "label": "ref_vue_router",
-      "community": 4,
-      "community_name": "vue",
+      "id": "ref_node_assert",
+      "label": "ref_node_assert",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
       "external": true,
       "file_type": "concept",
-      "norm_label": "ref_vue_router",
+      "norm_label": "ref_node_assert",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_node_test",
+      "label": "ref_node_test",
+      "community": 5,
+      "community_name": "SettingsPanel.vue",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_node_test",
       "source_file": "",
       "type": "external"
     }
@@ -5647,7 +5812,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L202",
+      "source_location": "L207",
       "weight": 1.0
     },
     {
@@ -5659,7 +5824,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L169",
+      "source_location": "L174",
       "weight": 1.0
     },
     {
@@ -5671,7 +5836,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L178",
+      "source_location": "L183",
       "weight": 1.0
     },
     {
@@ -5683,7 +5848,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L186",
+      "source_location": "L191",
       "weight": 1.0
     },
     {
@@ -5695,7 +5860,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L188",
+      "source_location": "L193",
       "weight": 1.0
     },
     {
@@ -5707,7 +5872,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L189",
+      "source_location": "L194",
       "weight": 1.0
     },
     {
@@ -5719,7 +5884,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L193",
+      "source_location": "L198",
       "weight": 1.0
     },
     {
@@ -5731,7 +5896,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L208",
+      "source_location": "L213",
       "weight": 1.0
     },
     {
@@ -5743,7 +5908,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L211",
+      "source_location": "L216",
       "weight": 1.0
     },
     {
@@ -5755,7 +5920,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L219",
+      "source_location": "L224",
       "weight": 1.0
     },
     {
@@ -7163,6 +7328,18 @@
       "weight": 1.0
     },
     {
+      "source": "lib_portal_access_accessfromsavedchannels",
+      "target": "lib_portal_access_userisonchannel",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "lib/portal-access.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
       "source": "lib_portal_source_assertportalurl",
       "target": "lib_locator_url_normalizetakportalbaseurl",
       "relation": "calls",
@@ -7171,7 +7348,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L65",
+      "source_location": "L69",
       "weight": 1.0
     },
     {
@@ -7224,14 +7401,26 @@
     },
     {
       "source": "lib_portal_source_listuserchannels",
-      "target": "stubs_std_std",
+      "target": "stubs_group_groupmanager_hydrated",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L82",
+      "source_location": "L91",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_source_listuserchannels",
+      "target": "stubs_group_groupmanager_list",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "lib/portal-source.ts",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -7243,7 +7432,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L53",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -7260,6 +7449,18 @@
     },
     {
       "source": "lib_portal_source_loadsharedportal",
+      "target": "lib_portal_access_accessfromsavedchannels",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "lib/portal-source.ts",
+      "source_location": "L140",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_source_loadsharedportal",
       "target": "lib_portal_source_listuserchannels",
       "relation": "calls",
       "_origin": "ast",
@@ -7267,19 +7468,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L141",
-      "weight": 1.0
-    },
-    {
-      "source": "lib_portal_source_loadsharedportal",
-      "target": "lib_portal_source_userisonchannel",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "lib/portal-source.ts",
-      "source_location": "L147",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -7291,7 +7480,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L161",
+      "source_location": "L150",
       "weight": 1.0
     },
     {
@@ -7303,7 +7492,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L164",
+      "source_location": "L153",
       "weight": 1.0
     },
     {
@@ -7315,7 +7504,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/portal-source.ts",
-      "source_location": "L60",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -7400,6 +7589,18 @@
       "context": "call",
       "source_file": "components/SmsLocatorTab.vue",
       "source_location": "L146",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_source",
+      "target": "lib_portal_access",
+      "relation": "re_exports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "export",
+      "source_file": "lib/portal-source.ts",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -8524,7 +8725,7 @@
     },
     {
       "source": "lib_portal_source",
-      "target": "stubs_std_std",
+      "target": "stubs_group_groupmanager",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8536,7 +8737,7 @@
     },
     {
       "source": "lib_portal_source",
-      "target": "lib_locator_url_normalizetakportalbaseurl",
+      "target": "stubs_std_std",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8544,6 +8745,42 @@
       "context": "import",
       "source_file": "lib/portal-source.ts",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_source",
+      "target": "lib_portal_access_accessfromsavedchannels",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "lib/portal-source.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_source",
+      "target": "lib_locator_url_normalizetakportalbaseurl",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "lib/portal-source.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_source_test",
+      "target": "lib_portal_access_accessfromsavedchannels",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "lib/portal-source.test.ts",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -10174,7 +10411,7 @@
     },
     {
       "source": "lib_portal_source",
-      "target": "stubs_std",
+      "target": "stubs_group",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10186,7 +10423,7 @@
     },
     {
       "source": "lib_portal_source",
-      "target": "lib_locator_url",
+      "target": "stubs_std",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10194,6 +10431,54 @@
       "context": "import",
       "source_file": "lib/portal-source.ts",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_source",
+      "target": "lib_locator_url",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "lib/portal-source.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_source_test",
+      "target": "ref_node_assert",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "lib/portal-source.test.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_source_test",
+      "target": "ref_node_test",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "lib/portal-source.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_source_test",
+      "target": "lib_portal_access",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "lib/portal-source.test.ts",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -10304,6 +10589,18 @@
       "context": "parameter_type",
       "source_file": "stubs/overlay.ts",
       "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_source",
+      "target": "lib_portal_access_userisonchannel",
+      "relation": "re_exports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "re-export",
+      "source_file": "lib/portal-source.ts",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -11668,7 +11965,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L168",
+      "source_location": "L173",
       "weight": 1.0
     },
     {
@@ -11679,7 +11976,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L201",
+      "source_location": "L206",
       "weight": 1.0
     },
     {
@@ -11690,7 +11987,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/SettingsPanel.vue",
-      "source_location": "L207",
+      "source_location": "L212",
       "weight": 1.0
     },
     {
@@ -13146,14 +13443,47 @@
       "weight": 1.0
     },
     {
-      "source": "lib_portal_source",
-      "target": "lib_portal_source_admindraft",
+      "source": "lib_portal_access",
+      "target": "lib_portal_access_userisonchannel",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "lib/portal-source.ts",
-      "source_location": "L10",
+      "source_file": "lib/portal-access.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_access",
+      "target": "lib_portal_access_accessfromsavedchannels",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/portal-access.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_access",
+      "target": "lib_portal_access_savedportal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/portal-access.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_access",
+      "target": "lib_portal_access_portalaccess",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/portal-access.ts",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -13202,13 +13532,13 @@
     },
     {
       "source": "lib_portal_source",
-      "target": "lib_portal_source_portalsettings",
+      "target": "lib_portal_source_admindraft",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/portal-source.ts",
-      "source_location": "L15",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -13219,7 +13549,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/portal-source.ts",
-      "source_location": "L159",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_source",
+      "target": "lib_portal_source_portalsettings",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/portal-source.ts",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -13230,7 +13571,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/portal-source.ts",
-      "source_location": "L20",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -13241,18 +13582,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/portal-source.ts",
-      "source_location": "L24",
-      "weight": 1.0
-    },
-    {
-      "source": "lib_portal_source",
-      "target": "lib_portal_source_portal_unavailable_message",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/portal-source.ts",
-      "source_location": "L4",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -13263,7 +13593,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/portal-source.ts",
-      "source_location": "L57",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -13274,7 +13604,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/portal-source.ts",
-      "source_location": "L64",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_portal_source",
+      "target": "lib_portal_source_portal_unavailable_message",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/portal-source.ts",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -13285,18 +13626,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/portal-source.ts",
-      "source_location": "L81",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
-      "source": "lib_portal_source",
-      "target": "lib_portal_source_userisonchannel",
+      "source": "lib_portal_source_test",
+      "target": "lib_portal_source_test_saved",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "lib/portal-source.ts",
-      "source_location": "L95",
+      "source_file": "lib/portal-source.test.ts",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -13883,6 +14224,28 @@
       "weight": 1.0
     },
     {
+      "source": "stubs_group",
+      "target": "stubs_group_groupchannel",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "stubs/group.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "stubs_group",
+      "target": "stubs_group_groupmanager",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "stubs/group.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "stubs_map_store",
       "target": "stubs_map_store_usemapstore",
       "relation": "contains",
@@ -13967,7 +14330,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tsconfig.json",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -14214,7 +14577,7 @@
     },
     {
       "source": "tsconfig_compileroptions_paths",
-      "target": "tsconfig_paths_base_overlay_ts",
+      "target": "tsconfig_paths_base_group_ts",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14225,7 +14588,7 @@
     },
     {
       "source": "tsconfig_compileroptions_paths",
-      "target": "tsconfig_paths_base_overlay_class_ts",
+      "target": "tsconfig_paths_base_overlay_ts",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14236,7 +14599,7 @@
     },
     {
       "source": "tsconfig_compileroptions_paths",
-      "target": "tsconfig_paths_std_ts",
+      "target": "tsconfig_paths_base_overlay_class_ts",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14247,18 +14610,18 @@
     },
     {
       "source": "tsconfig_compileroptions_paths",
-      "target": "tsconfig_paths_src_stores_float_ts",
+      "target": "tsconfig_paths_std_ts",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tsconfig.json",
-      "source_location": "L30",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
       "source": "tsconfig_compileroptions_paths",
-      "target": "tsconfig_paths_src_components_cloudtak_util_floatingpane_vue",
+      "target": "tsconfig_paths_src_stores_float_ts",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14269,7 +14632,7 @@
     },
     {
       "source": "tsconfig_compileroptions_paths",
-      "target": "tsconfig_paths_src_stores_map_ts",
+      "target": "tsconfig_paths_src_components_cloudtak_util_floatingpane_vue",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14280,13 +14643,24 @@
     },
     {
       "source": "tsconfig_compileroptions_paths",
-      "target": "tsconfig_paths_src_std_ts",
+      "target": "tsconfig_paths_src_stores_map_ts",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tsconfig.json",
       "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "tsconfig_compileroptions_paths",
+      "target": "tsconfig_paths_src_std_ts",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tsconfig.json",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -14491,6 +14865,28 @@
       "weight": 1.0
     },
     {
+      "source": "stubs_group_groupmanager",
+      "target": "stubs_group_groupmanager_hydrated",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "stubs/group.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "stubs_group_groupmanager",
+      "target": "stubs_group_groupmanager_list",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "stubs/group.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
       "source": "stubs_overlay_class_overlay",
       "target": "stubs_overlay_class_overlay_internal",
       "relation": "method",
@@ -14607,5 +15003,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "da38851c75a8fabc2336357df0911e27dae81674"
+  "built_at_commit": "d441f0f78f2e1a87a6603055f85dd345bf0d4a94"
 }
