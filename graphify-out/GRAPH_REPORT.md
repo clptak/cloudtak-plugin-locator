@@ -1,17 +1,17 @@
 # Graph Report - cloudtak-plugin-locator  (2026-10-20)
 
 ## Corpus Check
-- 50 files · ~16,726 words
+- 50 files · ~16,704 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 2 file(s) not represented in the graph (top: (none) 2)
 
 ## Summary
-- 488 nodes · 881 edges · 14 communities (12 shown, 2 thin omitted)
+- 488 nodes · 880 edges · 14 communities (12 shown, 2 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `64f7441c`
+- Built from commit: `258e1dba`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -64,16 +64,16 @@ Cohesion: 0.06
 Nodes (48): carrierLabel, carrierOptions, error, form, localDateTimeToUtcISO(), mapStore, missionGuid, mode (+40 more)
 
 ### Community 1 - "locator-history-map-sync.ts"
-Cohesion: 0.06
-Nodes (35): listHistory(), LocatorPlugin, bindFloatMinimize(), callsignWithReceivedHhmm(), formatReceivedHhmm(), LOCATION_HISTORY_POINT_TYPE, LOCATION_HISTORY_STROKE, locationHistoryGeoJsonFeatures() (+27 more)
+Cohesion: 0.07
+Nodes (31): listHistory(), callsignWithReceivedHhmm(), formatReceivedHhmm(), LOCATION_HISTORY_POINT_TYPE, LOCATION_HISTORY_STROKE, locationHistoryGeoJsonFeatures(), LocationHistoryGeoJsonOptions, LocationHistoryPointMeta (+23 more)
 
 ### Community 2 - "SmsLocatorTab.vue"
 Cohesion: 0.08
-Nodes (41): ApiErr, ApiOk, archiveLocator(), bridgeUrl(), createLocator(), deleteLocator(), downloadLocatorReport(), listLocators() (+33 more)
+Nodes (40): ApiErr, ApiOk, archiveLocator(), bridgeUrl(), createLocator(), deleteLocator(), downloadLocatorReport(), listLocators() (+32 more)
 
 ### Community 3 - "index.ts"
-Cohesion: 0.07
-Nodes (43): emit, popOut(), HostFloatComponent, LocatorFloatShell, LocatorPane, MenuItemConfig, MenuItemIconType, _typecheck (+35 more)
+Cohesion: 0.06
+Nodes (47): emit, popOut(), HostFloatComponent, LocatorFloatShell, LocatorPane, LocatorPlugin, MenuItemConfig, MenuItemIconType (+39 more)
 
 ### Community 4 - "vue"
 Cohesion: 0.08
@@ -104,8 +104,8 @@ Cohesion: 0.38
 Nodes (10): detectTopic(), dmsToDecimal(), LatLon, parseCoordinates(), parseDecimalDegree(), parseDecimalMinute(), parseDegMinSec(), parseMPS() (+2 more)
 
 ### Community 13 - "LocatorCreateCard.vue"
-Cohesion: 0.06
-Nodes (43): listLocateMeta(), listLocateMissions(), channel, channelNames, channelOptions, color, colorOpen, colorOptions (+35 more)
+Cohesion: 0.05
+Nodes (44): listLocateMeta(), listLocateMissions(), channel, channelNames, channelOptions, color, colorOpen, colorOptions (+36 more)
 
 ## Knowledge Gaps
 - **4 isolated node(s):** `@vue/tsconfig`, `eslint`, `typescript`, `vue-tsc`
@@ -124,8 +124,8 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `@tak-ps/vue-tabler` connect `index.ts` to `PingForm.vue`, `SmsLocatorTab.vue`, `vue`, `SettingsPanel.vue`, `package.json`, `LocatorPane.vue`, `LocatorCreateCard.vue`?**
   _High betweenness centrality (0.101) - this node is a cross-community bridge._
 - **Should `locator-history-map-sync.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06240084611316764 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07197763801537387 - nodes in this community are weakly interconnected._
 - **Should `SmsLocatorTab.vue` be split into smaller, more focused modules?**
-  _Cohesion score 0.0824524312896406 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08416389811738649 - nodes in this community are weakly interconnected._
 - **Should `index.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06766917293233082 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05961538461538462 - nodes in this community are weakly interconnected._

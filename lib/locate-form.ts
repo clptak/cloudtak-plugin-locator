@@ -38,11 +38,7 @@ function draft(type: LocateFieldType, label: string, required: boolean): LocateF
 }
 
 export function defaultLocateFields(): LocateFieldDraft[] {
-    return [
-        draft('firstName', 'First Name', false),
-        draft('lastName', 'Last Name', false),
-        draft('message', MESSAGE_LABEL, false),
-    ];
+    return [];
 }
 
 export function addLocateField(rows: LocateFieldDraft[]): LocateFieldDraft[] {

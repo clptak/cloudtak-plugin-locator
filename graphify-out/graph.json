@@ -124,19 +124,6 @@
       "source_location": "L19"
     },
     {
-      "id": "index_locatorplugin",
-      "label": "LocatorPlugin",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "locator-history-map-sync.ts",
-      "file_type": "code",
-      "norm_label": "locatorplugin",
-      "source_file": "index.ts",
-      "source_location": "L30"
-    },
-    {
       "id": "lib_location_history_locationhistorygeojsonoptions",
       "label": "LocationHistoryGeoJsonOptions",
       "_callable": true,
@@ -306,6 +293,19 @@
       "source_location": "L18"
     },
     {
+      "id": "lib_locate_form_locatefieldpayload",
+      "label": "LocateFieldPayload",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "LocatorCreateCard.vue",
+      "file_type": "code",
+      "norm_label": "locatefieldpayload",
+      "source_file": "lib/locate-form.ts",
+      "source_location": "L26"
+    },
+    {
       "id": "lib_locate_form_locatefieldtype",
       "label": "LocateFieldType",
       "_callable": true,
@@ -358,19 +358,6 @@
       "source_location": "L75"
     },
     {
-      "id": "lib_locate_form_locatefieldpayload",
-      "label": "LocateFieldPayload",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SmsLocatorTab.vue",
-      "file_type": "code",
-      "norm_label": "locatefieldpayload",
-      "source_file": "lib/locate-form.ts",
-      "source_location": "L26"
-    },
-    {
       "id": "index_hostfloatcomponent",
       "label": "HostFloatComponent",
       "_callable": true,
@@ -382,6 +369,19 @@
       "norm_label": "hostfloatcomponent",
       "source_file": "index.ts",
       "source_location": "L115"
+    },
+    {
+      "id": "index_locatorplugin",
+      "label": "LocatorPlugin",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "locatorplugin",
+      "source_file": "index.ts",
+      "source_location": "L30"
     },
     {
       "id": "index_menuitemconfig",
@@ -880,66 +880,6 @@
       "source_location": "L218"
     },
     {
-      "id": "index_locatorplugin_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "locator-history-map-sync.ts",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "index.ts",
-      "source_location": "L34"
-    },
-    {
-      "id": "index_locatorplugin_disable",
-      "label": ".disable()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "locator-history-map-sync.ts",
-      "file_type": "code",
-      "norm_label": ".disable()",
-      "source_file": "index.ts",
-      "source_location": "L98"
-    },
-    {
-      "id": "index_locatorplugin_enable",
-      "label": ".enable()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "locator-history-map-sync.ts",
-      "file_type": "code",
-      "norm_label": ".enable()",
-      "source_file": "index.ts",
-      "source_location": "L42"
-    },
-    {
-      "id": "index_locatorplugin_install",
-      "label": ".install()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "locator-history-map-sync.ts",
-      "file_type": "code",
-      "norm_label": ".install()",
-      "source_file": "index.ts",
-      "source_location": "L38"
-    },
-    {
-      "id": "lib_floatminimize_bindfloatminimize",
-      "label": "bindFloatMinimize()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "locator-history-map-sync.ts",
-      "file_type": "code",
-      "norm_label": "bindfloatminimize()",
-      "source_file": "lib/floatMinimize.ts",
-      "source_location": "L31"
-    },
-    {
       "id": "lib_location_history_callsignwithreceivedhhmm",
       "label": "callsignWithReceivedHhmm()",
       "_callable": true,
@@ -1156,18 +1096,6 @@
       "source_location": "L26"
     },
     {
-      "id": "lib_locator_history_map_sync_setlocatorhistorymapsync",
-      "label": "setLocatorHistoryMapSync()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "locator-history-map-sync.ts",
-      "file_type": "code",
-      "norm_label": "setlocatorhistorymapsync()",
-      "source_file": "lib/locator-history-map-sync.ts",
-      "source_location": "L295"
-    },
-    {
       "id": "lib_locator_map_import_importauthoredgeojsonfeature",
       "label": "importAuthoredGeoJsonFeature()",
       "_callable": true,
@@ -1190,18 +1118,6 @@
       "norm_label": "normalizeauthoredgeojsonfeature()",
       "source_file": "lib/locator-map-import.ts",
       "source_location": "L12"
-    },
-    {
-      "id": "lib_popout_bindpopout",
-      "label": "bindPopout()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "locator-history-map-sync.ts",
-      "file_type": "code",
-      "norm_label": "bindpopout()",
-      "source_file": "lib/popout.ts",
-      "source_location": "L27"
     },
     {
       "id": "lib_portal_source_loadsharedportal",
@@ -1513,7 +1429,7 @@
       "file_type": "code",
       "norm_label": "addlocatefield()",
       "source_file": "lib/locate-form.ts",
-      "source_location": "L48"
+      "source_location": "L44"
     },
     {
       "id": "lib_locate_form_applyfieldtype",
@@ -1525,7 +1441,7 @@
       "file_type": "code",
       "norm_label": "applyfieldtype()",
       "source_file": "lib/locate-form.ts",
-      "source_location": "L73"
+      "source_location": "L69"
     },
     {
       "id": "lib_locate_form_collectlocatefields",
@@ -1537,7 +1453,7 @@
       "file_type": "code",
       "norm_label": "collectlocatefields()",
       "source_file": "lib/locate-form.ts",
-      "source_location": "L83"
+      "source_location": "L79"
     },
     {
       "id": "lib_locate_form_defaultlocatefields",
@@ -1573,7 +1489,7 @@
       "file_type": "code",
       "norm_label": "labelfortype()",
       "source_file": "lib/locate-form.ts",
-      "source_location": "L57"
+      "source_location": "L53"
     },
     {
       "id": "lib_locate_form_typelabelsfor",
@@ -1585,7 +1501,7 @@
       "file_type": "code",
       "norm_label": "typelabelsfor()",
       "source_file": "lib/locate-form.ts",
-      "source_location": "L62"
+      "source_location": "L58"
     },
     {
       "id": "lib_locate_form_typemenulabel",
@@ -1597,7 +1513,7 @@
       "file_type": "code",
       "norm_label": "typemenulabel()",
       "source_file": "lib/locate-form.ts",
-      "source_location": "L53"
+      "source_location": "L49"
     },
     {
       "id": "api_tak_portal_client_archivelocator",
@@ -1888,6 +1804,66 @@
       "source_location": "L19"
     },
     {
+      "id": "index_locatorplugin_constructor",
+      "label": ".constructor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": ".constructor()",
+      "source_file": "index.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "index_locatorplugin_disable",
+      "label": ".disable()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": ".disable()",
+      "source_file": "index.ts",
+      "source_location": "L98"
+    },
+    {
+      "id": "index_locatorplugin_enable",
+      "label": ".enable()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": ".enable()",
+      "source_file": "index.ts",
+      "source_location": "L42"
+    },
+    {
+      "id": "index_locatorplugin_install",
+      "label": ".install()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": ".install()",
+      "source_file": "index.ts",
+      "source_location": "L38"
+    },
+    {
+      "id": "lib_floatminimize_bindfloatminimize",
+      "label": "bindFloatMinimize()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "bindfloatminimize()",
+      "source_file": "lib/floatMinimize.ts",
+      "source_location": "L31"
+    },
+    {
       "id": "lib_floatminimize_cleanupfloatminimize",
       "label": "cleanupFloatMinimize()",
       "_callable": true,
@@ -1996,6 +1972,18 @@
       "source_location": "L60"
     },
     {
+      "id": "lib_locator_history_map_sync_setlocatorhistorymapsync",
+      "label": "setLocatorHistoryMapSync()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "setlocatorhistorymapsync()",
+      "source_file": "lib/locator-history-map-sync.ts",
+      "source_location": "L295"
+    },
+    {
       "id": "lib_menutemplate_routerback",
       "label": "routerBack()",
       "_callable": true,
@@ -2018,6 +2006,18 @@
       "norm_label": "addstyleclone()",
       "source_file": "lib/popout.ts",
       "source_location": "L124"
+    },
+    {
+      "id": "lib_popout_bindpopout",
+      "label": "bindPopout()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "bindpopout()",
+      "source_file": "lib/popout.ts",
+      "source_location": "L27"
     },
     {
       "id": "lib_popout_cleanup",
@@ -7079,7 +7079,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/locate-form.ts",
-      "source_location": "L50",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -7091,7 +7091,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/locate-form.ts",
-      "source_location": "L76",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -7103,19 +7103,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/locate-form.ts",
-      "source_location": "L88",
-      "weight": 1.0
-    },
-    {
-      "source": "lib_locate_form_defaultlocatefields",
-      "target": "lib_locate_form_draft",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "lib/locate-form.ts",
-      "source_location": "L42",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -13719,7 +13707,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/locate-form.ts",
-      "source_location": "L48",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -13730,7 +13718,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/locate-form.ts",
-      "source_location": "L53",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -13741,7 +13729,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/locate-form.ts",
-      "source_location": "L57",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -13752,7 +13740,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/locate-form.ts",
-      "source_location": "L62",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -13763,7 +13751,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/locate-form.ts",
-      "source_location": "L73",
+      "source_location": "L69",
       "weight": 1.0
     },
     {
@@ -13774,7 +13762,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/locate-form.ts",
-      "source_location": "L83",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -15844,5 +15832,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "64f7441c7a9a41a822ef0cb1202d073bfbc4c475"
+  "built_at_commit": "258e1dba8f1c3e85b90fd27116691dd0ba8329f1"
 }

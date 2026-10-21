@@ -189,7 +189,7 @@ CORS only lets the browser *make* the request; the API still needs a valid TAK P
 1. Plugin creates a locator via CloudTAK bridge → TAK Portal `/api/locate/locators` (TAK Portal generates the slug).
 2. Plugin sends SMS via bridge → `POST /api/locate/locators/:id/send-link-sms` with `{ phones: "..." }`.
 3. TAK Portal builds the public URL (`https://{portal}/locate/{slug}`) and sends it using configured Twilio/Brevo credentials.
-4. Recipient opens the link. The create form starts with an optional first name, an optional last name, and “Important Information to help you.” **Add Field** can add Text or Choice questions, and any row can be edited or removed. TAK Portal handles GPS pings and TAK Server relay.
+4. Recipient opens the link. The public page has no name or message questions unless **Add Field** was used on that locator. TAK Portal handles GPS pings and TAK Server relay.
 
 ```mermaid
 flowchart LR
